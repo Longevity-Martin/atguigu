@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        canvas{
+            border:solid 1px #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="500"></canvas>
+
+    <script>
+        //获取元素对象
+        var canvas = document.querySelector('canvas');
+
+        //获取画笔对象
+        var ctx = canvas.getContext('2d');
+
+        //开始绘制
+        ctx.beginPath();
+
+        //定位第一个点
+        ctx.moveTo(250, 100);
+        //调用方法
+        ctx.arcTo(400, 100, 200, 200, 50);
+        //绘制
+        ctx.stroke();
+
+
+    </script>
+
+</body>
+</html>

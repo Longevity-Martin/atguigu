@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas{
+            margin: 50px auto;
+            border:solid 1px #000;
+            display:block;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+    <script>
+        //获取canvas对象
+        var canvas = document.querySelector('canvas');
+
+        //设置画布的宽高
+        canvas.width = 600;
+        canvas.height = 400;
+
+        //2 获取画笔对象
+        var ctx = canvas.getContext('2d');
+
+        //绘制矩形  目标图形
+        ctx.fillStyle = 'red';
+        ctx.fillRect(100,100, 300, 50);
+
+        //设置合成规则
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalCompositeOperation = 'source-atop';
+        ctx.globalCompositeOperation = 'source-in';
+        ctx.globalCompositeOperation = 'source-out';
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.globalCompositeOperation = 'destination-atop';
+        ctx.globalCompositeOperation = 'destination-in';
+        ctx.globalCompositeOperation = 'destination-out';
+
+        /// 源图形
+        ctx.fillStyle = 'yellowgreen';
+        ctx.fillRect(100,100, 50, 300);
+    </script>
+</body>
+</html>

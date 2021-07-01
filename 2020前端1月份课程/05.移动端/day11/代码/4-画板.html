@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #container {
+            width: 800px;
+            height: 500px;
+            border: solid 1px #000;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        .color-setting {
+            position: absolute;
+            left: 5px;
+            bottom: 0;
+            width: 80px;
+            height: 100px;
+        }
+
+        .yellowgreen {
+            background: yellowgreen;
+        }
+
+        .color-setting div {
+            width: 30px;
+            height: 20px;
+            margin-bottom: 10px;
+            transition: width 0.5s;
+        }
+
+        .pink {
+            background: hotpink;
+        }
+
+        .cyan {
+            background: cyan;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <canvas width="800" height="500"></canvas>
+
+    <div class="color-setting">
+        <div class="yellowgreen item"></div>
+        <div class="pink item"></div>
+        <div class="cyan item"></div>
+    </div>
+</div>
+
+<script>
+    //获取元素
+    var canvas = document.querySelector('canvas');
+    var colorSetting = document.querySelector('.color-setting');
+    var items = document.querySelectorAll('.item');
+
+    //
+    var ctx = canvas.getContext('2d');
+
+    //标识变量  标识当前的鼠标是否按下
+    var isDown = false;
+
+    //绘制线段
+
+    //绑定鼠标按下事件
+    canvas.onmousedown = function (e) {
+        //开始绘制
+        ctx.beginPath();
+        //移动到起始点
+        ctx.moveTo(e.offsetX, e.offsetY);
+        //修改标识变量的值
+        isDown = true;
+    }
+
+    //鼠标移动
+    canvas.onmousemove = function (e) {
+        // if (!isDown) return;
+        //
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+    }
+
+    //鼠标抬起
+    canvas.onmouseup = function () {
+        //修改标识变量的值
+        isDown = false;
+    }
+
+    //点击颜色切换画笔颜色
+    colorSetting.onclick = function (e) {
+        //
+        if (e.target.classList.contains('item')) {
+            //当前元素的背景颜色
+            var color = getComputedStyle(e.target).backgroundColor;
+            //改变画笔颜色
+            ctx.strokeStyle = color;
+            items.forEach(function (item) {
+                item.style.width = '30px';
+            })
+            //当前色块宽度增加
+            e.target.style.width = '50px';
+        }
+    }
+
+    // new HuaBu('#container');
+    /*
+
+
+    <div id="container">
+        <canvas></canvas>
+    </div>
+
+    new HuaBu('#container', {
+        width: 900,
+        height: 500
+        colors: ['red', 'blue', 'yellow', '#909', '#521'],
+        width: [1, 3, 5, 6, 8, 10]
+    });
+    */
+
+</script>
+</body>
+</html>

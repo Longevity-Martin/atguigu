@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas{
+            margin: 50px auto;
+            display:block;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+    <script>
+        //获取canvas对象
+        var canvas = document.querySelector('canvas');
+
+        //设置画布的宽高
+        canvas.width = 600;
+        canvas.height = 500;
+
+        //2 获取画笔对象
+        var ctx = canvas.getContext('2d');
+
+        //填充遮罩
+        ctx.fillStyle = '#ccc';
+        ctx.fillRect(0,0,600,500);
+
+        //获取 10 * 10 的矩形的像素点信息
+        var pixelData = ctx.getImageData(0,0,canvas.width, canvas.height);
+
+        console.log(pixelData);
+
+        // 3 4
+        /**
+         * 1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,  1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,   3,6,9,8, 6,8,2,4
+         * 1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,  1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,   3,6,9,8, 6,8,2,4
+         * 1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,  1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,   3,6,9,8, 6,8,2,4
+         * 1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,  1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,   3,6,9,8, 6,8,2,4
+         * 1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,  1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,   3,6,9,8, 6,8,2,4
+         * 1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,  1,2,3,4   255,0,0,255,   3,6,9,8, 6,8,2,4,   3,6,9,8, 6,8,2,4
+         * 1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,  1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,   3,6,9,8, 6,8,2,4
+         * 1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,  1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,   3,6,9,8, 6,8,2,4
+         * 1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,  1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,   3,6,9,8, 6,8,2,4
+         * 1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,  1,2,3,4   5,5,6,9,   3,6,9,8, 6,8,2,4,   3,6,9,8, 6,8,2,4
+         */
+
+        // getPixel(imgData, 1, 2); // [204,204,204,255]  1 2  48  1 * 4 * 10 + 2 * 4  =>  x * 4 * 10 + y * 4
+        // getPixel(imgData, 7, 8); // [204,204,200,255]  3 4  136  x * 4 * 10 + y * 4
+        // getPixel(imgData, 7, 8); // [204,204,200,255]  2 3  92
+        // getPixel(imgData, 7, 8); // [204,204,200,255]  x y   x * 4 * imgData.width + y * 4
+
+        // 1,2  =>  (2,1);
+        function getPixel(imgData, x, y){
+            var index = y * 4 * imgData.width + x * 4;
+            //
+            var d = [];
+            d[0] = imgData.data[index];
+            d[1] = imgData.data[index+1];
+            d[2] = imgData.data[index+2];
+            d[3] = imgData.data[index+3];
+            return d;
+        }
+
+        // var res = getPixel(pixelData, 5,6);
+        // console.log(res);
+
+        //像素设置
+        // ctx.putImageData(pixelData, 0,0);
+
+        //修改 (5,5) 的像素颜色为 红色
+        // setPixel(pixelData, 5,5, [255,0,0,255]);
+        function setPixel(imgData, x, y, colors) {
+            //获取下标
+            var index = y * 4 * imgData.width + x * 4;
+
+            imgData.data[index] = colors[0];
+            imgData.data[index+1] = colors[1];
+            imgData.data[index+2] = colors[2];
+            imgData.data[index+3] = colors[3];
+        }
+        //修改了数据
+        setPixel(pixelData, 50,100, [255,240,0,255]);
+
+        //修改像素信息
+        ctx.putImageData(pixelData, 0,0);
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        html, body, #app {
+            width: 100%;
+            height: 100%;
+        }
+
+        #swiper-container {
+            width: 100%;
+            position: relative;
+            height: 176px;
+            overflow: hidden;
+        }
+
+        .swiper-wrapper {
+            width: 500%;
+            overflow: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .swiper-slide {
+            width: 20%;
+            float: left;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            display: block;
+        }
+
+        .swiper-pagination {
+            z-index: 2;
+            position: absolute;
+            width: 100%;
+            height: 10px;
+            left: 0;
+            bottom: 10px;
+            line-height: 10px;
+            text-align: center;
+        }
+
+        .swiper-pagination span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            margin-right: 4px;
+        }
+
+        .swiper-pagination .active {
+            background: darkorange;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div id="swiper-container">
+        <!--幻灯片的结构-->
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="./img/1.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="./img/2.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="./img/3.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="./img/4.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="./img/5.jpg" alt=""></div>
+        </div>
+
+        <!--导航点-->
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<script src="./js/transformCSS.js"></script>
+<script src="./js/swiper.js"></script>
+<script>
+    new Swiper('#swiper-container');
+</script>
+</body>
+</html>

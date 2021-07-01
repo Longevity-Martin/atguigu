@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>立体相册</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            transform-style: preserve-3d;
+            position: relative;
+            transform: rotateX(-45deg) rotateY(45deg);
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0.6;
+            transition: transform 0.5s;
+        }
+
+        .container img:nth-child(1) {
+            transform: translateZ(100px);
+        }
+
+        .container img:nth-child(2) {
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        .container img:nth-child(3) {
+            transform: translateZ(-100px);
+        }
+
+        .container img:nth-child(4) {
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+
+        .container img:nth-child(5) {
+            transform: rotateX(90deg) translateZ(100px);
+        }
+
+        .container img:nth-child(6) {
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+
+
+        .inner {
+            width: 100px;
+            height: 100px;
+            left: 50px;
+            top: 50px;
+        }
+
+        .container .inner:nth-child(7) {
+            transform: translateZ(50px);
+        }
+
+        .container .inner:nth-child(8) {
+            transform: rotateY(90deg) translateZ(50px);
+        }
+
+        .container .inner:nth-child(9) {
+            transform: translateZ(-50px);
+        }
+
+        .container .inner:nth-child(10) {
+            transform: rotateY(-90deg) translateZ(50px);
+        }
+
+        .container .inner:nth-child(11) {
+            transform: rotateX(90deg) translateZ(50px);
+        }
+
+        .container .inner:nth-child(12) {
+            transform: rotateX(-90deg) translateZ(50px);
+        }
+
+        .container:hover img:nth-child(1) {
+            transform: translateZ(200px);
+        }
+
+        .container:hover img:nth-child(2) {
+            transform: rotateY(90deg) translateZ(200px);
+        }
+
+        .container:hover img:nth-child(3) {
+            transform: translateZ(-200px);
+        }
+
+        .container:hover img:nth-child(4) {
+            transform: rotateY(-90deg) translateZ(200px);
+        }
+
+        .container:hover img:nth-child(5) {
+            transform: rotateX(90deg) translateZ(200px);
+        }
+
+        .container:hover img:nth-child(6) {
+            transform: rotateX(-90deg) translateZ(200px);
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="./img/1.jpg" alt="">
+    <img src="./img/2.jpg" alt="">
+    <img src="./img/3.jpg" alt="">
+    <img src="./img/4.jpg" alt="">
+    <img src="./img/5.jpg" alt="">
+    <img src="./img/6.jpg" alt="">
+
+    <img class="inner" src="./img/7.jpg" alt="">
+    <img class="inner" src="./img/8.jpg" alt="">
+    <img class="inner" src="./img/9.jpg" alt="">
+    <img class="inner" src="./img/10.jpg" alt="">
+    <img class="inner" src="./img/11.jpg" alt="">
+    <img class="inner" src="./img/12.jpg" alt="">
+</div>
+
+<script>
+    var y = 0;
+    var container = document.querySelector('.container');
+
+    setInterval(function () {
+        container.style.transform = 'rotateX(' + (y++) + 'deg) rotateY(' + (y++) + 'deg)';
+    }, 50);
+
+</script>
+</body>
+</html>

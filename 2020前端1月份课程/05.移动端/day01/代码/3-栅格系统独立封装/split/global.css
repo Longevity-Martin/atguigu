@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+/*# sourceMappingURL=global.css.map */

@@ -1,0 +1,48 @@
+/*实现*/
+// 1. 容器的实现
+.make-container();
+
+
+// 2. 行的设置
+
+.make-row();
+
+
+// 3. 列的实现
+// 公共样式   1,2,3,4,5,6,7,8,9,10,11,12   .col-xs-1 .......col-xs-12
+
+.make-grid-columns();
+
+//超小屏幕的宽度设置    .col-xs-1{width:}   .col-xs-2{}
+
+.make-column-width(xs);
+
+//超小屏幕下的偏移设置
+.make-column-offset(xs);
+
+//媒体查询阶段 小屏幕的情况
+@media (min-width: @screen-sm){
+    // .col-sm-1      ....... .col-sm-12
+    // .col-sm-offset-1 ...... .col-sm-offset-12
+    .make-column-width(sm);
+    .make-column-offset(sm);
+}
+
+//媒体查询阶段 中屏幕的情况
+@media (min-width: @screen-md){
+    // .col-md-1      ....... .col-md-12
+    // .col-md-offset-1 ...... .col-md-offset-12
+    .make-column-width(md);
+    .make-column-offset(md);
+}
+
+//媒体查询阶段 小屏幕的情况
+@media (min-width: @screen-lg){
+    // .col-lg-1      ....... .col-lg-12
+    // .col-lg-offset-1 ...... .col-lg-offset-12
+    .make-column-width(lg);
+    .make-column-offset(lg);
+}
+
+
+

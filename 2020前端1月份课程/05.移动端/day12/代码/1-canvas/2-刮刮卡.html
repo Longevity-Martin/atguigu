@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas{
+            margin: 50px auto;
+            display:block;
+            background: url('./img/xiaohigh.jpg');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+    <script>
+        //获取canvas对象
+        var canvas = document.querySelector('canvas');
+
+        //设置画布的宽高
+        canvas.width = 600;
+        canvas.height = 500;
+
+        //2 获取画笔对象
+        var ctx = canvas.getContext('2d');
+
+        //填充遮罩
+        ctx.fillStyle = '#ccc';
+        ctx.fillRect(0,0,600,500);
+
+        //设置合成规则
+        ctx.globalCompositeOperation = 'destination-out';
+
+        //绘制新的矩形
+        // ctx.fillRect(50,50, 100,100);
+        var isDown = false;// 假
+        canvas.onmousedown = function(e){
+            //开始沪指
+            ctx.beginPath();
+            ctx.lineWidth = 10;
+            ctx.lineCap = 'round';
+            ctx.moveTo(e.offsetX, e.offsetY);
+            isDown = true;
+        }
+        canvas.onmousemove = function(e){
+            //判断
+            if(!isDown) return;
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+        }
+        canvas.onmouseup = function(){
+            isDown = false;
+        }
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PC视口</title>
+
+</head>
+<body style="height:2000px;">
+
+<script>
+    //获取可视区域的宽度  不包含滚动条
+    console.log(document.documentElement.clientWidth);
+
+    //获取浏览器窗口的宽度  包含滚动条
+    console.log(window.innerWidth);
+
+    //获取浏览器总宽  包含外侧的阴影
+    console.log(window.outerWidth);
+
+    //获取屏幕的宽度 screen  屏幕的总宽
+    console.log(screen.width);
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>扇形导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        nav {
+            width: 50px;
+            height: 50px;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+        }
+
+        .home {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 3;
+            transition: transform 0.5s;
+        }
+
+        img {
+            border-radius: 50%;
+        }
+
+        ul {
+            position: absolute;
+            width: 42px;
+            height: 42px;
+            left: 4px;
+            top: 4px;
+        }
+
+        li {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 42px;
+            height: 42px;
+            transition: transform 0.5s;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <div class="home"><img width="100%" src="./img/home.png" alt=""></div>
+    <ul>
+        <li><img src="./img/full.png" alt=""></li>
+        <li><img src="./img/full.png" alt=""></li>
+        <li><img src="./img/full.png" alt=""></li>
+        <li><img src="./img/full.png" alt=""></li>
+        <li><img src="./img/full.png" alt=""></li>
+    </ul>
+</nav>
+
+<script>
+    //获取元素
+    var home = document.querySelector('.home');
+    var homeDeg = 0;
+    var lis = document.querySelectorAll('li');
+    var isOpen = false;//当前菜单是否处于展开状态
+
+    home.onclick = function () {
+        homeDeg += 360;
+
+        //1. 自己旋转
+        home.style.transform = 'rotate(' + homeDeg + 'deg)';
+
+        if(!isOpen){
+            for (var i = 0; i < 5; i++) {
+                //控制第二个元素
+                var x = -200 * Math.sin(22.5 * i / 180 * Math.PI);
+                var y = -200 * Math.cos(22.5 * i / 180 * Math.PI);
+                lis[i].style.transform = 'translateX(' + x + 'px)  translateY(' + y + 'px)';
+                //过渡延时设置 0,0   1  40ms    2   80ms   3  120ms
+                lis[i].style.transition = 'transform 0.5s '+i*100+'ms';
+                //图片旋转
+                lis[i].querySelector('img').style.transform = 'rotate(720deg)';
+                lis[i].querySelector('img').style.transition = 'transform 0.5s';
+            }
+        }else{
+            //解决菜单回转的情况
+            for(var i=0;i<5;i++){
+                var x = 0;
+                var y = 0;
+                lis[i].style.transform = 'translateX(' + x + 'px)  translateY(' + y + 'px)';
+                //设置过渡的延时  4  0
+                //              3  100ms
+                //              2   200
+                //              1  300
+                //              0  400
+                //              n  (4-n)*100
+                lis[i].style.transition = 'transform 0.5s '+(4-i)*100+'ms';
+                //图片旋转
+                lis[i].querySelector('img').style.transform = 'rotate(0deg)';
+                lis[i].querySelector('img').style.transition = 'transform 0.5s '+(4-i)*100+'ms';
+            }
+        }
+
+        isOpen = !isOpen;
+        // //控制第二个元素
+        // var x = -200 * Math.sin(45 / 180 * Math.PI);
+        // var y = -200 * Math.cos(45 / 180 * Math.PI);
+        // lis[2].style.transform = 'translateX(' + x + 'px)  translateY(' + y + 'px)';
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #box {
+            width: 375px;
+            height: 375px;
+            overflow: hidden;
+            position: relative;
+            border: solid 1px #000;
+            box-sizing: border-box;
+        }
+
+        img {
+            position: absolute;
+            left: -200px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <img src="./map.png" alt="">
+</div>
+
+<script>
+    //阻止默认行为
+    document.documentElement.addEventListener('touchstart', function(e){
+        e.preventDefault();
+    }, {
+        passive: false
+    });
+
+    // √ left   translateX   padding  margin
+
+    //获取元素
+    var box = document.querySelector('#box');
+    var img = document.querySelector('img');
+
+    //按下时的尺寸
+    box.addEventListener('touchstart', function (e) {
+        //获取触摸时的尺寸
+        this.x = e.targetTouches[0].clientX;
+        this.left = img.offsetLeft;
+
+        this.y = e.targetTouches[0].clientY;
+        this.top = img.offsetTop;
+
+    });
+
+    //手指移动时的尺寸
+    box.addEventListener('touchmove', function (e) {
+        //获取移动后的触点位置
+        this._x = e.targetTouches[0].clientX;
+        var newLeft = this._x - this.x + this.left;
+
+        this._y = e.targetTouches[0].clientY;
+        var newTop = this._y - this.y + this.top;
+
+        //边界检测
+        if(newLeft >= 0){
+            newLeft = 0;
+        }
+
+        var minLeft = box.offsetWidth - img.offsetWidth;
+        if(newLeft <= minLeft){
+            newLeft = minLeft;
+        }
+
+        if(newTop >= 0){
+            newTop = 0;
+        }
+
+        var minTop = box.offsetHeight - img.offsetHeight;
+        if(newTop <= minTop){
+            newTop = minTop;
+        }
+
+        //设置 位置
+        img.style.left = newLeft + 'px';
+        img.style.top = newTop + 'px';
+
+    });
+
+
+</script>
+</body>
+</html>

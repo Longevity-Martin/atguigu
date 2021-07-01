@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ceshi </title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style:none;
+        }
+        #box{
+            width:200px;
+            height:200px;
+            background:#999;
+            transform: rotate(70deg);
+        }
+
+        #box2{
+            width:200px;
+            height:200px;
+            background:#eff;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+    <script src="js/transformCSS.js"></script>
+    <script>
+        var box = document.querySelector('#box');
+        var box2 = document.querySelector('#box2');
+
+        // console.log(box.abc);
+
+
+        // transformCSS(box, 'translateX', 600);
+        // transformCSS(box,'rotate', 45);//  transform: translateX(100px)  rotate(45deg);
+        // transformCSS(box,'scale', 2);
+
+        // transformCSS(box2, 'translateX', 10);
+
+        //读取 box 的rotate 样式
+        var res = transformCSS(box,'rotate');
+
+        console.log(res);
+
+    </script>
+</body>
+</html>

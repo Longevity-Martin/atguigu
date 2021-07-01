@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件</title>
+</head>
+<body>
+
+<div id="box"></div>
+    <!---->
+    <script>
+        var box = document.querySelector('#box');
+        box.onclick = function(){} // DOM 0
+        box.addEventListener('click', function(){  // dom2
+        });
+
+        // // 鼠标事件
+        // onclick   onmouseenter onmouseleave  onmouseover onmouseout onmousedown onmousemove onmouseup
+        //
+        // //键盘
+        // onkeydown onkeypress onkeyup
+        //
+        // //滚轮
+        // onmousewheel
+        //
+        // //文档事件
+        // onload  onbeforeunload
+
+        // 表单事件
+        // onfocus  onblur  onsubmit  onreset
+        window.onbeforeunload = function(){
+            return '您确定要离开么???';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文字</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        canvas {
+            border: solid 1px #000;
+            display: block;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<canvas></canvas>
+<script>
+    var canvas = document.querySelector('canvas');
+
+    canvas.width = 600;
+    canvas.height = 400;
+
+    //获取画笔
+    var ctx = canvas.getContext('2d');
+
+    //设置文本
+    ctx.font = 'bold 30px 微软雅黑';
+
+    //绘制中心线
+    ctx.beginPath();
+    ctx.moveTo(100, 0);
+    ctx.lineTo(100, 1000);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(0, 100);
+    ctx.lineTo(1000, 100);
+    ctx.stroke();
+
+    //文字对齐
+    ctx.textAlign = 'left';
+    ctx.textAlign = 'center';
+    ctx.textAlign = 'right';
+    ctx.textAlign = 'end';
+    ctx.textAlign = 'start';
+
+    //垂直对齐
+    ctx.textBaseline = 'top';
+    ctx.textBaseline = 'hanging';
+    ctx.textBaseline = 'middle';
+    ctx.textBaseline = 'bottom';
+    ctx.textBaseline = 'alphabetic';
+
+    //填充文字
+    ctx.fillText('I Love You', 100, 100);
+
+    //镂空文字
+    // ctx.strokeText('I Love You Too', 100, 150);
+
+
+</script>
+</body>
+</html>

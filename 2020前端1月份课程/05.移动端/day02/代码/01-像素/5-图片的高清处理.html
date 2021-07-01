@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>高清显示</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style:none;
+        }
+        #box{
+            width:200px;
+            height:200px;
+            background-size:cover;
+        }
+
+        @media (-webkit-min-device-pixel-ratio: 2) {
+            #box{
+                background-image: url('./image/logo@2x.png');
+            }
+        }
+
+        @media (-webkit-min-device-pixel-ratio: 3) {
+            #box{
+                background-image: url('./image/logo@3x.png');
+            }
+        }
+
+        #test{
+            width:200px;
+            height:200px;
+            background-image:url('./image/logo.png')
+        }
+    </style>
+</head>
+<body>
+<div id="test"></div>
+<div id="box"></div>
+</body>
+</html>

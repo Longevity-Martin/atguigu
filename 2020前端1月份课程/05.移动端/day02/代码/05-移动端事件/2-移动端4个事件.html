@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动端事件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background: #999;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+<script>
+    var box = document.querySelector('#box');
+
+    //绑定 touchstart
+    box.addEventListener('touchstart', function () {
+        //设置背景为红色
+        box.style.backgroundColor = 'red';
+    });
+
+    //绑定 touchstart
+    box.addEventListener('touchmove', function(){
+        box.style.background = 'yellow';
+        //给标签设置随机数字
+        box.innerHTML = Math.random();
+    });
+
+    //绑定touchend
+    box.addEventListener('touchend', function(){
+        box.style.background = 'blue';
+    });
+
+    //当触摸被打断的时候  事件  来电话的时候
+    box.addEventListener('touchcancel', function(){
+        box.style.background = 'black';
+    });
+
+    // setTimeout(function(){
+    //     alert('恭喜你中奖啦!!!');
+    // }, 3000);
+
+    // JS 跳转
+    // location.href = 'http://www.baidu.com';
+    // location.replace('http://www.baidu.com');
+    // location.assign('http://www.baidu.com');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style:none;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            background:darkred;
+            color:white;
+            position:absolute;
+            left:0;
+            top:0;
+            /*background:rgb(200,241,200);*/
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        var box = document.querySelector('#box');
+
+        box.addEventListener('touchstart', function(e){
+            //获取按下时触点的位置  尺寸 1
+            this.size1 = e.touches[0].clientX;
+            //获取按下时 元素距离左侧的偏移量  2
+            this.size2 = box.offsetLeft;
+
+            this.size1Y = e.touches[0].clientY;
+            this.size2Y = box.offsetTop;
+        });
+
+        box.addEventListener('touchmove', function(e){
+            this.size3 = e.touches[0].clientX;
+            //获取移动后的触点的位置
+            this.size3Y = e.touches[0].clientY;
+
+            var size4 = this.size3 - (this.size1 - this.size2);
+            var size4Y = this.size3Y - (this.size1Y - this.size2Y);
+
+            //获取最大的left 的值
+            var maxLeft = document.documentElement.clientWidth - box.offsetWidth;
+            //检测水平方向的位置
+            if(size4 <= 0){
+                size4 = 0;
+            }
+
+            if(size4 >= maxLeft){
+                size4 = maxLeft;
+            }
+            //设置css left 的值
+            box.style.left = size4 + 'px';
+            box.style.top = size4Y + 'px';
+        });
+
+
+         box.addEventListener('touchend', function(e){
+
+        });
+
+
+        document.body.addEventListener('touchstart', function(e){
+            e.preventDefault();
+        },{
+            passive: false
+        });
+    </script>
+</body>
+</html>

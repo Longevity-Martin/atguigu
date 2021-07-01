@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+        html,body,#app{
+            width:100%;
+            height:100%;
+            overflow: hidden;
+            background:#a88;
+        }
+
+        #app{
+            position:relative;
+        }
+
+        #box{
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div id="box">
+
+    </div>
+</div>
+<script>
+    var box = document.querySelector('#box');
+    var app = document.querySelector('#app');
+
+    //
+    var str = '';
+    for(var i=0;i<100;i++){
+        str += i + '<br>';
+    }
+    box.innerHTML = str;
+
+    app.addEventListener('touchstart', function(e){
+        //获取触点的起始位置
+        box.pointerStartY = e.touches[0].clientY;
+        //获取box起始位置的垂直方向的位置
+        box.boxTop = box.offsetTop;
+    });
+
+    app.addEventListener('touchmove', function(e){
+        //获取移动以后触点的垂直位置
+        box.pointerEndY = e.touches[0].clientY;
+        // 1-2 = 3 - 4
+        var newTop  = box.pointerEndY - box.pointerStartY + box.boxTop;
+        //判断 top 的值
+        if(newTop >= 0){
+            newTop = 0;
+        }
+
+        var minTop =  -(box.offsetHeight - app.offsetHeight);
+        if(newTop <= minTop){
+            newTop = minTop;
+        }
+        box.style.top = newTop + 'px';
+    });
+</script>
+</body>
+</html>

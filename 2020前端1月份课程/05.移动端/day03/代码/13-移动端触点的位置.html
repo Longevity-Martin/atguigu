@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style:none;
+        }
+        #box{
+            width:100%;
+            height:200px;
+            background:red;
+            color:white;
+
+            /*background:rgb(200,241,200);*/
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        var box = document.querySelector('#box');
+
+        box.addEventListener('touchstart', function(e){
+            //获取触点的信息
+            var x = e.changedTouches[0].clientX;
+            //
+            var y = e.changedTouches[0].clientY;
+            //
+            box.innerHTML = 'X:'+x+' <br> Y:'+y;
+        });
+
+        box.addEventListener('touchmove', function(e){
+            //获取触点的信息
+            var x = e.changedTouches[0].clientX;
+            //
+            var y = e.changedTouches[0].clientY;
+            //
+            box.innerHTML = 'X:'+x+' <br> Y:'+y;
+        });
+
+
+         box.addEventListener('touchend', function(e){
+
+        });
+
+
+        document.documentElement.addEventListener('touchstart', function(e){
+            e.preventDefault();
+        },{
+            passive: false
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>可乐瓶子</title>
+    <style>
+        #container {
+            width:194px;
+            height:336px;
+            margin: 100px auto;
+            position:relative;
+            overflow: hidden;
+        }
+        .pingzi{
+            width:194px;
+            height:336px;
+            position:absolute;
+            background: url('./images/coke_can.png') no-repeat;
+            background-size: cover;
+            z-index:2;
+        }
+
+        .kele-bg{
+            width:1074px;
+            height: 280px;
+            position:absolute;
+            left:0;
+            top:10px;
+            background: url('./images/coke_bg.jpg');
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="pingzi"></div>
+        <div class="kele-bg"></div>
+    </div>
+    <script>
+        var bg = document.querySelector('.kele-bg');
+        var left = 0;
+
+        setInterval(function(){
+            left --;
+            //判断left的值
+            if(left <= -537){
+                left = 0;
+            }
+            bg.style.left = left + 'px';
+        }, 10);
+    </script>
+</body>
+</html>

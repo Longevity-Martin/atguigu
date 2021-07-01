@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片绘制</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style:none;
+        }
+        canvas{
+            border:solid 1px #ddd;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+    <script>
+        var canvas =  document.querySelector('canvas');
+
+        canvas.width = 600;
+        canvas.height = 500;
+
+        //获取画笔
+        var ctx = canvas.getContext('2d');
+
+        //操作图片
+        //1. 创建图片对象
+        // var img = new Image;
+        var img = document.createElement('img');
+
+        //2. 设置 src
+        img.src = './img/img22.jpg';
+        //3. 图片绑定加载完毕事件
+        img.onload = function(){
+            //4. 绘制图片
+            // width/height = 500 / X
+            // x = height * 500 / width
+            ctx.drawImage(img, 0,0, 100, img.height * 100 / img.width);// draw 画
+        }
+
+    </script>
+</body>
+</html>

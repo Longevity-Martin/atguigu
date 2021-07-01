@@ -1,0 +1,115 @@
+/*全局设置 reset.css   normalize.css */
+@import 'normalize';
+
+//清除浮动
+.clearfix{
+    &:after{
+        content: '';
+        display:block;
+        clear:both;
+    }
+}
+
+/*变量声明
+    1200
+    992
+    768
+*/
+//屏幕的阈值
+@screen-lg: 1200px;
+@screen-md: 992px;
+@screen-sm: 768px;
+
+//container 容器的宽度
+@container-lg-width: 1170px;
+@container-md-width: 970px;
+@container-sm-width: 750px;
+
+//列宽
+@grid-gutter-width: 30px;
+
+//总的列数
+@grid-columns: 12;
+
+/*实现*/
+// 1. 容器的实现
+.make-container(){
+    // container 容器的实现
+    .container{
+        .container-common-style();
+        //清除浮动
+        //.clearfix();
+        &:extend(.clearfix all);
+        //小屏幕 container 的宽度
+        @media (min-width: @screen-sm){
+            width: @container-sm-width;
+        }
+
+        //中屏幕 container 的宽度
+        @media (min-width: @screen-md){
+            width: @container-md-width;
+        }
+
+        //大屏幕 container 的宽度
+        @media (min-width: @screen-lg){
+            width: @container-lg-width;
+        }
+    }
+
+    // container-fluid 容器的实现
+    .container-fluid{
+        .container-common-style();
+        &:extend(.clearfix all);
+    }
+
+    //混合
+    .container-common-style(){
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: @grid-gutter-width / 2;
+        padding-right: @grid-gutter-width / 2;
+    }
+}
+
+.make-container();
+
+
+// 2. 行的设置
+.make-row(){
+    .row{
+        margin-left: -@grid-gutter-width / 2;// -15px
+        margin-right: -@grid-gutter-width / 2;
+    }
+}
+.make-row();
+
+
+// 3. 列的实现
+// 公共样式   1,2,3,4,5,6,7,8,9,10,11,12   .col-xs-1 .......col-xs-12
+.make-grid-columns() {
+    .col(@index){
+        // @index  2      1
+        .col(@index+1, @index);
+    }
+    //     2       1
+    .col(@index, @list) when (@index <= @grid-columns){
+        //变量拼接
+        @selector: ~'@{list},@{index}';// 1,2    =>  1,2,3
+        //调用自己
+        .col(@index+1, @selector);
+    }
+
+    //
+    .col(@index, @list) when(@index > @grid-columns) {
+        @{list}{
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+
+
+    .col(1);
+}
+.make-grid-columns();
+
+

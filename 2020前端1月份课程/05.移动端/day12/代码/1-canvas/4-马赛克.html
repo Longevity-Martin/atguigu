@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas{
+            margin: 50px auto;
+            display:block;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+    <script>
+        //获取canvas对象
+        var canvas = document.querySelector('canvas');
+
+        //设置画布的宽高
+        canvas.width = 600;
+        canvas.height = 500;
+
+        //2 获取画笔对象
+        var ctx = canvas.getContext('2d');
+
+        //3. 绘制图片
+        var img = document.createElement('img');
+        img.src = './img/img23.jpg';
+        img.onload = function(){
+            ctx.drawImage(img, 0,0, 600, 600 * img.height / img.width);
+
+            // //随机颜色显示
+            var imgData = ctx.getImageData(0,0, canvas.width, canvas.height);
+            //
+            // //修改颜色的值
+            // for(var i=0;i<imgData.data.length;i++){
+            //     imgData.data[i] = Math.floor(Math.random() * 255);
+            // }
+            //
+            // //设置像素信息
+            // ctx.putImageData(imgData, 0, 0);
+
+            //
+            var size = 10;
+            for(var i=0;i<canvas.width;i+=size){
+                for(var j=0;j < canvas.height; j+= size){
+                    //获取坐标点的颜色
+                    var color = getPixel(imgData, i,j);
+                    // 12 6   12,13,14,15   6,7,8,9
+                    for(var a=i;a<i+size;a++){
+                        for(var b=j;b<j+size;b++){
+                            setPixel(imgData, a, b, color);
+                        }
+                    }
+                }
+            }
+
+            //设置像素点信息
+            ctx.putImageData(imgData, 0, 0);
+
+        }
+
+
+
+
+        // 1,2  =>  (2,1);
+        function getPixel(imgData, x, y){
+            var index = y * 4 * imgData.width + x * 4;
+            //
+            var d = [];
+            d[0] = imgData.data[index];
+            d[1] = imgData.data[index+1];
+            d[2] = imgData.data[index+2];
+            d[3] = imgData.data[index+3];
+            return d;
+        }
+
+
+        //修改 (5,5) 的像素颜色为 红色
+        // setPixel(pixelData, 5,5, [255,0,0,255]);
+        function setPixel(imgData, x, y, colors) {
+            //获取下标
+            var index = y * 4 * imgData.width + x * 4;
+
+            imgData.data[index] = colors[0];
+            imgData.data[index+1] = colors[1];
+            imgData.data[index+2] = colors[2];
+            imgData.data[index+3] = colors[3];
+        }
+
+    </script>
+</body>
+</html>

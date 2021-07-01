@@ -1,0 +1,113 @@
+*{
+    margin:0;
+    padding:0;
+}
+ul{
+    list-style:none;
+}
+
+.gap-20{
+    height:20px;
+}
+
+/*变量声明*/
+@base-color: pink;
+
+
+/*变量 选择器*/
+@remind: .alert;
+@{remind} {
+    height:50px;
+    width: 80%;
+    .center-show();
+    background: #999;
+    .vip-show();
+}
+
+/*变量拼接*/
+@v1: lunbotu;
+@v2: container;
+
+@swiper-container: ~'.@{v1}-@{v2}';//
+@{swiper-container} {
+    width: 80%;
+    height: 100 + 100px;
+    background:@base-color;
+    .center-show();
+    .swiper-show(yellowgreen);
+}
+
+/*嵌套*/
+.content{
+    width:80%;
+    height: 300px;
+    .center-show();
+
+    .item{
+        width:25%;
+        height: 200px;
+        float:left;
+        padding-left: 15px;
+        padding-right: 15px;
+        box-sizing: border-box;
+    }
+}
+
+/*媒体查询
+    >= 1200  red
+    >= 992 < 1200 yellow
+*/
+header{
+    height:50px;
+    background: @base-color;
+
+    @media (min-width: 1200px){
+        background: red;
+    }
+
+    @media (max-width: 1200px) and (min-width: 992px){
+        background: yellow;
+    }
+}
+
+/*混入*/
+.center-show{
+    margin: 0 auto;
+}
+
+/*条件混入  when 当...时候*/
+@vip: 1;
+.vip-show() when (@vip=1){
+    background: gold;
+}
+
+/*参数混入*/
+.swiper-show(@color){
+    background: @color;
+}
+
+/*输出带选择器的css样式*/
+.body-show() {
+    /*body{
+        background: #eee;
+    }*/
+}
+.body-show();
+
+/*嵌套*/
+.mixin-a(){
+    .mixin-b(){
+        body{
+            background: deepskyblue;
+        }
+    }
+    .mixin-b();
+}
+
+.mixin-a();
+
+.row{
+    margin-left: -15px;
+    margin-right: -15px;
+}
+

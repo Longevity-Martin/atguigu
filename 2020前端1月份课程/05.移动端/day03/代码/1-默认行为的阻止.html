@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>默认行为</title>
+</head>
+<body>
+<a href="http://www.baidu.com">百度</a>
+<script>
+    //获取元素
+    var suibian = document.querySelector('a');
+    suibian.onclick = function(e){
+        alert('耶  明天就放假喽!!');
+        e.preventDefault();
+    }
+
+    //
+    window.oncontextmenu = function(e){
+        e.preventDefault();
+    }
+</script>
+</body>
+</html>

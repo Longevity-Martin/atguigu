@@ -1,0 +1,18 @@
+
+.col(@index){
+    @selector : ~'.col-large-@{index}';
+    .col(@index+1, @selector);// 1 ==> .col-large-1
+}
+
+.col(@index, @list) when(@index<=12){
+    @selector: ~'@{list},.col-large-@{index}';// 1,2  => 1,2,3
+    .col(@index+1, @selector);
+}
+
+.col(@index, @list) when(@index > 12){
+    @{list}{
+        padding-left:15px;
+    }
+}
+
+.col(1);

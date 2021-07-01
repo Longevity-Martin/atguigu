@@ -1,0 +1,12 @@
+//初始化
+    function init() {
+        //容器设置 高度
+        //获取第一个幻灯片的高度
+        var slides = container.querySelectorAll('.swiper-slide');
+        var h = slides[0].offsetHeight;
+        //设置容器的高度
+        container.style.height = h + 'px';
+
+
+    }
+    init();

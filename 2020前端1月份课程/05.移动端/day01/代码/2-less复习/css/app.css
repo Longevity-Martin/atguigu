@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+.gap-20 {
+  height: 20px;
+}
+/*变量声明*/
+/*变量 选择器*/
+.alert {
+  height: 50px;
+  width: 80%;
+  margin: 0 auto;
+  background: #999;
+  background: gold;
+}
+/*变量拼接*/
+.lunbotu-container {
+  width: 80%;
+  height: 200px;
+  background: pink;
+  margin: 0 auto;
+  background: yellowgreen;
+}
+/*嵌套*/
+.content {
+  width: 80%;
+  height: 300px;
+  margin: 0 auto;
+}
+.content .item {
+  width: 25%;
+  height: 200px;
+  float: left;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+/*媒体查询
+    >= 1200  red
+    >= 992 < 1200 yellow
+*/
+header {
+  height: 50px;
+  background: pink;
+}
+@media (min-width: 1200px) {
+  header {
+    background: red;
+  }
+}
+@media (max-width: 1200px) and (min-width: 992px) {
+  header {
+    background: yellow;
+  }
+}
+/*混入*/
+.center-show {
+  margin: 0 auto;
+}
+/*条件混入  when 当...时候*/
+/*参数混入*/
+/*输出带选择器的css样式*/
+/*body{
+        background: #eee;
+    }*/
+/*嵌套*/
+body {
+  background: deepskyblue;
+}
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+/*# sourceMappingURL=app.css.map */

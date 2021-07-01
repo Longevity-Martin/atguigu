@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>天猫墙</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 721px;
+            margin: 50px auto;
+            background: #ccc;
+            border-left: solid 1px #ccc;
+            border-top:solid 1px #ccc;
+            overflow: hidden;
+        }
+
+        .container li {
+            box-sizing: border-box;
+            border-right:solid 1px #ccc;
+            border-bottom:solid 1px #ccc;
+            background: white;
+            width: 120px;
+            height: 100px;
+            float: left;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+
+        li .item {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 120px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        li .fanmian {
+            transform: rotateY(180deg);
+        }
+
+        #control{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<ul class="container">
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <div class="item zhengmian">
+            <img src="./img/icon1.jpg" alt="">
+        </div>
+        <div class="item fanmian">
+            <img src="./img/icon2.jpg" alt="">
+        </div>
+    </li>
+    <li id="control">
+        <div class="btn"><img src="./img/refresh-white.png" alt=""></div>
+        <span>换一批</span>
+    </li>
+</ul>
+<script>
+    var control = document.querySelector('#control');
+    var container = document.querySelector('.container');
+    var imgDeg = 0;
+    var liDeg = 0;
+    var lis = document.querySelectorAll('li');
+    var rowLen = Math.floor(container.offsetWidth / lis[0].offsetWidth);
+    control.onclick = function(){
+        imgDeg += 360;
+        liDeg += 180;
+        //img元素自转
+        var img = control.querySelector('img');
+        img.style.transition = 'transform 0.5s';
+        img.style.transform = 'rotate('+imgDeg+'deg)';
+        //使li元素进行旋转
+        lis.forEach(function(li, key){
+            //判断是不是最后一个元素
+            if(li.id) return;
+            //旋转
+            li.style.transform = 'rotateY('+liDeg+'deg)';
+            //0 0  1 40ms  2  80ms  3 120ms
+            //计算坐标
+            var x = Math.floor(key / rowLen);
+            var y = key % rowLen;
+            var index = x + y;
+
+            li.style.transition = 'transform 0.5s '+(index*100)+'ms';
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>点击穿透</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .swiper {
+            width: 80%;
+            height: 120px;
+            background: #999;
+            margin: 0 auto;
+        }
+
+        .gap {
+            height: 50px;
+        }
+
+        #nav {
+            width: 80%;
+            height: 100px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .item {
+            overflow: hidden;
+            height: 60px;
+            width: 60px;
+        }
+
+        .item img {
+            border-radius: 50%;
+        }
+
+        #zhezhao {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #000;
+            opacity: 0.5;
+        }
+
+        .content {
+            width: 50%;
+            height: 100px;
+            margin: 220px auto;
+            text-align: center;
+            padding-top: 30px;
+            color: white;
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/holder/2.9.6/holder.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="gap"></div>
+    <div class="gap"></div>
+    <div class="swiper"></div>
+    <div class="gap"></div>
+
+    <div id="nav">
+        <div class="item" data-href="http://www.baidu.com" data-test="abc"><img data-src="holder.js/50x50" alt=""></div>
+        <div class="item" data-href="http://www.jd.com"><img data-src="holder.js/50x50" alt=""></div>
+        <div class="item" data-href="http://www.taobao.com"><img data-src="holder.js/50x50" alt=""></div>
+        <div class="item" data-href="http://www.atguigu.com"><img data-src="holder.js/50x50" alt=""></div>
+        <div class="item" data-href="http://www.bilibili.com"><img data-src="holder.js/50x50" alt=""></div>
+    </div>
+    <div id="zhezhao">
+        <div class="content">
+            <div class="remind">充值成功</div>
+            <button id="close">关闭</button>
+        </div>
+    </div>
+</div>
+<script>
+    var tupian = document.querySelectorAll('.item');
+
+    for(var i=0;i<tupian.length;i++){
+        tupian[i].addEventListener('touchstart', function(){
+            //事件处理程序
+            // location.href = this.dataset.href;
+            // console.log(this.dataset.href);
+
+            // this.dataset.test    getAttribute('data-href')
+            location.href = this.dataset.href;
+        });
+    }
+
+    //获取元素
+    var close = document.querySelector('#close');
+    var zhezhao = document.getElementById('zhezhao');
+    var app =  document.querySelector('#app');
+
+    close.addEventListener('touchstart', function (e) {
+        //隐藏
+        zhezhao.style.display = 'none';
+    });
+
+    //
+
+</script>
+</body>
+</html>

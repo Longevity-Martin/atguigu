@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试时间</title>
+    <style>
+        #box{
+            width:300px;
+            height:300px;
+            background:#999;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var box = document.querySelector('#box');
+    var t1 = 0;
+
+    box.addEventListener('touchstart', function(){
+        console.log('touchstart');
+        // t1 = Date.now();// 获取当前的时间戳  毫秒数
+        // var date = new Date();
+        // var t1 = date.getTime();
+        // console.log(t1);
+
+        //存入到对象中
+        box.t1 = Date.now();
+    });
+
+    box.addEventListener('click', function(){
+        console.log('click');
+        // var t2 = Date.now();
+        //获取时间差
+        // var res = t2 - t1;
+
+        box.t2 = Date.now();
+        var res = box.t2 - box.t1;
+
+        // console.log(res);
+
+        box.innerHTML = res;
+    });
+
+
+</script>
+</body>
+</html>

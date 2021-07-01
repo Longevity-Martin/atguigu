@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动端缩放</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .item {
+            width: 200px;
+            height: 150px;
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        #box {
+            width: 400px;
+            height: 200px;
+            background: #eee;
+            position: absolute;
+            left: 0px;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="item"><img width="100%" src="./images/liudehua.jpg" alt=""></div>
+<div class="item"><img width="100%" src="./images/guofucheng.jpg" alt=""></div>
+<div class="item"><img width="100%" src="./images/liming.jpg" alt=""></div>
+<div class="item"><img width="100%" src="./images/zhangxueyou.jpg" alt=""></div>
+
+<div id="box"></div>
+
+<script>
+    var box = document.querySelector('#box');
+    //获取布局视口宽度
+    // var a = document.documentElement.clientWidth;
+
+    setInterval(function () {
+        box.innerHTML = '布局视口的宽度为: ' + document.documentElement.clientWidth + ' <br> 视觉视口的宽度为' + window.innerWidth;
+    }, 100);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+#box {
+  width: 8.93333333rem;
+  height: 3.84rem;
+  margin: 1.33333333rem auto;
+  background: #999;
+}
+/*# sourceMappingURL=app.css.map */

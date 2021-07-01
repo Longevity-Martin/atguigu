@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        canvas{
+            border:solid 1px #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="500"></canvas>
+
+    <script>
+        //获取元素对象
+        var canvas = document.querySelector('canvas');
+
+        //获取画笔对象
+        var ctx = canvas.getContext('2d');
+
+        ctx.beginPath();
+        // 200 200 50  1弧度  ==  180 / π
+        //              1度   == π / 180
+        //          360  ==  360 * π / 180
+        ctx.arc(200,200,50, 0, 60 / 180 * Math.PI, true);
+        //描边
+        ctx.stroke();
+
+        //
+        ctx.beginPath();
+        ctx.arc(400, 200, 50, -180 / 180 * Math.PI, -90 / 180 *Math.PI);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(100,100, 20, dzh(20), dzh(100));
+        ctx.stroke();
+
+
+        //封装函数 度数转为  弧度
+        function dzh(deg){
+            return deg / 180 * Math.PI;
+        }
+    </script>
+
+</body>
+</html>

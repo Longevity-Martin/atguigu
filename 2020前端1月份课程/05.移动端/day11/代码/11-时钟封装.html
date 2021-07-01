@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>时钟</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #c2{
+            position:absolute;
+            right:10px;
+            top:10px;
+        }
+    </style>
+</head>
+<body>
+<canvas id="c1"></canvas>
+<canvas id="c2"></canvas>
+
+<script>
+    /**
+     * new Clock('#canvas', {
+     *     width: 300,
+     *     height:300
+     * });
+     */
+    function Clock(selector, options) {
+        //获取元素
+        var canvas = document.querySelector(selector);
+        //设置元素的宽高
+        canvas.width = options && options.width ? options.width : 400;
+        canvas.height = options && options.height ? options.height : 400;
+
+        //获取画笔对象
+        var ctx = canvas.getContext('2d');
+
+        setInterval(function () {
+            //清空画布
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.save();
+            //绘制表盘圆圈   150  400
+            //                ?  width
+            ctx.beginPath();
+            ctx.arc(canvas.width/2, canvas.height/2, 150*canvas.width/400, 0, 360 / 180 * Math.PI);
+            ctx.stroke();
+
+            //移动坐标系
+            ctx.translate(canvas.width/2, canvas.height/2);
+            ctx.rotate(-90 / 180 * Math.PI);
+
+            //绘制分针刻度
+            ctx.save();
+            // 0    5    10     15    20
+            for (var i = 0; i < 60; i++) {
+                ctx.rotate(6 / 180 * Math.PI);
+                //判断下标
+                if (i % 5 === 4) continue;
+                ctx.beginPath();
+                ctx.lineWidth = 2*canvas.width / 400;
+                ctx.strokeStyle = '#999';
+                ctx.moveTo(135*canvas.width / 400, 0);
+                ctx.lineTo(145*canvas.width / 400, 0);
+                ctx.stroke();
+            }
+            ctx.restore();
+
+            ctx.save();
+            //绘制时针刻度
+            for (var i = 0; i < 12; i++) {
+                ctx.rotate(30 / 180 * Math.PI);
+                ctx.beginPath();
+                ctx.lineWidth = 4*canvas.width / 400;
+                ctx.moveTo(125*canvas.width / 400, 0);
+                ctx.lineTo(145*canvas.width / 400, 0);
+                ctx.stroke();
+            }
+            ctx.restore();
+
+            var date = new Date();
+
+            // 3: 05: 20
+            var h = date.getHours();  // 3:05  =>  30 * 3 + 5 / 60 * 30       185分钟  ==  185 /60  3.08  * 30
+            var m = date.getMinutes(); // (30 * 60 + 20) / 60 * 6
+            var s = date.getSeconds();
+            //时针的旋转角度
+            var hRotate = (h * 60 + m) / 60 * 30;
+            //分针的旋转角度
+            var mRotate = (m * 60 + s) / 60 * 6;
+            //秒针
+            var sRotate = s * 6;
+
+            //绘制秒针
+            ctx.save();
+            //旋转坐标系
+            ctx.rotate(sRotate / 180 * Math.PI);
+            ctx.beginPath();
+            ctx.moveTo(-20*canvas.width / 400, 0);
+            ctx.lineTo(120*canvas.width / 400, 0);
+            ctx.stroke();
+            ctx.restore();
+
+            //绘制分针
+            ctx.save();
+            ctx.rotate(mRotate / 180 * Math.PI);
+            ctx.beginPath();
+            ctx.moveTo(-15*canvas.width / 400, 0);
+            ctx.lineTo(110*canvas.width / 400, 0);
+            ctx.strokeStyle = 'deeppink';
+            ctx.lineCap = 'round';
+            ctx.lineWidth = 4*canvas.width / 400;
+            ctx.stroke();
+            ctx.restore();
+
+            //绘制时针
+            ctx.save();
+            ctx.rotate(hRotate / 180 * Math.PI);
+            ctx.beginPath();
+            ctx.lineWidth = 6*canvas.width / 400;
+            ctx.strokeStyle = 'orange';
+            ctx.lineCap = 'round';
+            ctx.moveTo(-10*canvas.width / 400, 0);
+            ctx.lineTo(90*canvas.width / 400, 0);
+            ctx.stroke();
+            ctx.restore();
+
+            //绘制中心小圆点
+            ctx.beginPath();
+            ctx.arc(0, 0, 6*canvas.width / 400, 0, 360 / 180 * Math.PI);
+            //设置填充颜色
+            ctx.fillStyle = 'red';
+            ctx.fill();
+
+            ctx.restore();
+        }, 1000)
+    }
+
+    new Clock('#c1');
+    new Clock('#c2', {
+        width:100,
+        height:100
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+.make-container() {
+    // container 容器的实现
+    .container {
+        .container-common-style();
+        //清除浮动
+        //.clearfix();
+        &:extend(.clearfix all);
+        //小屏幕 container 的宽度
+        @media (min-width: @screen-sm) {
+            width: @container-sm-width;
+        }
+
+        //中屏幕 container 的宽度
+        @media (min-width: @screen-md) {
+            width: @container-md-width;
+        }
+
+        //大屏幕 container 的宽度
+        @media (min-width: @screen-lg) {
+            width: @container-lg-width;
+        }
+    }
+
+    // container-fluid 容器的实现
+    .container-fluid {
+        .container-common-style();
+        &:extend(.clearfix all);
+    }
+
+    //混合
+    .container-common-style() {
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: @grid-gutter-width / 2;
+        padding-right: @grid-gutter-width / 2;
+    }
+}
+
+.make-row() {
+    .row {
+        margin-left: -@grid-gutter-width / 2; // -15px
+        margin-right: -@grid-gutter-width / 2;
+    }
+}
+
+.make-grid-columns() {
+    .col(@index) {
+        // @index  2      1     .col-xs-1,.col-sm-1,.col-md-1,.col-lg-1
+        @selector: ~'.col-xs-@{index},.col-sm-@{index},.col-md-@{index},.col-lg-@{index}';
+        .col(@index+1, @selector);
+    }
+    //     2       1
+    .col(@index, @list) when (@index <= @grid-columns) {
+        //变量拼接
+        @selector: ~'@{list},.col-xs-@{index},.col-sm-@{index},.col-md-@{index},.col-lg-@{index}'; // 1,2    =>  1,2,3
+        //调用自己
+        .col(@index+1, @selector);
+    }
+
+    //
+    .col(@index, @list) when (@index > @grid-columns) {
+        @{list} {
+            padding-left: @grid-gutter-width / 2;
+            padding-right: @grid-gutter-width / 2;
+            position: relative;
+            min-height: 1px;
+            float: left;
+        }
+    }
+
+
+    .col(1);
+}
+
+.make-column-width(@type){
+    .col(@index) when(@index <= @grid-columns){
+        //拼接 变量
+        @selector: ~'.col-@{type}-@{index}';// .col-xs-1
+        //样式
+        @{selector}{
+            //@w: @index / @grid-columns * 100;
+            //width: ~'@{w}%'   //0.13
+            width: percentage(@index/@grid-columns)
+        }
+        //递归调用
+        .col(@index + 1);
+    }
+    .col(1);// 1 => .col-xs-1
+}
+
+.make-column-offset(@type){
+    .col(@index) when(@index <= @grid-columns){// 1  =>  .col-xs-offset-1  {}
+        @selector: ~'.col-@{type}-offset-@{index}';
+        //样式控制
+        @{selector}{
+            margin-left: percentage(@index/@grid-columns);
+        }
+        //递归调用
+        .col(@index+1);
+    }
+
+    .col(1);
+}
