@@ -1,0 +1,8 @@
+1.进入 /usr/local：cd /usr/local
+2.下载：sudo curl -O https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.4.2.tgz
+3.解压：sudo tar -zxvf mongodb-osx-x86_64-3.4.2.tgz
+4.重命名为mongodb目录：sudo mv mongodb-osx-x86_64-3.4.2 mongodb
+5.建立MongoDB的默认工作区：sudo mkdir -p /data/db，此命令会在磁盘根路径下建立data/db。
+6.配置全局环境路径：打开Finder，按下shift+command+G，输入：/etc/paths，编辑path文件，追加内容：/usr/local/mongodb/bin
+7.打开终端，输入：sudo mongod启动服务，根据mac系统版本不同，sudo可以选加，为了保险最好加上。
+8.保持上一个终端开启，打开新的终端输入：mongo进入mongo命令模式。

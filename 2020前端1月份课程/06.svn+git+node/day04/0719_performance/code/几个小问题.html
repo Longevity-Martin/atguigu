@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+  //非匿名函数自调用
+  (function demo() {
+    demo = 1
+    console.log(demo)
+  })()
+
+  //函数的name属性
+  function test() {
+
+  }
+  test.name = 'zhangsan'
+  test.age = 18
+  console.log(test.name)
+  console.log(test.age)
+
+  //window上的name属性
+  console.log(name)
+
+  //自增问题
+  var i = 1
+  i = i++
+  console.log(i)
+
+  /*  var person = {
+      firstName : '张',
+      lastName: '三',
+      sex:'男'
+    }
+    Object.defineProperties(person,{
+      fullName:{
+        get:function () {
+          return this.firstName + ' '+this.lastName
+        },
+        set:function (a) {
+          let nameArr = a.split(' ')
+          this.firstName = nameArr[0]
+          this.lastName = nameArr[1]
+        }
+      }
+    })
+    
+    console.log(person.fullName)
+    person.fullName = '李 四'
+    console.log(person.firstName)
+    console.log(person.lastName)*/
+
+  //defineProperties
+  var person = {
+    firstName : '张',
+    lastName: '三',
+    sex:''
+  }
+  Object.defineProperties(person,{
+    sex:{
+      get:function () {
+        return this.sex
+      },
+      set:function (a) {
+        this.sex = a
+      }
+    }
+  })
+
+  person.sex = '女'
+
+
+
+
+
+</script>
+
+</body>
+</html>
