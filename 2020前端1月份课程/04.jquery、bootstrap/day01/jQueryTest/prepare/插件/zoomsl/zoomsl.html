@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/zoomsl.min.js"></script>
+    <style>
+        body{
+            height: 1000px;
+        }
+    </style>
+</head>
+<body>
+<img src="images/thumb.jpg" alt="Image To Zoom" class="example"data-large="images/big.jpg">
+<script type="text/javascript">
+    $(function(){
+        $(".example").imagezoomsl({
+
+            // shows the magnifying glass container  显示放大镜容器
+            cursorshade: true,
+
+            // cursor type
+            magnifycursor: 'pointer',
+
+            // background color of the magnifying glass container
+            cursorshadecolor: 'pink',
+
+            // opacity of the magnifying glass container
+            cursorshadeopacity: 0.3,
+
+            // border styles
+            cursorshadeborder: '10px solid black',
+
+            // z-index property
+            zindex: '',
+
+            // zoom step
+            stepzoom: 0.5,
+
+            // zoom range
+            zoomrange: [2, 2],
+
+            // start zoom level
+            zoomstart: 1,
+
+            // disables the scrolling of the document with the mouse wheel when the cursor is over the image
+            disablewheel: false
+
+        });
+    });
+</script>
+</body>
+</html>

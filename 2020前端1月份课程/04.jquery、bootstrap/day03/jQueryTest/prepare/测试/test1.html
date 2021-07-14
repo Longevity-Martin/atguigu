@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+
+        }
+        .box1{
+            background: pink;
+        }
+        .box2{
+            background: yellowgreen;
+        }
+        .box2{
+            /*  初始包含块*/
+            position: absolute;
+            /*left:0;*/
+            /*top:0;*/
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+  var str ='aabbccccc';
+  var arr = [];
+//  关系数组
+//   以字符串为索引值的数组 叫做关系数组    密集数组   稀疏数组
+//     关系数组   length 永远为0
+  for (var i = 0; i < str.length; i++) {
+      arr[str[i]] = arr[str[i]]+1 || 1;
+  }
+  console.log(arr)
+
+
+    var str = '12351235123';
+  str.split('').forEach(function (i,n) {
+    console.log()
+  })
+    var obj = {
+      name:'xxx',
+        say:function () {
+          alert('aaa')
+            return this
+        },
+        eat:function () {
+          alert('我正在吃东西')
+            return this
+        }
+    };
+</script>
+</body>
+</html>

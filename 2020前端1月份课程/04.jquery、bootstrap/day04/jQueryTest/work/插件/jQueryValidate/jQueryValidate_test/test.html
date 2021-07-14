@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/screen.css">
+    <script type="text/javascript" src="jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="jquery.validate.js"></script>
+    <script type="text/javascript">
+       $(function () {
+           $("#myForm").validate();
+       })
+    </script>
+</head>
+<body>
+<!--
+    注册规则：
+        1.用户名不能小于6位
+        2.密码不能小于6位大于10位
+        3.确认密码要与密码相同
+-->
+
+<form action="xxx" id="myForm">
+    <p>用户名: <input type="text" required minlength="6"></p>
+    <p>密码: <input id="pwd1" name="pwd1" type="password" required minlength="6" maxlength="10"></p>
+    <p>确认密码: <input n type="password" required equalTo="#pwd1"></p>
+    <p><input type="submit"></p>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>03_回到顶部</title>
+  <style>
+    #to_top {
+      width: 30px;
+      height: 40px;
+      font: 14px/20px arial;
+      text-align: center;
+      background: #06c;
+      position: fixed;
+      cursor: pointer;
+      color: #fff;
+      right: 150px;
+      top: 500px;
+    }
+  </style>
+</head>
+<body style="height: 2000px;">
+
+<div id="to_top">返回顶部</div>
+
+<script src="jquery-1.10.1.js"></script>
+<script>
+  //回到顶部
+  
+  $(function () {
+//      总时长
+      var time = 100;
+//      每一帧的时长
+      var itemTime = 20;
+//      总时长/每一帧的时长= 一共多少帧  time/itemTime
+//      总距离 / 一共多少帧  =  每一帧的偏移量
+      $('#to_top').click(function () {
+//          当前总偏移量 （滚动条的y坐标）
+        var offset = $('html').scrollTop()+$('body').scrollTop();
+//        console.log($('html,body').scrollTop());
+//        console.log(offset)
+
+//        每一帧的距离
+          var disY = offset/(time/itemTime);
+          var timer = setInterval(function () {
+              offset -= disY;
+              if (offset <= 0){
+                  offset = 0;
+                  clearInterval(timer)
+              }
+              $('html,body').scrollTop(offset);
+          },itemTime)
+
+      })
+  })
+//  剧本
+//  总时长
+//  单位时长
+//   总时长/单位时长 =  总帧数
+//  给按钮绑定单击事件
+//  当我点击是   获取当前的滚动条位置
+//    获取当前位置之后      当前位置/总帧数  =  每一帧的偏移
+//    启动定时器    提前保存一下定时器id
+//            滚动条回到顶部的逻辑是 从当前位置 最终走到0  所以用减法
+//             滚动条回到顶部之后 还是在网上走    发现问题   回到顶部之后 需要清除定时器    当前位置为0时
+//            当前位置  -   每一帧的偏移 = 移动一帧后的值
+//              修改滚动条位置   移动一帧后的值
+
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>07_面试题2</title>
+</head>
+<body>
+
+<script type="text/javascript">
+  /*
+   说说它们的输出情况
+   */
+
+  function fun(n, o) {
+    console.log(o);
+    return {
+      fun: function (m) {// 满足产生闭包的条件， 产生了一个闭包引用 ---> 外部函数fun的变量对象 === {n: 0, o:undefined }
+        var num = 123;
+        // var result = fun(m, n) = {}
+        return fun(m, n);// m  = 1, n = 0
+      }
+    }
+  }
+
+
+  var b = fun(0).fun(1).fun(2).fun(3).fun(30).fun(55) //undefined,0,1,2, 3, 30
+
+  var c = fun(0).fun(1) // {n: 1, o: 0}
+  c.fun(2) // 1
+  c.fun(3) //undefined,0,1,1
+
+  var a = fun(0) // a = {fun: function(){}}
+  a.fun(1) // m = 1 n = 0;
+  a.fun(2)
+  a.fun(3) //undefined,0 0 0
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

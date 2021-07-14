@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01_原型(prototype)</title>
+</head>
+<body>
+<!--
+1. 函数的prototype属性(图)
+  * 每个函数都有一个prototype属性, 它默认指向一个Object空对象(即称为: 原型对象)
+  * 原型对象中有一个属性constructor, 它指向函数对象
+2. 给原型对象添加属性(一般都是方法)
+  * 作用: 函数的所有实例对象自动拥有原型中的属性(方法)
+-->
+<script type="text/javascript">
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    // this.showName = function () {
+    //   console.log(this.name);
+    // }
+  }
+
+
+  console.log(Person.prototype);
+  Person.prototype.showName = function () {
+    console.log(this.name);
+  }
+
+  /*
+  *
+  *
+  *
+  * */
+  var person1 = new Person('kobe', 43);
+  var person2 = new Person('kobe2', 43);
+  var person3 = new Person('kobe3', 43);
+  console.log(person1.name);
+  person1.showName();
+  person2.showName();
+  person3.showName();
+
+
+  var obj = new Object()
+
+
+</script>
+</body>
+</html>

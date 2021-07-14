@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>04_作用域_面试题2</title>
+</head>
+<body>
+<script type="text/javascript">
+  /*
+   说说它们的输出情况
+   */
+
+  // console.log(fn); // var fn;
+  // var fn = function () { // fn = function
+  //   console.log(fn)
+  // }
+  // fn()
+  //
+  //
+  // var obj = {
+  //   fn2: function () {
+  //     console.log(fn2) // 报错
+  //   }
+  // }
+  // obj.fn2()
+  
+  
+  // 创建全局作用域 ---> 预解析工作 ---> 创建全局的执行上下文 ---> 执行上下文环境 ---> 全局变量对象{a: undefined, this: window， fun:function} ---> 作用域链[全局变量对象]
+  var a = 123;
+  var b = 'abc'
+  // 先定义---> 创建局部作用域---> 函数自身有一个[[scopes]]: 上一级作用域链(global)
+  function fun() {
+    // 创建局部执行上下文 ---> 局部变量对象{a: undefined, fun2: function, this: window} ---> 创建作用域链[局部变量对象, Global]
+    var a = 234;
+    var c = 345;
+    console.log(a);
+    console.log(b);
+    // fun2函数已经定义了 ---> 创建局部作用域(fun2)---> 函数自身有一个[[scopes]]: 上一级作用域链[fun的变量对象， Global]
+    function fun2() {
+      // 创建局部执行上下文 ---> 局部变量对象{this: window} ---> 创建作用域链: [fun2的局部变量对象，fun的变量对象， Global]
+      console.log(c);
+      console.log(d);
+    }    
+    fun2();
+  }
+
+  fun();
+</script>
+</body>
+</html>

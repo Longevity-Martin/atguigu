@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>05_面试题</title>
+</head>
+<body>
+<script type="text/javascript">
+  /*
+   测试题1: 先预处理函数, 后预处理变量, 如果已经存在就会被忽略
+   */
+
+
+  console.log(typeof a)  // function
+
+
+  var a;
+  function a() {}
+
+
+
+  // /*
+  // 测试题2: 变量预处理, in操作符
+  //  */
+  console.log(b);
+  if (!(b in window)) {
+    var b = 1;
+  }
+  console.log(b) // undefined
+  //
+  // /*
+  // 测试题3: 预处理, 顺序执行
+  //  */1
+
+  // 预解析结果 c = function(){}
+  
+  var c = 1
+  function c(c) {
+    console.log(c) // 2 undefined
+    var c = 3
+  }
+  console.log(c);
+  c(2)
+
+</script>
+</body>
+</html>

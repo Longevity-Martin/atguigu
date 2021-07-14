@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>06_面试题</title>
+</head>
+<body>
+
+<script type="text/javascript">
+  /*
+  测试题1
+   */
+  var A = function() {
+
+  }
+  console.log(A.prototype.n);
+  A.prototype.n = 1
+  console.log(A.prototype);
+
+  var b = new A() // {n: 1}
+
+  A.prototype = {
+    n: 2,
+    m: 3
+  }
+
+  var c = new A()
+  console.log(b.n, b.m, c.n, c.m) // 1 undefined 2 3
+
+
+  /*
+   测试题2
+   */
+  var F = function(){}; // 函数对象
+  Object.prototype.a = function(){
+    console.log('a()')
+  };
+  Function.prototype.b = function(){
+    console.log('b()')
+  };
+  var f = new F(); // 构造函数
+  // f就是一个普通的实例对象
+  f.a() // f的隐式原型对象 == F的显示原型对象 === {constructor}
+  // f.b()
+  F.a() // 函数对象, 当把函数当做对象看待的时候，这个时候其构造函数应该是Function
+  F.b()
+
+</script>
+</body>
+</html>

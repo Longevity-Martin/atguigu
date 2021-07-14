@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   
+<!--    
+      使用./开头的路径称为相对路径
+          相对路径指相对于当前文件夹所在目录的路径
+          
+      ./ 表示当前目录
+      ../表示上一级目录
+      
+      
+      root
+          - index.html  1.jpg
+          - 1.jpg
+          
+      root
+          - index.html  hello/1.jpg
+          - hello
+              - 1.jpg
+              
+      root
+          - index.html  hello/abc/1.jpg
+          - hello
+              - abc
+                  - 1.jpg
+      
+      
+      root 
+          - 1.jpg
+          - hello
+              - index.html   ../1.jpg
+              
+      root
+          - 1.jpg
+          - hello
+              - abc
+                  - index.html ../../1.jpg
+                  
+      root
+          - heihei
+              - 1.jpg
+          - hello
+              - abc
+                  - index.html  ../../heihei/1.jpg
+      
+  -->
+<!--   <img src="1.gif" >-->
+<!--   <img src="./hello/1.gif" >-->
+  <img src="../2.gif">  
+</body>
+</html>

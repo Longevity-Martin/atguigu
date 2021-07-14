@@ -1,0 +1,32 @@
+@zero:0;
+* {
+  margin: @zero;
+  padding: @zero;
+}
+ul{
+  list-style: none;
+}
+//  在使用嵌套的时候    要注意  合理的嵌套
+//  一旦发现有定义 比较特殊的class  或者id值等情况    就可以单独拿出来写
+#wrap{
+  width: 400px;
+  border: 1px solid #000;
+  margin: 0 auto;
+  //在任意元素的内部 写子元素的样式    这是相当于是后代选择器
+  ul{
+    width: 100%;
+    li{
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      //& 代表当前元素     也可以说成是   前边所有祖先选择器的集合
+      //所有与伪元素：伪类：选择器相关的  一般情况下都搭配&
+      &:hover{
+        background: pink;
+      }
+      &:nth-child(2){
+        background: yellowgreen;
+      }
+    }
+  }
+}

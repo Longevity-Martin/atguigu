@@ -1,0 +1,83 @@
+
+@zero:0;
+//在less里面封装一个混合 mixin
+//定义混合 mixin
+//  如果定义很合适 声明了默认值   在调用不传递设置了默认值的参数
+// 就会使用默认值  如果传递 就是用传递的值
+//使用混合 结尾一定要加分号
+// 商品列表布局
+.hideBox(@box,@num,@w,@h,@mr){
+//  @box  父容器选择器
+//  @num  每行的列数   商品个数
+//  @w    商品容器宽度
+//  @h    商品容器高度
+//  @mr   商品容器右边距
+//<div class="box">
+//  <div class="hideBox">
+//    <div class="item"></div>
+//    <div class="item"></div>
+//    <div class="item"></div>
+//    <div class="item"></div>
+//  </div>
+//</div>
+  .@{box}{
+    width: (@w*@num)+( @num - 1)*@mr;
+    border: 1px solid #000;
+    margin: 0 auto;
+    overflow: hidden;
+    .hideBox{
+      width: (@w + @mr)*@num;
+      .item{
+        width: @w;
+        height: @h;
+        margin-right: @mr;
+        margin-bottom: 30px;
+        background: pink;
+        float: left;
+      }
+    }
+  }
+}
+
+.hideBox(@box:inner,@num:4,@w:200px,@h:300px,@mr:50px);
+
+
+
+
+
+
+
+.juzhong(@w:500px,@h:500px,@bg){
+  position: absolute;
+  left: @zero;
+  right: @zero;
+  bottom: @zero;
+  top: @zero;
+  margin: auto;
+  width: @w;
+  height: @h;
+  background: @bg;
+}
+.btn1(@w,@h,@bg,@color){
+  display: block;
+  border-radius: 5px;
+  width: @w;
+  height: @h;
+  line-height: @h;
+  color: @color;
+  background: @bg;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+#wrap{
+    .juzhong(@bg: pink);
+  .box1{
+    .juzhong(@w:400px,@h: 400px,@bg: yellowGreen);
+  }
+  .box2{
+    .juzhong(@w:300px,@h: 300px,@bg: skyblue);
+  }
+  .box3{
+    .juzhong(@w:200px,@h: 200px,@bg: orange);
+  }
+}

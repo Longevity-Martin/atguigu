@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>window.onload与$(document).ready()</title>
+</head>
+<body>
+<h1>测试window.onload与$(document).ready()</h1>
+<img id="logo" src="https://gss0.bdstatic.com/5bVWsj_p_tVS5dKfpU_Y_D3/res/r/image/2017-05-19/6fec71d56242b74eb24b4ac80b817eac.png">
+
+<!--
+区别: window.onload与 $(document).ready()
+  * window.onload
+    * 包括页面的图片加载完后才会回调(晚)
+    * 只能有一个监听回调
+  * $(document).ready()
+    * 等同于: $(function(){})
+    * 页面加载完就回调(早)
+    * 可以有多个监听回调
+-->
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script type="text/javascript">
+  /*
+   需求：
+   1. 直接打印img的宽度，观察其值
+   2. 在 $(function(){}) 中 打印 img 的宽度
+   3. 在 window.onload 中打印宽度
+   4. 在 img 加载完成后打印宽度
+ */
+  console.log($('#logo').width());
+//    是等所有的东西都加载完成
+//  window.onload  只能绑定一个回调函数   二次设置回调函数是 会覆盖已有回调函数 （赋值）
+  window.onload = function () {
+    console.log('我是window.onload1'+$('#logo').width());
+  };
+  window.onload = function () {
+      console.log('我是window.onload2'+$('#logo').width());
+  };
+//  ready   等所有dom加载完成   不包含外部的资源    图片   音乐
+//  document.ready  是允许多次设置回调函数的
+  $(function () {
+      console.log('我是jquery1'+$('#logo').width())
+  });
+  $(function () {
+      console.log('我是jquery2'+$('#logo').width())
+  });
+//  加载事件
+//  $('#logo').on('load',function () {
+//      console.log('我是load'+$('#logo').width())
+//  })
+
+</script>
+</body>
+</html>

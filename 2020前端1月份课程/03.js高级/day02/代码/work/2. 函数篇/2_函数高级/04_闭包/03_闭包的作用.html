@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>03_闭包的作用</title>
+
+</head>
+<body>
+<!--
+1. 延长外部函数变量对象的生命周期
+2. 让函数外部可以操作(读写)到函数内部的数据(变量/函数)
+3. 注意： 浏览器为了性能后期将外部函数中不被内部函数使用的变量清除了
+
+问题:
+  1. 函数执行完后, 函数内部声明的局部变量是否还存在?
+  2. 在函数外部能直接访问函数内部的局部变量吗?
+-->
+<script type="text/javascript">
+
+  function fun1() {
+    var a = 3;
+
+    function fun2() {
+      a++;            //引用外部函数的变量--->产生闭包
+      console.log(a);
+    }
+
+    return fun2;
+  }
+  var f = fun1();  //由于f引用着内部的函数-->内部函数以及闭包都没有成为垃圾对象
+  // f.xxx = 外部函数的变量对象 = {a： 3}
+
+  f(); // 4   //间接操作了函数内部的局部变量{a： 4}
+  f(); // 5
+  f(); // 6
+  f = fun1();
+  f(); // 4
+
+
+
+  // function test() {
+  //   var b = 123;
+  // }
+  // console.log(b);
+
+
+</script>
+
+</body>
+</html>

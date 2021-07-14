@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--假装写一个jquery-->
+<script type="text/javascript">
+    //假装写一个jquery
+ function $() {
+    var obj = {};
+    obj.say = function () {
+      alert('我正在说')
+        return this
+    }
+    obj.eat = function () {
+      alert('我正在吃')
+        return this
+    }
+    return obj
+ }
+// obj.say()
+//    对象链式开发
+ $().eat().say();
+</script>
+</body>
+</html>

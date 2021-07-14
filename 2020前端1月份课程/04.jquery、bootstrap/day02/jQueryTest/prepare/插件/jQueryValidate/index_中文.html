@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/screen.css">
+    <style>
+        #commentForm {
+            width: 500px;
+        }
+        #commentForm label {
+            width: 250px;
+        }
+        #commentForm label.error, #commentForm input.submit {
+            margin-left: 253px;
+        }
+        #signupForm {
+            width: 670px;
+        }
+        #signupForm label.error {
+            margin-left: 10px;
+            width: auto;
+            display: inline;
+        }
+        #newsletter_topics label.error {
+            display: none;
+            margin-left: 103px;
+        }
+    </style>
+    <script src="./js/jquery-1.11.1.js"></script>
+    <script src="./js/jquery.validate.js"></script>
+    <!--<script src="./js/messages_zh.js"></script>-->
+    <script>
+        $.validator.setDefaults({
+            submitHandler: function() {
+                alert("submitted!")
+            }
+        });
+        $(function () {
+            //声明式验证
+            $('#commentForm').validate()
+
+            //编码验证
+            $('#signupForm').validate({
+                rules: {
+                    firstname: 'required', //一个验证规则
+                    lastname1: 'required',
+                    username: { //多个验证规则
+                        required: true,
+                        minlength: 2
+                    },
+                    password: {
+                        required: true,
+                        minlength: 5
+                    },
+                    confirm_password:{
+                        required: true,
+                        minlength: 5,
+                        equalTo: "#password"
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    }
+                },
+                messages: {
+                    firstname: '请输入名字',
+                    password: {
+                        required: '请输入密码',
+                        minlength: '********'
+                    }
+                }
+            })
+        })
+        
+
+    </script>
+
+</head>
+<body>
+    <div id="main">
+        <form class="cmxform" id="commentForm" method="get" action="">
+            <fieldset>
+                <p>
+                    <label for="cname">Name (必须,至少2个字符)</label>
+                    <input id="cname" name="name" type="text" required minlength="2">
+                </p>
+                <p>
+                    <label for="cemail">E-Mail (必须,邮箱)</label>
+                    <input id="cemail" name="email" type="email" required>
+                </p>
+                <p>
+                    <label for="curl">URL (可选,URL)</label>
+                    <input id="curl" name="url" type="url">
+                </p>
+                <p>
+                    <label for="ccomment">Your comment (必须的)</label>
+                    <textarea id="ccomment" name="comment" required></textarea>
+                </p>
+                <p>
+                    <input class="submit" type="submit" value="Submit">
+                </p>
+            </fieldset>
+        </form>
+
+        <form class="cmxform" id="signupForm" method="get" action="">
+            <fieldset>
+                <legend>验证完整的表单</legend>
+                <p>
+                    <label for="firstname1">名字</label>
+                    <input id="firstname1" name="firstname" type="text">
+                </p>
+                <p>
+                    <label for="lastname">姓氏</label>
+                    <input id="lastname" name="lastname1" type="text">
+                </p>
+                <p>
+                    <label for="username">用户名</label>
+                    <input id="username" name="username" type="text">
+                </p>
+                <p>
+                    <label for="password">密码</label>
+                    <input id="password" name="password" type="password">
+                </p>
+                <p>
+                    <label for="confirm_password">验证密码</label>
+                    <input id="confirm_password" name="confirm_password" type="password">
+                </p>
+                <p>
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email">
+                </p>
+                <p>
+                    <label for="agree">请同意我们的声明</label>
+                    <input type="checkbox" class="checkbox" id="agree" name="agree">
+                </p>
+                <p>
+                    <label for="newsletter">我乐意接收新信息</label>
+                    <input type="checkbox" class="checkbox" id="newsletter" name="newsletter">
+                </p>
+                <fieldset id="newsletter_topics">
+                    <legend>主题 (至少选择两个) - 注意：如果没有勾选“我乐意接收新信息”以下选项会隐藏，但我们这里作为演示让它可见</legend>
+                    <label for="topic_marketflash">
+                        <input type="checkbox" id="topic_marketflash" value="marketflash" name="topic">Marketflash
+                    </label>
+                    <label for="topic_fuzz">
+                        <input type="checkbox" id="topic_fuzz" value="fuzz" name="topic">Latest fuzz
+                    </label>
+                    <label for="topic_digester">
+                        <input type="checkbox" id="topic_digester" value="digester" name="topic">Mailing list digester
+                    </label>
+                    <label for="topic" class="error">Please select at least two topics you'd like to receive.</label>
+                </fieldset>
+                <p>
+                    <input class="submit" type="submit" value="提交">
+                </p>
+            </fieldset>
+        </form>
+    </div>
+
+</body>
+</html>

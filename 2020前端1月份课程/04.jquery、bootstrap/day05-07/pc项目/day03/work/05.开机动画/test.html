@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background: pink;
+            transition: 3s;
+        }
+        .box:hover{
+            width: 500px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+
+    </div>
+<script type="text/javascript">
+  var box = document.getElementById('box')
+//  transitionend  用于监听  过渡执行完成
+//  transitionend会根据过渡的样式的个数  来执行
+  box.addEventListener('transitionend',function () {
+    console.log('过渡已经执行完了')
+  })
+</script>
+</body>
+</html>

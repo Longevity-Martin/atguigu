@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01_理解闭包</title>
+</head>
+<body>
+<!--
+1. 如何产生闭包(条件)?
+  * 函数嵌套
+  * 内部函数引用外部函数的局部变量
+  * 使用内部函数
+2. 闭包到底是什么?
+  * 理解一: 闭包是嵌套的内部函数(绝大部分人)
+  * 理解二: 包含被引用变量(函数)的对象(极少数人)
+  * 理解三： 所谓的闭包是一个引用关系，该引用关系存在于内部函数中，引用的是外部函数的变量的对象(深入理解)
+-->
+<script type="text/javascript">
+
+ function fun() {
+   var a = 123;
+   function fun2() {
+     // console.log(a);
+     console.log('-------------');
+   }
+   return fun2
+
+ }
+
+ var fun2 = fun();
+ fun2();
+
+
+
+  // function aTest() {
+  //   console.log('test()');
+  // }
+
+  
+  
+  function test() {
+    var a = 123;
+    console.log('a');
+  }
+
+
+  test();
+
+
+</script>
+</body>
+</html>

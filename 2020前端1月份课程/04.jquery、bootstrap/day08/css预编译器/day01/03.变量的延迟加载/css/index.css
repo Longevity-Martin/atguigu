@@ -1,0 +1,6 @@
+.wrap {
+  one: 3;
+}
+.wrap .box {
+  three: 3;
+}

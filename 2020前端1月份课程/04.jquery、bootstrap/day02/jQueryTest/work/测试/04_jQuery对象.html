@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>04_jQuery对象</title>
+</head>
+
+<body>
+<p>11111 <span>222</span></p>
+<p>22222 <span>333</span></p>
+<p>33333</p>
+<button>测试一</button>
+<button>测试二</button>
+<button id="btn3">测试三</button>
+<button>测试四</button>
+
+
+
+<!--
+1. jQuery对象是一个包含所有匹配的任意多个dom元素的伪数组对象
+2. 基本行为
+  * size()/length: 包含的DOM元素个数
+  * [index]/get(index): 得到对应位置的DOM元素
+  * each(): 遍历包含的所有DOM元素
+  * index(): 得到在所在兄弟元素中的下标
+-->
+<script src="js/jquery-1.10.1.js" type="text/javascript"></script>
+<!--/*-->
+<!--需求:-->
+<!--需求1. 统计一共有多少个按钮-->
+<!--需求2. 取出第2个button的文本-->
+<!--需求3. 输出所有button标签的文本-->
+<!--需求4. 输出'测试三'按钮是所有按钮中的第几个-->
+<!--*/-->
+<script type="text/javascript">
+  var $btns = $('button');
+//  <!--需求1. 统计一共有多少个按钮-->
+  console.log($btns.length,$btns.size())
+//  console.log($btns[1].html())
+//  <!--需求2. 取出第2个button的文本-->
+  console.log($btns[1].innerHTML)
+//  <!--需求3. 输出所有button标签的文本-->
+  $btns.each(function () {
+    console.log(this.innerHTML)
+  })
+//  <!--需求4. 输出'测试三'按钮是所有按钮中的第几个-->
+//  返回的是索引值  index  查找的是兄弟元素当中排第几
+  console.log($('#btn3').index())
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+
+1、bootstarp的简介（思想框架和应用框架，官网简介）
+   应用框架
+
+   MVC
+   MVVM
+
+   类
+   ui库
+   
+
+2、起步 cdn  模板演示  导入本地文件（注意查看全局样式） css初始化
+	
+	模板怎么用（怎么导入自己的bootstrap）
+	全部的盒子都是怪异盒子
+
+
+3、流体容器和固定容器（查看各自的宽度和屏幕分界）
+	各种容器的样式
+
+	流体：
+		宽度相当于是设置的 100%  默认就是视口的宽度
+		padding-right: 15px;
+    		padding-left: 15px;
+   		margin-right: auto;
+    		margin-left: auto
+
+	固定：  
+		宽度根据屏幕浏览器的宽度不同而不同
+		padding-right: 15px;
+    		padding-left: 15px;
+   		margin-right: auto;
+    		margin-left: auto;
+
+
+		    
+		屏幕浏览器的宽度       768     992    1200 
+
+		固定容器真正的宽度    （屏幕小于768）   100%     
+				      （屏幕768  992）  750px
+				       (屏幕992  1200)  970px
+				       (屏幕大于1200)   1170px 
+
+		
+		
+
+4、栅格系统（对应官网去设置，对应表格）
+	容器
+	行      样式   （每一行都分成12份）
+		    设置负的margin值与container的padding值抵消掉
+		    margin-right: -15px;
+    		    margin-left: -15px;
+
+
+
+	列	样式   （每一个列都能去设置占一行的几份）
+		     列不设置任何的类，就不叫列，那么row当中的盒子全部会堆叠在一起，只有设置了响应的类才叫列，才会水平排列
+			
+                        所有列的类都会有float:left
+		
+		        position: relative;
+    			min-height: 1px;
+    			padding-right: 15px;
+    			padding-left: 15px;
+
+	
+	
+	设置列在某一类屏幕的占比
+		当列的总和大于12份会换行
+		
+
+
+	设置列在不同屏幕响应式的占比	
+
+
+	响应式列重叠
+
+	
+5、列偏移和列排序  margin 和 position
+
+6、响应式工具  可以决定谁隐藏谁显示

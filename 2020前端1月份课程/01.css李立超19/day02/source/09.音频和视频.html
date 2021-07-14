@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   
+<!--   
+     使用audio标签来引入一个外部的音频
+          一般情况下，音频都是使用mp3
+          
+          默认情况下音频会在页面中显示和播放
+          
+          controls 用来设置是否允许用户控制音频的播放
+              这个属性比较特殊，它没有属性值
+              如果允许用户播放，则添加该属性，
+                  否则不添加，不需要设置属性值
+                  
+        autoplay 用来设置音乐是否自动播放
+             一般的浏览器默认情况下，都不会自动播放
+             
+        该标签不支持IE8及以下浏览器
+  -->
+<!--   <audio controls autoplay src="src/audio.mp3"></audio>-->
+   
+   <audio controls autoplay>
+       <source src="src/audio.mp3">
+       <source src="src/audio.ogg">
+<!--       <embed src="src/audio.mp3" type="audio/mp3" width="200" height="100">-->
+       
+   </audio>
+   
+   
+    
+</body>
+</html>

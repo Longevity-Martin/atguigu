@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>对象的深度克隆</title>
+</head>
+<body>
+
+
+<!--
+  1、数据类型：
+    * 数据分为基本的数据类型(String, Number, boolean, Null, Undefined)和对象数据类型
+    - 基本数据类型：
+      特点： 存储的是该对象的实际数据
+    - 对象数据类型：
+      特点： 存储的是该对象在栈中引用，真实的数据存放在堆内存里
+  2、复制数据
+    - 基本数据类型存放的就是实际的数据，可直接复制
+      let number2 = 2;
+      let number1 = number2;
+    - 克隆数据：对象/数组
+      1、区别： 浅拷贝/深度拷贝
+         判断： 拷贝是否产生了新的数据还是拷贝的是数据的引用
+         知识点：对象数据存放的是对象在栈内存的引用，直接复制的是对象的引用
+         let obj = {username: 'kobe'}
+         let obj1 = obj; // obj1 复制了obj在栈内存的引用
+      2、常用的拷贝技术
+        1). arr.concat(): 数组浅拷贝
+        2). arr.slice(): 数组浅拷贝
+        3). JSON.parse(JSON.stringify(arr/obj)): 数组或对象深拷贝, 但不能处理函数数据
+        4). 浅拷贝包含函数数据的对象/数组
+        5). 深拷贝包含函数数据的对象/数组
+-->
+<script type="text/javascript">
+  // let obj = {username: 'kobe'}
+  // let obj2 = {age: 43}
+  // let obj3 = {};
+  // obj3[obj] = 4;
+  // obj3[obj2] = 5
+  // console.log(obj3[obj]);  //5
+  // console.log(obj3);
+  // console.log(obj.toString()); // Array
+  // let arr = [1,2,3];
+  // console.log(arr.toString()); // 1,2,3 数组中重写了Object原型的toString方法
+  //
+  // console.log(Object.prototype.toString.call(arr).slice(8, -1)); // [object Array]
+  // let num = 123;
+  // console.log(Object.prototype.toString.call(null).slice(8, -1));
+
+  // let str = 'abcdef';
+  // console.log(str.slice(3));
+  // console.log(str.slice(3,5));
+
+
+  // 定义检测数据类型的方法
+  console.log('---------------- 定义检测数据类型的方法 ------------------------');
+  // function checkoutType(target) {
+  //   return Object.prototype.toString.call(target).slice(8, -1);
+  // }
+  // console.log('---------------- for in  ------------------------');
+  //
+  // let obj = {username: 'kobe',  age: 43};
+  // for(let item in obj){
+  //   console.log(item);
+  // }
+  // // for in 遍历数组可以获取数组的下标
+  // for(let item in arr){
+  //   console.log(item);
+  // }
+
+
+  console.log('---------------- 深度克隆引入  ------------------------');
+  // obj保存的是对象的内存地址
+  // let obj = {username: 'kobe',  age: 43};
+  // let obj2 = obj; // obj保存的内存地址给了obj2， 引用传递
+  // obj2.username = 'wade'
+  // console.log(obj.username);
+  //
+  // // 变量保存的基本数据类型，保存的值本身
+  // let num = 123;
+  // let num2 = num; // 值传递，修改新的数据不会影响原数据
+  // num2 = 234;
+  // console.log(num);
+  console.log('---------------- 拷贝： 深拷贝，浅拷贝, 判断深拷贝还是浅拷贝：修改拷贝之后的数据会不会影响原数据  ------------------------');
+  // let obj = {username: 'kobe',  age: 43};
+  // let obj2 = {};
+  // obj2.username = obj.username;
+  // obj2.age = obj.age;
+  // obj2.username = 'wade'
+  // console.log(obj.username);
+  //
+  // // 浅拷贝 arr.concat(): 数组浅拷贝
+  // let arr = [1,2,3, {username: 'kobe'}];
+  // let testArr = [4,5];
+  // let arr2 = [];
+  // arr2 = arr.concat();
+  // console.log(arr2);
+  // arr2[3].username = 'wade';
+  // console.log(arr, arr2);
+  //
+  // // arr.slice(): 数组浅拷贝
+  // let arr3 = arr.slice(0);
+  // arr3[3].username = 'duncan';
+  // console.log(arr3, arr);
+
+
+  // JSON.parse(JSON.stringify(arr/obj)) 将json数据 和 原生的js对象/数组相互转换 json数据： json对象，json数组
+  // let obj = {username: 'kobe',  age: 43};// 不能处理函数的拷贝
+  // let obj2 = JSON.parse(JSON.stringify(obj))
+  // console.log(obj2);
+  // obj2.username = 'wade';
+  // console.log(obj2, obj);
+  
+  
+  // Object.assign(target, source1, source2..)
+  // let obj = {username: 'kobe',  age: 43, sex: {option1: '男', option2: '女'}};
+  // let obj2 = {};
+  // Object.assign(obj2, obj);
+  // obj2.username = 'wade';
+  // obj2.sex.option1  = '混合';
+  // console.log(obj2, obj);
+
+  console.log('--------------- 实现深拷贝: 对象，数组 ----------------');
+  function checkoutType(target) {
+    return Object.prototype.toString.call(target).slice(8, -1);
+  }
+  function clone(target) {
+    let result; // 最终加工拷贝完的数据
+    // 判断拷贝的数据是对象 || 数组 || 其他(基本数据类型，函数)， 检测数据类型
+    let targetType = checkoutType(target);
+    if(targetType === 'Array'){
+      result = [];
+    }else if(targetType === 'Object'){
+      result = {};
+    }else {
+      return target;
+    }
+    // 拷贝
+    // arr = [1,2,3] ====> []arr2
+    // obj = {username: 'kobe'} ===> {}obj2
+    for(let item in target){
+      // item: 对象(key)， 数组(index)
+      // target[item] 可以获取对应的value
+      let value = target[item];
+      // arr2[item] = arr[item]
+      // 判断是否是引用数据类型
+      if(checkoutType(value) === 'Object' || 'Array'){
+        result[item] = clone(value);
+      }else {
+        result[item] = value;
+      }
+    }
+    return result;
+  }
+  
+  
+  let obj = {username: 'kobe', age: 43, sex: ['男', '女']};
+  let obj2 = clone(obj);
+  console.log(obj, obj2);
+  obj.username = 'wade';
+  console.log(obj, obj2);
+  
+  
+  obj2.sex[0] = '混合';
+  console.log(obj, obj2);
+
+
+
+</script> 
+</body>
+</html>

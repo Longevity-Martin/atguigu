@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/zoomsl.min.js"></script>
+</head>
+<body>
+<img src="images/thumb.jpg" data-large="images/big.jpg" alt="Image To Zoom" class="example">
+<script type="text/javascript">
+    $(function(){
+        $(".example").imagezoomsl({
+// loading spinner
+            loadinggif: 'images/loadingImg.gif',
+
+            // opacity
+            loadopacity: 0.7,
+
+            // background color
+            loadbackground: '#878787',
+            //            右侧大图跟随速度
+            scrollspeedanimate: 5 ,
+
+            zoomspeedanimate: 700,
+//            左侧放大框跟随速度
+            loopspeedanimate: 2.5,
+//            大图容器显示速度
+            magnifierspeedanimate: 350,
+            cursorshade: true,
+            //放大镜容器的背景颜色
+            cursorshadecolor: 'red',
+            //放大镜容器的不透明度
+            cursorshadeopacity: 1,
+            //边框样式
+            cursorshadeborder: '10px solid black',
+            //缩放步骤
+            stepzoom: 0.1,
+            //缩放范围
+            zoomrange: [1, 10],
+            //开始缩放级别
+            zoomstart: 5,
+//            magnifiereffectanimate: "fadeIn"
+//            innerzoom: true,
+            innerzoommagnifier: true
+        });
+    });
+</script>
+</body>
+</html>

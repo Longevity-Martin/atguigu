@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>03_回到顶部</title>
+  <style>
+    #to_top {
+      width: 30px;
+      height: 40px;
+      font: 14px/20px arial;
+      text-align: center;
+      background: #06c;
+      position: fixed;
+      cursor: pointer;
+      color: #fff;
+      right: 150px;
+      top: 500px;
+    }
+  </style>
+</head>
+<body style="height: 2000px;">
+
+<div id="to_top">返回顶部</div>
+
+<script src="jquery-1.10.1.js"></script>
+<script>
+  //回到顶部
+//   总时间
+  var time = 200;
+//  单位时间
+  //  总时间/单位时间 = 总帧数
+  var itemTime = 30;
+//点击回调
+  $('#to_top').click(function () {
+//  距顶部的距离 = 总偏移量
+      var offset = $('html').scrollTop()+$('body').scrollTop();
+//  总偏移量/总帧数 = 单次偏移量   帧偏移量
+      var itemOffset = offset/(time/itemTime);
+
+//      启动定时器 单位时长走单次偏移  逐渐回到顶部
+      var timer = setInterval(function () {
+        offset -= itemOffset;
+//    判断滚动条是否回到顶部
+          if(offset <= 0){
+              offset = 0;
+            clearInterval(timer)
+          }
+//       最终目标
+        $('html,body').scrollTop(offset);
+      },itemTime)
+  })
+
+
+
+//  剧本
+//    总时长
+//  单位时长
+//  总时长/单位时长 = 总帧数
+
+//  给按钮绑定单击回调   因为点击时才能获取 距离顶部的距离
+//  点击回调{
+//    获取当前距离顶部的距离 = 总偏移量
+//    总偏移量/(总时长/单位时长)  =  单次偏移量
+
+//    启动定时器  {
+  //       基于当前的总偏移量 递减  每次减少单次偏移量的值
+  // 判断  滚动条是否回到顶部
+
+//   最终目标   修改滚动条的位置
+  // }
+
+
+
+
+//  }
+
+
+
+</script>
+</body>
+
+</html>

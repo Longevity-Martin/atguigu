@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>02_多Tab点击切换</title>
+  <script src="jquery-1.10.1.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #tab li {
+      float: left;
+      list-style: none;
+      width: 80px;
+      height: 40px;
+      line-height: 40px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    #container {
+      position: relative;
+    }
+
+    #content1, #content2, #content3 {
+      width: 300px;
+      height: 100px;
+      padding: 30px;
+      position: absolute;
+      top: 40px;
+      left: 0;
+    }
+
+    #tab1, #content1 {
+      background-color: #ffcc00;
+    }
+
+    #tab2, #content2 {
+      background-color: #ff00cc;
+    }
+
+    #tab3, #content3 {
+      background-color: #00ccff;
+    }
+  </style>
+</head>
+<body>
+<h2>多Tab点击切换</h2>
+<ul id="tab">
+  <li id="tab1" value="1">10元套餐</li>
+  <li id="tab2" value="2">30元套餐</li>
+  <li id="tab3" value="3">50元包月</li>
+</ul>
+<div id="container">
+  <div id="content1">
+    10元套餐详情：<br/>&nbsp;每月套餐内拨打100分钟，超出部分2毛/分钟
+  </div>
+  <div id="content2" style="display: none">
+    30元套餐详情：<br/>&nbsp;每月套餐内拨打300分钟，超出部分1.5毛/分钟
+  </div>
+  <div id="content3" style="display: none">
+    50元包月详情：<br/>&nbsp;每月无限量随心打
+  </div>
+</div>
+
+<script>
+  //获取按钮集合  3
+  var $btns = $('#tab li');
+//  获取内容容器集合   3
+  var $divs = $('#container div');
+//  隐试遍历    读只读第一个  写是写所有
+//  $divs.html('<p>111111</p>')
+//  console.log($divs.html())
+//  定义标识变量  记录上一次显示的内容容器的索引值
+  var index = 0;
+  $btns.click(function () {
+//      获取当前点击的索引值  注意问题 $(this)
+    var clickIndex = $(this).index();
+//    去重点击判断
+      if(index == clickIndex){
+          alert('请不要重复点击');
+          return
+      }
+      alert('你点击了按钮');
+      $divs[index].style.display = 'none'
+      $divs[clickIndex].style.display = 'block';
+// 更新下标
+      index = clickIndex;
+  })
+//  index  上一次显示的   默认是0
+//  clickIndex  是当前点击的   当点击第二个li是  值为 1
+</script>
+</body>
+</html>

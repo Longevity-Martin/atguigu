@@ -1,0 +1,26 @@
+@zero:0;
+
+//引入外部less文件
+@import "mixins/mixin.less";
+
+* {
+  margin: @zero;
+  padding: @zero;
+}
+
+#wrap{
+  //调用混合
+  .juzhong(@w:500px,@h:500px,@bg:grey);
+  .box1{
+    //调用混合
+    .juzhong(@w:400px,@h:400px,@bg:deeppink);
+  }
+  .box2{
+    //调用混合
+    .juzhong(@w:300px,@bg:greenyellow);
+  }
+  .box3{
+    //调用混合
+    .juzhong(@w:100px,@h:100px,@bg:green);
+  }
+}

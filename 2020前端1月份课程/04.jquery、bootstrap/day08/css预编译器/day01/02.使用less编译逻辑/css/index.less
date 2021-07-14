@@ -1,0 +1,17 @@
+//less里边的变量使用
+//如果作为属性值 直接使用   @zero
+//如果作为选择器来使用   先写选择器 在写@{wrap}
+@zero:0;
+@wrap:wrap;
+@w:width;
+#@{wrap}{
+  position: absolute;
+  left:@zero;
+  top:@zero;
+  right:@zero;
+  bottom:@zero;
+  margin: auto;
+  @{w}: 500px;
+  height: 500px;
+  background: pink;
+}

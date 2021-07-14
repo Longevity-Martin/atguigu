@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>词法作用域面试题</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  // 考点： 词法作用域规则
+  // 重点： 词法作用域中的作用域在代码定义的时候决定而不是调用的时候决定
+  // 面试题1
+  var scope1 = "global scope";
+  function checkScope1() {
+    var scope1 = "local scope";
+    function fn() {
+      return scope1;
+    }
+    
+    return fn();
+  }
+  
+  console.log(checkScope1());
+  
+  
+  // 面试题2
+  var scope2 = "1 global scope";
+  function checkScope2() {
+    var scope2 = "2 local scope";
+    function fn() {
+      return scope2;
+    }
+    
+    return fn;
+  }
+  
+  console.log(checkScope2()());
+
+
+
+
+  var a = 10;
+  function fun() { // [[scopes]]: [Global]
+    console.log(a);
+  }
+
+  function fun2() { // [[scopes]]: [Global]
+    var a = 20;
+    fun();
+  }
+
+  fun2();
+
+  fun();
+</script>
+</body>
+</html>

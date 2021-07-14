@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>03_回到顶部</title>
+  <style>
+    #to_top {
+      width: 30px;
+      height: 40px;
+      font: 14px/20px arial;
+      text-align: center;
+      background: #06c;
+      position: fixed;
+      cursor: pointer;
+      color: #fff;
+      left: 1250px;
+      top: 500px;
+    }
+  </style>
+</head>
+<body style="height: 2000px;">
+
+<div id="to_top">返回顶部</div>
+
+<script src="jquery-1.10.1.js"></script>
+<script>
+  $(function () {
+
+//   运动总时长
+      var time = 300;
+//   每一帧动画的执行时间
+      var itemTime = 30;
+
+//      启动定时器 执行动画
+      $('#to_top').click(function () {
+          //   需要知道距顶部的距离
+          var offset = $(document).scrollTop();//600-60   540-60
+          //    每一帧的偏移量
+          var itemOffset = offset/(time/itemTime);
+          var timer = setInterval(function () {
+              console.log(offset)
+              if (offset <= 0){
+                clearInterval(timer)
+              }
+              offset -= itemOffset;
+              $(document).scrollTop(offset);
+          },itemTime)
+      })
+  });
+</script>
+</body>
+
+</html>

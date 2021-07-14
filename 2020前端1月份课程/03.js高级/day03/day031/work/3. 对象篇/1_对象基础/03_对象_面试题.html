@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>03_对象3_面试题</title>
+</head>
+<body>
+
+<script type="text/javascript">
+  // 对象中所有的key都是字符串
+  var a = {}
+  var obj1 = {n:345345345} // toString() = '[object Object]'
+  var obj2 = {hh: 4535345} // toString() = '[object Object]'
+  a[obj1] = 4
+  console.log(a); // {}
+  a[obj2] = 5
+  console.log(a);
+  console.log(a['[object Object]']) // 输出多少? 4 5
+</script>
+</body>
+</html>

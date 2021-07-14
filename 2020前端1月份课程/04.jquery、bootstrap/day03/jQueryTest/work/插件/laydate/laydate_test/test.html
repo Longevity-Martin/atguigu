@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="laydate/laydate.js"></script>
+</head>
+<body>
+    <input placeholder="请输入日期" class="laydate-icon" onclick="laydate()">
+    <div id="hello3" class="laydate-icon"></div>
+    <script>
+        laydate({
+            elem: '#hello3',
+            min: laydate.now(0), //-1代表昨天，-2代表前天，以此类推
+            max: laydate.now(+30) //+1代表明天，+2代表后天，以此类推
+        });
+    </script>
+<script type="text/javascript">
+    laydate.skin('dahong')
+</script>
+</body>
+</html>

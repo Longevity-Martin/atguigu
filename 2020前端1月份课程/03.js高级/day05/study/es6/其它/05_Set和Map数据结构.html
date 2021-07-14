@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>05_Set和Map数据结构</title>
+</head>
+<body>
+<!--
+1. Set容器 : 无序不可重复的多个value的集合体
+  * Set()
+  * Set(array)
+  * add(value)
+  * delete(value)
+  * has(value)
+  * clear()
+  * size
+2. Map容器 : 无序的 key不重复的多个key-value的集合体
+  * Map()
+  * Map(array)
+  * set(key, value)//添加
+  * get(key)
+  * delete(key)
+  * has(key)
+  * clear()
+  * size
+-->
+
+<script type="text/javascript">
+  // console.log(Symbol.iterator);
+  let arr = [1,2,3,4,5,1,2,3,4];
+  let set = new Set(arr);
+  console.log(set);
+  set.add(6);
+  console.log(set);
+  console.log(set.has(7));
+  set.clear();
+  console.log(set.size);
+  
+  let map = new Map([[1, 'abc', 123], ['age', 123]]);
+  console.log(map);
+  map.set('name', 'kobe');
+  console.log(map);
+
+
+</script>
+</body>
+
+</html>
