@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			var box = document.getElementById('box');
+			var step = 3;
+			
+			setInterval(function(){
+				var left = box.offsetLeft + step;
+				
+				if(left > document.documentElement.clientWidth - box.offsetWidth){
+					left = document.documentElement.clientWidth - box.offsetWidth;
+					step = -3;
+				}else if(left < 0){
+					left = 0;
+					step = 3;
+				}
+				box.style.left = left + 'px';
+			},16)
+			
+			
+		</script>
+	</body>
+</html>

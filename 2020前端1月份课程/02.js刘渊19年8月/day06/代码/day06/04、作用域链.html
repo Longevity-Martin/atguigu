@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var num = 0;
+			function f1(){
+//				var num = 1;
+				function f2(){
+//					var num = 2;
+					function f3(){
+//						var num = 3;
+						function f4(){
+//							var num = 4;
+							console.log(num);
+						}
+						f4();
+					}
+					f3();
+				}
+				f2();
+			}
+			
+			f1()
+			
+			
+			
+			var a = 10;
+			
+			function f1(){
+				var b = 11;
+			};
+			
+			function f2(){
+				var b = 11;
+			};
+			
+			f1();
+			f2();
+			
+			
+			if(a > 1){
+				var c = 100;
+				console.log(c + 100);
+			}
+			
+			console.log(c);
+			
+			
+		</script>
+	</body>
+</html>

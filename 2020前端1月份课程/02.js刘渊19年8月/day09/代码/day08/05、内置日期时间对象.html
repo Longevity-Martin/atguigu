@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var date = new Date();
+//			console.log(date);
+//			console.log(date.getFullYear());
+//			console.log(date.getMonth());//拿到了以后记得+1，0-11代表月份；
+//			console.log(date.getDate());
+//			console.log(date.getHours());
+//			console.log(date.getMinutes());
+//			console.log(date.getSeconds());
+////		console.log(date.getYear());//已经废弃
+//			console.log(date.toLocaleTimeString());
+//			console.log(date.toLocaleDateString());
+//			console.log(date.getTime());//1970 年 1 月 1 日之间的毫秒数
+			console.log(date.getDay());
+			
+			var date = new Date();
+			var year = date.getFullYear();
+			var month = date.getMonth() + 1;
+			var day = date.getDate();
+			
+			var hour = date.getHours();
+			var min = date.getMinutes();
+			var sec = date.getSeconds();
+			
+			console.log(year + '年' + month + '月' + day + '日  '+hour + ':' + min + ':' + sec);
+			
+			
+			function getDateAndTime(){
+				var date = new Date();
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1;
+				var day = date.getDate();
+				
+				var hour = date.getHours();
+				var min = date.getMinutes();
+				var sec = date.getSeconds();
+				
+				return year + '年' + month + '月' + day + '日  '+hour + ':' + min + ':' + sec;
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

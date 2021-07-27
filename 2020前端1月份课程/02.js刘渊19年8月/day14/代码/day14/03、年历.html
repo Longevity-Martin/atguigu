@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<span>现在是：</span>
+		
+		<script type="text/javascript">
+			
+			var spanNode = document.querySelector('span');
+			
+			function getDateAndTime(){
+				var date = new Date();
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1;
+				var day = date.getDate();
+				
+				var hour = date.getHours();
+				var min = date.getMinutes();
+				var sec = date.getSeconds();
+				
+				return year + '年' + month + '月' + day + '日  '+hour + ':' + min + ':' + sec;
+			}
+			
+			setInterval(function(){
+				var str = getDateAndTime();
+				spanNode.innerHTML = '现在是：' + str;
+			},1000);
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

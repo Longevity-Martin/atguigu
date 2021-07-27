@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" placeholder="请输入您的爱好！"/>
+		<ul class="list">
+			
+		</ul>
+		
+		<script type="text/javascript">
+			var inputNode = document.querySelector('input');
+			var ulNode = document.querySelector('.list');
+			
+			//事件委派处理
+			ulNode.onmouseenter = function(event){
+				event = event || window.event;
+				
+				//在里面我们去找发生事件的儿子
+				//通过父级元素去找发生事件的子元素（目标元素），它也会有兼容性问题；
+				var liNode = event.target||event.srcElement;
+				liNode.style.backgroundColor = 'red';
+			}
+			ulNode.onmouseleave = function(event){
+				event = event || window.event;
+				//在里面我们去找发生事件的儿子
+				var liNode = event.target||event.srcElement;       
+				liNode.style.backgroundColor = 'hotpink';
+			}
+			
+			inputNode.onkeyup = function(event){
+				if(event.keyCode == 13){
+					//
+					var value = inputNode.value;//拿到输入框文本
+					if(value.trim()){
+						var liNode = document.createElement('li');
+						liNode.innerText = value;
+						ulNode.appendChild(liNode);
+						
+						//创建完成新的li直接就添加移入移出变色
+//						
+//						liNode.onmouseenter = function(){
+//							this.style.backgroundColor = 'lightblue';
+//						}
+//						liNode.onmouseleave = function(){
+//							this.style.backgroundColor = 'transparent';
+//						}
+//						
+						
+						
+					}else{
+						alert("请输入合法的兴趣");
+					}
+					inputNode.value = '';
+				}
+			}
+			
+		</script>
+	</body>
+</html>

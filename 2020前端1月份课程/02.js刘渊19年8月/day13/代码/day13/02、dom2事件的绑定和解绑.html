@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="点击绑定事件" id="btn0"/>
+		<input type="button" value="点击解绑事件" id="btn1"/>
+		
+		
+		<script type="text/javascript">
+//			var btns = document.querySelectorAll('input');
+			var btn0 = document.getElementById('btn0');
+			var btn1 = document.getElementById('btn1');
+			//直接在参数当中传入匿名函数表达式
+//			btns[0].addEventListener('click',function(){
+//				console.log('i love you! yingbao~');
+//			},false);
+			
+			//把函数在外面定义好，然后将函数传入事件回调函数
+			//dom2事件如果对同一个元素添加相同的事件，不会覆盖会按照添加顺序
+			//依次执行；
+//			btn0.addEventListener('click',fn2,false);
+//			btn0.addEventListener('click',fn,false);
+//			btn0.addEventListener('click',fn1,false);
+//			
+//			function fn(){
+//				console.log('i love you! yingbao~');
+//			}
+//			
+//			function fn1(){
+//				console.log('i love you! tangbao~');
+//			}
+//			
+			function fn2(){
+				console.log('i love you! yangmi~');
+			}
+//			
+//			//dom2事件解绑,解绑的时候，一定要和绑定的时候参数完全对应；
+//			
+//			btn1.addEventListener('click',function(){
+//				btn0.removeEventListener('click',fn2,false);
+//				btn0.removeEventListener('click',fn1,false);
+//				btn0.removeEventListener('click',fn,false);
+//			},false);
+			
+			
+//			
+			//ie10以下绑定事件
+			
+//			btn0.attachEvent('onclick',fn2)
+			
+			//ie10以下解绑事件
+//			btns[0].detachEvent('onclick',fn2)
+			
+			addEvent(btn0,'click',fn2,false);
+			
+			function addEvent(obj,eventType,fn,isBubble){
+				if(obj.addEventListener){
+					//高级
+					obj.addEventListener(eventType,fn,isBubble);
+				}else{
+					//低级
+					obj.attachEvent('on'+eventType,fn);
+				}
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			var a = 10;
+			var b = 5;
+			function add(a,b){
+				console.log(arguments);
+				return a + b;
+//				return arguments[0] + arguments[1];
+			};
+			
+			add(a,b)
+			
+			
+			
+			
+			//根据实参长度，让函数有不同的功能
+			
+			//如果传2个参数  函数用来求差   如果传3个参数函数用来求参数的和
+			
+			var a = 10;
+			var b = 11;
+			var c = 12;
+			
+			function addOrBad(a,b,c){
+				if(arguments.length == 2){
+					return a - b;
+				}else if(arguments.length == 3){
+					return a + b + c;
+				}
+			}
+			
+			console.log(addOrBad(a,b,c));
+			
+			console.log(addOrBad(a,b));
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//round, floor,  ceil, random, max  min  PI  pow
+			
+	
+			
+			//转么用来处理小数，把小数最终处理成整数；
+			console.log(Math.floor(1.23));//向下取整
+			console.log(Math.ceil(1.8));//向上取整；
+			console.log(Math.round(1.5));//四舍五入
+			
+			//随机数以后就靠random
+			
+			console.log(Math.random());//返回0~1之间的一个数，包含0但是不包含1
+			
+			console.log(Math.max(1,18,10,2,40));//返回多个数之间的最大值
+			console.log(Math.min(1,18,10,2,40));//返回多个数之间的最小值
+			
+			console.log(Math.PI);//数学当中Π，圆周率
+			
+			console.log(Math.pow(8,4));//求数学当中的次方   8的4次方
+			
+			console.log(Math.sin(Math.PI/2))//三角函数在Math当中全部都要使用弧度而不是角度
+			
+			
+			
+			//案例 随机数点名
+			
+//			25    103    Math.random() * 79 + 25
+//			
+//			1     79     Math.random() * 79 + 1
+			
+			
+			function getRandom(min,max){
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+			
+//			Math.floor(Math.random() * 79) + 1 //只是拿1-79之间的随机整数
+			var result = getRandom(1,79);
+//			console.log(result);
+			
+			
+			//随机验证码
+			
+			//准备码源
+			//字符串也是有序的，所以字符串也有索引，可以和数组一样使用
+			//但是字符串是值类型，是一个常量，无法更改；
+			
+//			var str = 'QWERTYUIOPASDFGHJKLZXCVBNM1234567890qwertyuiopasdfghjklzxcvbnm';
+////			console.log(str[0]);
+//
+//			str[0] = 'h';
+//			console.log(str);
+//			var targetStr = '';
+//			
+//			for(var i = 0; i < 8; i++){
+//				targetStr += str[Math.floor(Math.random()*str.length)]
+//			}
+//			
+//			console.log(targetStr);
+			
+			function getRandomCode(len){
+				var str = 'QWERTYUIOPASDFGHJKLZXCVBNM1234567890qwertyuiopasdfghjklzxcvbnm';
+//			console.log(str[0]);
+
+				str[0] = 'h';
+				console.log(str);
+				var targetStr = '';
+				
+				for(var i = 0; i < len; i++){
+					targetStr += str[Math.floor(Math.random()*str.length)]
+				}
+				
+				return targetStr;
+			}
+			
+			console.log(getRandomCode(100));
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+			var box = document.getElementById('box');
+			
+			console.log(box.childNodes); //拿的儿子节点;
+			console.log(box.children);  //拿的是儿子元素;
+			
+			console.log(box.parentNode); //获取父亲节点
+			console.log(box.parentElement); //获取父亲元素
+			//兼容拿取元素子元素
+			
+			function getChildEle(obj){
+				var arr = [];
+				for(var i = 0; i < obj.children.length; i++){
+					if(obj.children[i].nodeType == 1){
+						arr.push(obj.children[i]); 
+					}
+				}
+				
+				return arr;
+			}
+			
+		</script>
+	</body>
+</html>

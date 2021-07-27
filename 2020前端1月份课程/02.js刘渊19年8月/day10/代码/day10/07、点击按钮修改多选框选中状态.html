@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			a{
+				text-decoration: none;
+			}
+			
+			img{
+				display: block;
+				/*vertical-align: middle;*/
+			}
+			
+			ul,li{
+				list-style: none;
+			}
+			
+			input{
+				outline: none;
+			}
+			
+			
+			
+			#img{
+				width: 400px;
+				height: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="img/3.jpg" id="img" />
+		<a href="https://www.baidu.com" id="aa">百度</a>
+		<br />
+		<input type="button" id="btn" value="点击换"/>
+		
+		
+		<input type="checkbox" id="check"  />
+		
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				var btn = document.getElementById('btn');
+				var check = document.getElementById('check');
+				btn.onclick = function(){
+					//在JS当中我们操作元素属性类似checked = checked的时候，
+					//属性值一概使用boolean替换；true代表选中，false代表未选中
+					check.checked = true;
+				}
+			}
+		</script>
+	</body>
+</html>

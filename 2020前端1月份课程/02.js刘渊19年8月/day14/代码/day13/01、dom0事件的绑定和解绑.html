@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="点击绑定事件" />
+		<input type="button" value="点击解绑事件" />
+		
+		
+		<script type="text/javascript">
+			var btns = document.querySelectorAll('input');
+			
+			//如果是dom0事件，不能对同一元素添加同种事件多次，
+			//如果非要添加就是覆盖操作；
+//			btns[0].onclick = function(){
+//				console.log('i love you! yingbao~');
+//			}
+//			
+//			btns[0].onclick = function(){
+//				console.log('i love you! tangbao~');
+//			}
+			
+			btns[0].onclick = fn;
+			
+			
+			btns[1].onclick = function(){
+				btns[0].onclick = null;
+			}
+			
+			function fn(){
+				console.log('i love you! yingbao~');
+			}
+			
+			
+		</script>
+	</body>
+</html>

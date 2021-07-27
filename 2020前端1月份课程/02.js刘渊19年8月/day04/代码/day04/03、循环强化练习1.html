@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//打印100–200之间所有能被3或者7整除的数
+			
+//			for(var i = 100; i <= 200; i++){
+//				if(i % 3 == 0 || i % 7 == 0){
+//					console.log(i);
+//				}
+//			}
+			
+			//打印三位数位上有3或者7的数字
+			
+//			for(var  i = 100; i <= 999; i++){
+//				//先求每个位上的数字
+//				var b = parseInt(i / 100);
+//				var s = parseInt(i/10%10);
+//				var g = i % 10;
+//				
+//				//再进行判断
+//				if(b == 3 || s == 3 || g == 3 || b == 7 || s == 7 || g == 7){
+//					console.log(i);
+//				}
+//				
+//			}
+			
+			
+			// 100的阶乘    =====   1*2*3*。。。100值；
+			
+//			var ride = 1;//如果是累加，初始为0   初始乘，初始为1
+//			for(var i = 1; i < 101; i++){
+//				ride *= i;
+//			}
+//			console.log(ride);
+			
+			
+			//100-999之间的水仙花
+			
+			for(var i = 100; i <= 999; i++){
+				//先求每个位上的数字
+				var b = parseInt(i / 100);
+				var s = parseInt(i/10%10);
+				var g = i % 10;
+				
+				if(i == b*b*b + s*s*s + g*g*g){
+					console.log(i);
+				}
+				
+				
+			}
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="img/3.jpg" aa="bb" id="img" />
+		<input type="button" id="btn" />
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				var btn = document.getElementById('btn');
+				var imgNode = document.getElementById('img');
+				btn.onclick = function(){
+//					imgNode.setAttribute('aa','cc');
+					console.log(imgNode.getAttribute('aa'));
+				}
+			}
+		</script>
+		
+	</body>
+</html>

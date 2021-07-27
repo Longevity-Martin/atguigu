@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<p>哈哈</p>
+		
+		<script type="text/javascript">
+//			box.innerText = 'haha';
+//			box.textContent = 'hha';
+//			
+//			(box.innerText)
+
+
+
+			var pp = document.querySelector('p');
+			
+			setOrGetContent(pp,'嘿嘿');//给p设置内容
+			
+			console.log(setOrGetContent(pp));//读取p的内容
+			
+			//封装函数实现对一个对象设置和读取值并且考虑兼容性处理；
+			function setOrGetContent(obj,content){
+				if(arguments.length == 2){
+					//设置值
+					if(obj.textContent){
+						//好高级啊
+						obj.textContent = content;
+					}else{
+						//低级low
+						obj.innerText = content;
+					}
+					//不需要返回值
+				}else{
+					//读取值
+					var result = '';
+					if(obj.textContent){
+						//好高级啊
+						result = obj.textContent;
+					}else{
+						//低级low
+						result = obj.innerText;
+					}
+					return result;
+				}
+			}
+			
+			
+		</script>
+	</body>
+</html>

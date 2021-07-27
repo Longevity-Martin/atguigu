@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box{
+				width: 200px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+			
+//		ie/chrome : mousewheel(dom2的标准模式)
+//			event.wheelDelta
+//				上：120
+//				下：-120
+//
+//
+//		firefox : DOMMouseScroll(dom2的标准模式)
+//			event.detail
+//				上：-3
+//				下：3
+
+			var box = document.getElementById('box');
+			
+			var flag = true;
+			box.addEventListener('mousewheel',scrollMove);
+			box.addEventListener('DOMMouseScroll',scrollMove);
+			
+			
+			function scrollMove(event){
+				event = event || window.event;
+				if(event.wheelDelta){
+					if(event.wheelDelta > 0){
+						//代表往上滚
+						flag = true;
+					}else{
+						//代表往下滚
+						flag = false
+					}
+				}else if(event.detail){
+					if(event.detail < 0){
+						//代表往上滚
+						flag = true;
+					}else{
+						//代表往下滚
+						flag = false;
+					}
+				}
+				
+				if(flag){
+					//往上
+					box.style.height = box.offsetHeight - 10 + 'px';
+					
+					
+				}else{
+					//往下
+					box.style.height = box.offsetHeight + 10 + 'px';
+				}
+				
+				
+				
+			}
+			
+
+		</script>
+	</body>
+</html>

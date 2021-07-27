@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<button>点击清除定时器</button>
+		<script type="text/javascript">
+			//单次定时器  延迟定时器
+			var btn = document.querySelector('button');
+			var a = 4;
+			var b = 6;
+			var c = a + b;
+			var timer = null;
+			//setTimeout 是延迟定时器，是window下的一个全局方法,两个参数
+			//第一个：回调函数，也就是到时间你想干嘛
+			//第二个：时间，这个时间是毫秒为单位；
+			timer = setTimeout(function(){
+				console.log(c);
+
+			},5000);
+			
+			
+			//前面我们有定时器，但是发现后面这句话并没有5秒之后打印，证明定时器是一个异步操作；
+			//如果是同步，必须等定时器执行完成之后，这句话才会打印。
+			//现在相当于程序同时执行两段代码，设置定时器以及打印
+			
+			console.log('i love you!');
+			
+			
+			
+			
+//			//清除延迟定时器
+//			btn.onclick = function(){
+//				clearTimeout(timer);
+//			}
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

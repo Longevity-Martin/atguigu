@@ -1,0 +1,322 @@
+Day07 Object实例对象
+
+一  对象（万能的  通用的  可以表示任何事物的）
+1.	对象的概念
+		在js当中，可以说一切皆对象；
+		对象的概念： 无序的名值对的集合（键值对的集合）；
+
+		//如果存储一个简单的数据（一个数字，一个字符串）  直接var a = 10;
+		//如果存储一堆的数据 此时我们想到数组  数组就是专门用来存储多个数据用的
+		//如果我们想要执行一段代码，或者让这段代码有功能，此时我们需要函数
+		//如果我想描述一个复杂的事物，比如说一个人，一台电脑（需要用到多个属性或者方法才能描述清楚），此时就要用到对象；
+
+
+2.	对象的创建方法
+	a)	字面量创建
+			var obj = {
+				name:'zly',
+				age:32,
+				sing:function(){};
+			}
+	b)	New Object
+			var obj = new Object();
+
+	c)	工厂函数模式
+		
+			
+
+3.	对象的操作及遍历（增删改查）
+		var a = 'gender';
+		var obj = {};
+		obj.name = 'zs';
+		obj["age"] = 30;
+		obj[a] = 'male';
+
+
+		delete obj.name
+
+		obj.name = 'lisi';    有则更改无则增加
+
+		var name = obj.name;
+
+			
+		读   方式 .语法  []语法
+		写   
+		注意点：.语法和[]语法   还有变量
+		遍历   for in循环进行遍历对象
+
+
+		for(var key in obj){
+
+			console.log(key,obj[key]);
+
+		}
+
+
+		
+
+二:  构造函数创建特定实例对象
+1.	构造函数的基本概念，使用，作用
+		构造函数：本质上也是一个函数，只不过通常我们把构造函数的名字写成大驼峰；
+			在js当中，没有类的概念（5版本）,构造函数可以理解为类；
+			构造函数用法和普通的函数用法是一样的，直接可以调用，只不过它比普通函数多了一种用法
+			new
+
+
+
+		创建两种构造函数 每个构造函数实例化2个对象
+		
+2.	对this的讲解
+		不同场合this的指向不同
+		window对象简介  
+			浏览器窗口对象，代码执行的时候所有的一切都是包含在窗口对象下的.
+		
+
+3、	new关键字实例化对象的	
+		1、开辟内存空间
+		2、this指向该内存
+		3、执行函数
+		4、生成对象实例
+
+
+4、 	原型对象和原型链
+		原型对象
+			什么是原型对象
+			原型对象的作用
+			
+		原型链
+			对象在查找属性或者方法的过程
+
+		
+
+5、apply和call可以让一个对象使用另外一个对象的方法；
+	让一个实例对象去调用window的方法（也就是我们所说的函数）
+	函数或者方法.apply(对象，【函数的参数】)；
+	函数或者方法.call(对象，函数的参数1，函数的参数2)；	
+		
+			
+6.	对象是哪个构造函数的实例判断 instanceof
+	typeof 应用的场景
+	instanceof 应用的场景
+
+
+
+
+三 值类型，引用数据类型，堆， 栈
+	1.	值类型和引用数据类型的概念（）
+、			
+		值类型都有啥   就是基本数据类型
+		引用数据类型   就是对象数据类型
+
+			
+		对象类型都有啥  脑图
+			
+	2. 	堆和栈的概念
+
+		栈     数据结构 （栈）          先进后出     桶          栈结构内存一般比较小，计算机自动分配内存，存取速度比较快  
+		堆     数据结构（链表）         随意进出                 堆结构内存一般比较大，底层是需要程序员自己分配（js做了封装，会自动									分配），堆里面一般存储的都是一些比较复杂的占空间比较大的数据
+  		队列   数据结构（队列）         先进先出    管道
+
+		堆和栈是内存的存数据结构，内存被开辟使用，就一定会被计算机回收（释放内存）；
+
+
+	3.	堆和栈的图解*****************
+
+			
+
+	4.	值类型和引用数据类型与堆栈的关系（堆空间释放）；
+			堆空间的释放是靠垃圾回收机制进行的
+			当程序函数或者整个程序执行完成后，栈里面所有的东西都被释放销毁，堆当中的数据可能还在，只是没有任何的变量指向（引用）
+		那么堆当中的数据就会变成垃圾对象。回收机制会在适当的时候将垃圾对象清理回收；
+
+			如果我们在程序当中需要去删除对象，那么就将这个对象的变量赋值为null，代表这个对象引用被改变，这个对象也就成了垃圾对象
+		其实删除对象就是让堆当中的对象数据成为垃圾对象；
+
+
+
+		
+	5.	面试题讲解:
+			第一题:
+			//var num1 = 10;
+			//var num2 = num1;
+			//num1 = 20;
+			//console.log(num1); 
+			//console.log(num2); 
+
+
+			
+
+			//第二题
+
+			//var num = 50;
+			//
+			//function f1(num) {
+			//	num = 60;
+			//	console.log(num); 
+			//}
+			//f1(num);
+			//console.log(num);
+
+
+
+	
+			
+			//第三题
+			var num1 = 55;
+			var num2 = 66; 
+
+			function f1(num, num1) {
+				num = 100;
+				num1 = 100;
+				num2 = 100;
+				console.log(num); 
+				console.log(num1); 
+				console.log(num2); 
+			}
+			f1(num1, num2);
+			console.log(num1); 
+			console.log(num2); 
+			console.log(num) 
+
+
+			
+
+			
+
+
+			3、函数传参如果传的是基本数据类型和传引用（对象）有什么区别；
+			
+			var a = 10;
+			var b = 20;
+
+			function add(a,b){
+				return a + b;
+			}
+
+			add(a,b);
+
+
+
+
+			function f1(arr){
+				for(var i = 0; i < arr.length; i++){
+					arr[i] += 2
+
+				}
+
+			}
+			var arr;
+
+			arr = [1,2];
+			
+
+			f1(arr);
+
+
+
+
+
+			
+			var a = [1,2];
+			var b = a;
+			a[0] = 20;
+			console.log(b);//[20,2];
+
+			
+			
+
+			var a = [];
+			var b = [];
+			console.log(a == b);
+			
+
+
+			第四题
+			function Person(name, age, salary) {
+				this.name = name;
+				this.age = age;
+				this.salary = salary;
+			}
+
+			function f1(person) {
+				person.name = "ls";
+				person = new Person("aa", 18, 10);
+			}
+
+			var p;
+
+			p = new Person("zs", 18, 1000);
+			console.log(p.name);
+			f1(p);
+			console.log(p.name);
+
+
+
+
+四 内置对象JSON
+	1.	什么是json,json作用 
+		
+
+		JSON是js当中的一个内置对象，里面封装了对json格式数据的操作方法；
+		json是一种数据格式，是前后端目前数据交互的主要格式（xml）
+		
+
+		json通常情况下说的是字符串也叫json串
+		在前端json串的格式就是对象或者对象的数组，只不过要把这些数据转化成字符串形式；
+	
+		
+	2.	JSON对象的方法: parse， stringify
+
+
+
+	
+五 Math工具对象
+	1.	Math对象方式的使用: round, floor,  cell, radom, max  min  PI  pow
+	2.	案例：
+		1. 随机数点名
+		2. 随机生成验证码
+
+六 Date日期对象
+	1.	Date对象的方法
+		var date = new Date();
+		console.log(date);
+		console.log(date.getFullYear());
+		console.log(date.getMonth());
+		console.log(date.getDate());
+		console.log(date.getHours());
+		console.log(date.getMinutes());
+		console.log(date.getSeconds());
+		console.log(date.getYear());//已经废弃
+		console.log(date.toLocaleTimeString());
+		console.log(date.toLocaleDateString());
+		console.log(date.getTime());//1970 年 1 月 1 日之间的毫秒数
+
+
+	2.	案例：
+		1. 格式化日期     2019年8月24日 下午4：43：
+		2. 封装函数实现格式化日期
+
+七、包装对象
+	基本数据类型也可以使用.调用方法
+	二维数组
+   
+	
+
+
+晚自习强化
+	对象的增删改查，构造函数
+
+
+	1、创建两个同一品牌的手机对象（要求品牌和方法在原型当中定义共享使用）;
+		接下来把实例化对象的过程以及原型的原理图  每人画一遍；
+
+	2、封装自己的工具函数实现随机验证码功能，要求验证码的位数可以根据参数变化
+	3、函数传参如果传的是基本数据类型和传引用（对象）有什么区别；
+	4、把当天封装的随机数以及日期函数必须搞定
+	5、把值类型和引用类型面试题做一下，记得画图；
+	
+		
+
+
+
+

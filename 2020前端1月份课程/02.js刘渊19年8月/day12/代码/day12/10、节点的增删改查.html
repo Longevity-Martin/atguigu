@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<ul class="list">
+			<li>你的酒馆对我打了佯</li>
+			<li>画</li>
+			<li>来自天堂的魔鬼</li>
+		</ul>
+		
+		
+		
+		<script type="text/javascript">
+			//追加新元素
+//			//拿到父元素
+//			var ulNode = document.querySelector('.list');
+//			//创建新的li
+//			var liNode = document.createElement('li');
+//			//给新的Li添加内容
+//			liNode.innerText = '你是人间的四月天';
+//			//把新的li追加到ul当中
+//			ulNode.appendChild(liNode);
+			
+			
+			//在某个元素上面进行插入
+			
+//			//拿到父元素
+//			var ulNode = document.querySelector('.list');
+//			
+//			var liRela = document.querySelector('.list li:last-child');
+//			
+//			
+//			//创建新的li
+//			var liNode = document.createElement('li');
+//			//给新的Li添加内容
+//			liNode.innerText = '泡沫';
+//			
+//			ulNode.insertBefore(liNode,liRela);
+			
+			
+			//替换节点元素
+			//拿到父节点
+//			var ulNode = document.querySelector('.list');
+//			var liRela = document.querySelector('.list li:last-child');
+//			//创建新的li
+//			var liNode = document.createElement('li');
+//			//给新的Li添加内容
+//			liNode.innerText = '魔鬼中的天使';
+//			
+//			ulNode.replaceChild(liNode,liRela);
+			
+			
+			//删除节点元素
+			//拿到父节点
+			var ulNode = document.querySelector('.list');
+			var liNode = document.querySelector('.list li:nth-child(2)');
+			
+			ulNode.removeChild(liNode);
+
+//			liNode.remove();//被删除的元素直接调用；IE不支持
+			
+		</script>
+	</body>
+	
+	
+</html>

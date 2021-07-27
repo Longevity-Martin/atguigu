@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="text" id="in" />
+		
+		<script type="text/javascript">
+			var inputNode = document.getElementById('in');
+			//键盘事件每个键都会触发,添加的方式和鼠标事件添加方式一致
+			//但是键盘,我们无法区分到底按下的是哪个键;
+			//所以区分按下的键是什么键就是键盘事件当中的重点
+			//根据事件对象当中的键码去判断是什么键;
+			inputNode.onkeyup = function(event){
+//				console.log('键按下！');
+//				console.log(event.keyCode);
+				if(event.keyCode == 13){
+					
+					console.log('发生了回车事件');
+				}
+
+			}
+		</script>
+	</body>
+</html>

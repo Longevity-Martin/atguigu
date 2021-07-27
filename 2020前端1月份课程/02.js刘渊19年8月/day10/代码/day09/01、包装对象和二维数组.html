@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a = 10;
+			a = new Number(10);//包装对象
+//			Number()
+//			String()
+//			Boolean()
+			
+			console.log(a.toString());
+			
+			
+			
+			var b = 'abc';
+			
+			console.log(b.split(''));
+			
+			//a.toString a显然是一个对象，才会有方法调用，但是a我们定义的时候是一个基本数据类型
+			//它是没有方法的。但是js当中基本数据类型操作的时候会有这么一个规定：
+			//当调用数字、字符串、布尔值的方法的时候，会首先把这个值包装成对象（临时的），然后进行调用
+			//包装对象的方法，调用完成之后，临时的包装对象会立即清除；
+			
+			
+			
+			
+			var arr = [1,2,3,4];// <==>  var arr = new Arrary()
+			
+			var arr1 = [[1,2],[3,4],[5,6],[7,8]];//二维数组
+			
+			var arr2 = [[[1,2],[3,4]],[3,4],[5,6],[7,8]];
+			
+//			console.log(arr1[0][0]);
+//			
+//			console.log(arr2[0][0][1]);
+
+
+			//二维数组的遍历 
+			for(var i = 0; i < arr1.length; i++){
+				for(var j = 0; j < arr1[i].length; j++){
+					console.log(arr1[i][j]);
+				}
+			}
+			
+			
+			//第一步：定义一个5行的空数组
+			var a = [
+				[],
+				[],
+				[],
+				[],
+				[]
+			]	
+			//给二维数组赋值
+			for(var i = 0; i < 5; i++){
+				for(var j = 0; j < 5; j++){
+					a[i][j] =  i*5 + j +1;
+//					a 00     1
+//					a 01     2
+//					a 02     3
+//					a 03     4
+//					a 04     5
+//					                i*5 + j +1 
+//					a 10     6
+//					a 11     7
+//					a 12     8
+//					a 13     9
+//					a 14     10
+					
+				}
+			}
+			
+			//打印二维数组的左下三角
+			for(var i = 0; i < 5; i++){
+				for(var j = 0; j <= i; j++){
+					document.write(a[i][j]+'&nbsp;&nbsp;&nbsp;');
+				}
+				document.write('<br>');
+			}
+			
+			console.log(a);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			console.log(b);
+		</script>
+	</body>
+</html>

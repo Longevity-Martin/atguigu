@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [1,2,3,4,5];
+			
+			//从数组的末尾加一个数
+//			arr[arr.length] = 6;
+//			console.log(arr);
+//			console.log(arr.length);
+			
+			//从数组的头部加一个数；
+			//先把所有的数统统往后移一个位置，然后再在第一个位置去改乘你要加的值
+			
+//			for(var i = arr.length - 1; i >= 0; i--){
+//				arr[i+1] = arr[i];
+//			}
+//			arr[0] = 6;
+//			console.log(arr);
+//			console.log(arr.length);
+			
+			//从数组的中间位置插入一个数字
+			
+//			for(var i = arr.length - 1; i >= 2; i--){
+//				arr[i+1] = arr[i];
+//			}
+//			
+//			arr[2] = 6;
+//			console.log(arr);
+//			console.log(arr.length);
+			
+			
+			//删除     
+			//数组末尾删除一个
+//			arr.length--;
+//			console.log(arr);
+//			console.log(arr[4]);
+			//数组头部删除一个
+//			for(var i = 1; i < arr.length; i++){
+//				arr[i - 1] = arr[i];
+//			}
+//			arr.length--;
+//			console.log(arr);
+			//数组中间删除一个
+			
+//			for(var i = 3; i < arr.length; i++){
+//				arr[i - 1] = arr[i];
+//			}
+//			arr.length--;
+//			console.log(arr);
+
+
+			//改不需要去移位，只要知道了下标，直接改相应下标的值
+			
+			//把数组当中的4改为6
+			
+//			for(var i = 0; i < arr.length; i++){
+//				if(arr[i] == 4){
+//					arr[i] = 6;
+//				}
+//			}
+//			console.log(arr);
+			
+			//查其实就是遍历或者输出某一个值
+			
+			for(var i = 0; i < arr.length; i++){
+				if(arr[i] == 4){
+					console.log(arr[i]);
+				}
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

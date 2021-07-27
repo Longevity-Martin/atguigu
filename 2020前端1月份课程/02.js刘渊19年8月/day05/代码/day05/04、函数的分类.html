@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//无参无返回值
+			function printLove(){
+				for(var i = 0; i < 100; i++){
+					console.log('i love you!');
+				}
+				
+			}
+			
+			// 有参无返回值
+			function printLove(a){
+				//形参写出来就相当于在函数内部 var了一个变量
+//				var a;
+				for(var i = 0; i < a; i++){
+					console.log('i love you!');
+				}
+				
+			}
+			
+			printLove(100);
+			
+			printLove(50);
+			
+			printLove(10);
+			
+			
+			//无参有返回值
+			function printLove(){
+				for(var i = 0; i < 100; i++){
+					console.log('i love you!');
+				}
+				return 100;
+			}
+			
+			
+			//有参有返回值 *************
+			
+			function printLove(a){
+				for(var i = 0; i < a; i++){
+					console.log('i love you!');
+				}
+				return 100;
+			}
+			
+			
+			function add(a,b){
+				
+				var c = a + b;
+				return c;
+			}
+			
+			var result = add(10,20);
+			
+			console.log(result);
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div{
+				width: 200px;
+				height: 200px;
+				background-color: hotpink;
+			}
+		</style>
+		
+	</head>
+	<body>
+		
+		<div tabindex="100">哈哈</div>
+		
+		<input type="text"  value="赵丽颖" />
+		
+		<script type="text/javascript">
+			var inputNode = document.querySelector('input');
+			
+			inputNode.onfocus = function(){
+				this.value = '杨幂';
+				this.style.width = '400px';
+				this.style.backgroundColor = 'red';
+			}
+			
+			inputNode.onblur = function(){
+				this.value = '赵丽颖';
+				//以后只要是设置随机颜色,肯定用的是rgb去设置
+				var red = Math.floor(Math.random()*256); 
+				var green = Math.floor(Math.random()*256);
+				var blue = Math.floor(Math.random()*256);
+				this.style.backgroundColor = 'rgb('+ red +','+ green +','+ blue +')';
+			}
+			
+			//给div添加获取焦点
+			var box = document.querySelector('div');
+			box.onfocus = function(){
+				console.log(111);
+			}
+			
+		</script>
+	</body>
+</html>

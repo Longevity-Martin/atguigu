@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			p{
+				background-color: hotpink;
+			}
+		</style>
+	</head>
+	<body>
+		<p class="pp">1</p>
+		<p class="pp">2</p>
+		<p class="pp">3</p>
+		<p class="pp">4</p>
+		
+		
+		
+		<script type="text/javascript">
+			//点击某一个p，点击的这个p变成爽，其它变成哈哈；
+			//排他操作很重要：思路是先让所有的变成哈哈，再让点击的这一个变成爽
+			window.onload = function(){
+//				var pList = document.querySelectorAll('p');
+//				for(var i = 0; i < pList.length; i++){
+//					pList[i].onclick = function(){
+//						for(var j = 0; j < pList.length; j++){
+//							pList[j].innerHTML = '哈哈';
+//						}
+////						pList[i].innerHTML = '爽';
+//						this.innerHTML = '爽';
+//					}
+//				}
+
+
+				var pList = document.querySelectorAll('p');
+				for(var i = 0; i < pList.length; i++){
+					pList[i].index = i;
+					pList[i].onclick = function(){
+						for(var j = 0; j < pList.length; j++){
+							pList[j].innerHTML = '哈哈';
+						}
+//						pList[i].innerHTML = '爽';//这个是错的
+//						this.innerHTML = '爽';
+						pList[this.index].innerHTML = '爽';
+					}
+				}
+				
+
+			}
+		</script>
+	</body>
+	
+</html>

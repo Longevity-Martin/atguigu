@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<button>点击添加</button>
+	</body>
+
+	<script type="text/javascript">
+		//当点击按钮的时候，把下面数组中最近比较流行的歌曲或者电影列表展示
+		window.onload = function() {
+			var movies = ['哪吒', '烈火英雄', '上海堡垒', '速度与激情'];
+			var btn = document.querySelector('button');
+			
+			
+			
+			btn.onclick = function(){
+				
+				//创建好一个ulDOM元素对象
+				var ulNode = document.createElement('ul');
+				
+				//往ul的元素对象里面追加li元素
+				for(var i = 0; i < movies.length; i++){
+					var liNode = document.createElement('li');
+					liNode.innerText = movies[i];
+					ulNode.appendChild(liNode);
+				}
+				
+				//追加完Ul之后,我们要把整个ul追加给body,否则文档流当中是没有ul的;
+				
+				document.body.appendChild(ulNode);
+			}
+			
+			
+			
+		}
+	</script>
+
+</html>

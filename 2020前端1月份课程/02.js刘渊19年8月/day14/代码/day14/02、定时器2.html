@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			
+			var timer = null;
+			var num = 0;
+			//设置多次定时器
+			timer = setInterval(function(){
+				num++;
+				console.log('i love you!');
+				//清除多次定时器
+				if(num == 10){
+					clearInterval(timer);
+				}
+			},1000);
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

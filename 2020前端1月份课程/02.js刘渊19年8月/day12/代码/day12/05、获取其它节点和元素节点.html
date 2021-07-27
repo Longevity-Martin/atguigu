@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box"></div>
+		<ul id="list">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<!--<li>7</li>
+			<li>8</li>-->
+		</ul>
+		
+		<script type="text/javascript">
+			var list = document.getElementById('list');
+			console.log(list.firstChild);
+			console.log(list.firstElementChild);
+			console.log(list.lastChild);
+			console.log(list.lastElementChild);
+			console.log(list.previousSibling);
+			console.log(list.previousElementSibling);
+			console.log(list.nextSibling);
+			console.log(list.nextElementSibling);
+			
+			
+			
+			//兼容性封装获取第一个子元素节点
+			
+			function getFirstEle(obj){
+				if(obj.firstElementChild){
+					//高级浏览器
+					return obj.firstElementChild;
+				}else{
+					//低级浏览器
+					var testNode = obj.firstChild;
+					while(testNode && testNode.nodeType != 1){
+						testNode = testNode.nextSibling;
+					};
+					return testNode;
+				}
+			}
+			
+			//兼容性封装获取最后一个子元素节点
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

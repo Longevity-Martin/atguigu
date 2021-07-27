@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			for(var i = 1; i < 10; i++){
+//				for(var j = 1; j <= i; j++){
+//					document.write(j + '*' + i + '=' + i * j + '&nbsp;&nbsp;');
+//				}
+//				document.write('<br>');
+//				
+//			}
+//			var num = 100;
+//			for(var i = 1; i < 101; i++){
+//				if(i % 2 == 0){
+//					num += 1;
+//					console.log(num);
+//				}else{
+//					num -= 1;
+//					console.log(num);
+//				}
+//			}
+			
+//			var num = 100;
+//			var i = 1;
+//			while(i < 101){
+//				if(i % 2 == 0){
+//					num += 1;
+//					console.log(num);
+//				}else{
+//					num -= 1;
+//					console.log(num);
+//				}
+//				i++;
+//			}
+			
+//			var num = 100;
+//			var i = 1;
+//			do{
+//				if(i % 2 == 0){
+//					num += 1;
+//					console.log(num);
+//				}else{
+//					num -= 1;
+//					console.log(num);
+//				}
+//				i++;
+//			}while(i < 101);
+			
+			
+			//switch case 
+			
+//			var money = parseInt(prompt('请输入你有多少钱？'));
+//			
+//			switch(true){
+//				case money > 0 && money <= 100:
+//					console.log('吃盖饭！');
+//					break;
+//				case money > 100 && money <= 500:
+//					console.log('一措再措！');
+//					break;
+//				case money > 500 && money <= 1000:
+//					console.log('南锣鼓巷逛吃!');
+//					break;
+//				case money > 1000 && money <= 10000:
+//					console.log('吃遍北京！');
+//					break;
+//				case money < 0:
+//					console.log('赶紧赚钱去！');
+//					break;
+//				default:
+//					console.log('想吃啥吃啥！');
+//					break;
+//			}
+			
+			
+//			var age = parseInt(prompt('请输入你的年龄！'));
+//			
+//			switch(true){
+//				case age > 0 && age <= 12:
+//					alert('童年');
+//					break;
+//				case age > 12 && age <= 18:
+//					alert('少年');
+//					break;
+//				case age > 18 && age <= 30:
+//					alert('青年');
+//					break;
+//				case age > 30 && age <= 50:
+//					alert('中年');
+//					break;
+//				case age > 50 && age <= 130:
+//					alert('老年');
+//					break;
+//				default:
+//					alert('什么鬼？');
+//					break;
+//			}
+			
+			//数组
+			
+//			var arr = [2,6,12,23,44,56,78,67,13,41];
+//			var newArr = [];
+//			
+//			for(var i = 0; i < arr.length; i++){
+//				if(arr[i] % 2 == 0){
+//					console.log(arr[i])
+//				}else{
+//					newArr[newArr.length] = arr[i];
+//				}
+//			}
+//			
+//			console.log(newArr);
+			
+			
+			var arr = [10,20,30,40,50,60,70,80,90,100,110];
+			var num = parseInt(prompt('输入一个数字'));
+			var index = 0;
+			
+//			if(num < arr[0]){
+//				index = 0;
+//				for(var i = arr.length - 1; i >= index; i--){
+//					arr[i+1] = arr[i];
+//				}
+//				arr[index] = num;
+//			}else if(num >= arr[arr.length - 1]){
+//				index = arr.length;
+//				arr[index] = num;
+//			}else{
+//				for(var i = 0; i < arr.length; i++){
+//					if(num >= arr[i] && num <= arr[i+1]){
+//						index = i + 1;
+//					}
+//				}
+//				
+//				for(var i = arr.length - 1; i >= index; i--){
+//					arr[i+1] = arr[i];
+//				}
+//				arr[index] = num;
+//			}
+			
+			for(var i = 0; i < arr.length; i++){
+				if(num >= arr[i] && num <= arr[i+1]){
+					index = i + 1;
+				}
+			}
+			
+			for(var i = arr.length - 1; i >= index; i--){
+				arr[i+1] = arr[i];
+			}
+			arr[index] = num;
+			
+			
+			console.log(arr);
+		</script>
+	</body>
+</html>

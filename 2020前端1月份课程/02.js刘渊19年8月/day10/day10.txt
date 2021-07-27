@@ -1,0 +1,148 @@
+Day10 DOM上
+
+
+第一节:  DOM概念和操作方式
+	一切皆对象；
+
+1.	DOM概念，作用，顶级对象
+
+		DOM 文档对象模型  
+		DOM是一个使程序和脚本有能力动态地访问和更新文档的内容、结构以及样式的平台和语言中立的接口。
+		DOM描述了处理网页内容的方法和接口 
+	 
+		window是浏览器窗口对象，所有的东西都被当作是window的子对象
+
+		文档对象	        document  是window下的一个属性   代表整个DOM文档对象
+	
+		节点     	元素   属性   文本   注释等等
+		元素	 	标签
+		根元素（root）   html标签
+		文档树(dom树)	以HTML为根节点  形成的一棵倒立的树状结构，我们称作DOM树；
+				这个树上所有的东西都叫节点，节点有很多类
+				这些节点如果我们通过DOM方法去获取或者其它的操作去使用的化，就叫DOM对象
+
+	
+2.	window.onload  页面加载完成事件
+
+		一般情况我们都是等待页面加载完成之后才去操作dom元素
+	如果页面没有加载完成就去获取dom元素，有可能获取不到；
+
+		window.onload = function(){
+
+
+
+		}等待页面加载完成，执行函数当中的代码；
+
+
+3.	案例: 页面加载完毕，点击按钮弹出对话框
+
+
+		  
+第二节:  获取DOM对象，操作DOM对象，事件绑定，操作元素属性
+	1. 	document.getElementById
+			这个是document下的一个方法，通过id获取到相关元素  封装为dom对象返回
+			如果没有id没办法获取
+
+
+	2.	点击事件
+			事件三要素  	事件源 （承受事件的对象）  	   事件           事件处理回调函数
+			事件处理三大步	获取事件源DOM对象   添加事件监听   书写处理回调
+			事件写好之后可以重复触发执行；
+			
+			简单案例：  点击按钮实现一个数字增加；
+
+			
+	3.	案例驱动: 修改元素的属性
+		1. 点击按钮修改图片的路径
+		2. 点击按钮修改a标签的路径
+		3. 点击按钮修改多选框选中
+		4. setAttribute和getAttribute的用法
+			.语法和他们有啥区别？
+
+			在操作元素属性的时候，.语法只能操作元素天生具有的属性，如果是自定义的属性，通过.语法是无法操作的；
+
+			只能通过 setAttribute和getAttribute去操作；
+
+			 setAttribute和getAttribute是通用的方法，无论元素天生的还是自定义的都可以操作；
+
+
+
+		5、点击按钮修改p标签的背景颜色（通过改变类名实现）
+
+
+
+第三节： 强化练习
+	1.	点击图片切换图片显示
+	2. 	点击小图显示对应的大图
+
+
+第四节:  循环绑定事件+操作元素内容，操作元素内容
+	1.	document.getElementByTagName
+	2.	document.getElementByClassName   querySelect 和 querySelectAll获取dom元素
+			document.getElementById  只能通过ID去获取元素 并且只能获取一个元素返回
+			document.getElementByTagName    只能通过标签名去获取，并且获取到是多个返回一个数组，哪怕标签只有一个也是数组
+			document.getElementByClassName  只能通过类名去获取，并且获取到是多个返回一个数组，哪怕只有一个标签是这个类也是数组
+
+			以上三个都比较局限：拿元素的时候只能通过指定的属性去拿
+
+		querySelect 和 querySelectAll
+		querySelect 和 querySelectAll也可以获取元素，但是他们和上面不同的是，他们根据选择器去获取。也就是说只要选择器能选择到，他们
+		就可以获取到，只要选择器写的对就可以获取到；
+
+		querySelect专门用来获取选择器选中只有一个元素；返回的是单个元素dom对象;
+		querySelectAll专门用来获取选择器选中多个元素，返回也是数组；
+
+	3.	案例:
+		1.	相同标签 通过ByTagName获取所有p标签，点击修改p标签文字内容 textContent  innerHtml  innerText
+			textContent  innerHtml  innerText 之间的区别
+
+			innerHtml   innerText  之间的区别：
+					设置内容的时候，如果内容当中包含标签字符串   innerHtml会有标签的特性，也就是说标签会在页面上生效
+						       如果内容当中包含标签字符串   innerText会把标签原样展示在页面上，不会让标签生效
+					  
+					读取内容的时候，如果标签内部还有其它标签，innerHtml会把标签内部带着其它的标签全部输出
+						       如果标签内部还有其它标签，innerText只会输出所有标签里面的内容或者文本，不会输出标签
+						       如果标签内部没有其它标签，他们两个一致；都是读取文本内容，innerHtml会带空白和换行
+
+
+
+
+
+
+
+
+
+		2.	innerHTML 和 textContent及innerText的区别
+			·textContent 可以获取隐藏元素的文本，包含换行和空白
+			·innerText 不可以获取，并且不包含换行和空格
+		3.	排他操作修改文本内容
+
+
+第五节:  鼠标事件 + style样式操作，操作元素样式
+	1.	鼠标事件: onmousemove/onmouseover/onmouseout/onmounseenter/onmouseleave
+			简单案例   点击按钮修改元素的宽高以及背景色；
+
+	2.	案例:
+			导航鼠标移入高亮显示
+			隔行变色
+			开关状态改变div背景色；
+
+
+
+第六节:  兼容性封装设置读取内容函数
+	1.	浏览器兼容性讲解
+	2.	封装函数处理textContent和innerText的兼容性读写问题
+
+
+晚自习强化练习
+	选项卡    课堂案例敲三遍
+	排他	  实现排他小圆点背景色切换
+	开关      开关实现显示和隐藏div     
+		  开关实现风车的转动和停止（启动和停止c3动画）
+	
+	
+课堂案例
+1.	DOM操作案例
+2.	鼠标事件案例
+3.	通过DOM操作HTML属性操作
+4.	通过DOM操作style样式

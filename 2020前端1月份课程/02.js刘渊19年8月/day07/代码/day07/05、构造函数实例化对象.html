@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//实例化两个实力派歌手
+			function Singer(name,gender,age){
+				this.name = name;
+				this.gender = gender;
+				this.age = age;
+				this.sing = function(){
+					console.log('我什么都能唱！');
+				}
+			}
+			
+			var singer1 = new Singer('邓紫棋','famale',28);
+			singer1.sing();
+			console.log(singer1.name);
+			console.log(singer1['age']);
+			
+			var singer2 = new Singer('腾格尔','male',50);
+			singer2.sing();
+			console.log(singer2.name);
+			console.log(singer2['age']);
+			
+			
+//			function BlueCat(name,age,gender){
+//				this.name = name;
+//				this.age = age;
+//				this.gender = gender;
+//				this.run = function(){
+//					console.log('跑的很快~');
+//				}
+//			}
+//			
+//			
+//			var cat1 = new BlueCat('tom',2,'male');
+//			cat1.run();
+//			console.log(cat1.name);
+//			console.log(cat1.age);
+//			
+//			var cat2 = new BlueCat('jerry',3,'male');
+//			cat2.run();
+//			console.log(cat2.name);
+//			console.log(cat2.age);
+		</script>
+	</body>
+</html>

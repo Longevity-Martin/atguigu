@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p style="visibility: hidden;">哈哈</p>
+		<p>呵呵</p>
+		
+		<script>
+			var pList = document.querySelectorAll('p');
+			console.log(pList[0].innerText);//拿不到隐藏元素的内容
+			console.log(pList[0].textContent);
+		</script>
+	</body>
+</html>

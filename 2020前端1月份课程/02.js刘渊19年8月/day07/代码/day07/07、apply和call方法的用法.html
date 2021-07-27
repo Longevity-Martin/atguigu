@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function BlueCat(name,age,gender){
+				this.name = name;
+				this.age = age;
+				this.gender = gender;
+			}
+			
+			Object.prototype.run = function(){
+				console.log('跑的很快~');
+			}
+			
+			
+			var cat1 = new BlueCat('tom',2,'male');
+			var cat2 = new BlueCat('jerry',3,'male');
+			
+			
+			function add(a,b){
+				return a + b;
+			}
+			
+//			window.add(10,20);
+			
+			//apply/call 方法可以改变一个函数的执行对象（执行者）
+			//把add的执行者window改为了cat1，让cat1可以有求和的方法；
+			//apply的用法两个参数，第一个参数代表的改变的执行者（对象）
+			//第二个参数，是函数所需要的参数，这个参数必须是数组形式；
+			
+			var result = add.apply(cat1,[10,20]);
+			console.log(result);
+			
+			var result = add.call(cat1,10,20);
+			console.log(result);
+			
+			
+			
+		</script>
+	</body>
+</html>

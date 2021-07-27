@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<!--哈哈-->
+			<p>我是第一个段落</p>
+			<p>我是第二个段落</p>
+		</div>
+		<script type="text/javascript">
+			var box = document.getElementById('box');
+			
+			console.log(box.childNodes);
+			
+			
+			//遍历所有节点
+			for(var i = 0; i < box.childNodes.length; i++){
+				var eleNode = box.childNodes[i];
+				console.log(eleNode.nodeName,eleNode.nodeType,eleNode.nodeValue);
+				
+				//只想打印元素节点
+				
+				if(eleNode.nodeType == 1){
+				 
+				}
+				
+			}
+			
+			
+			//在以后我们去获取元素的时候有两个特殊的，html和body
+			var htmlNode = document.documentElement;
+			var bodyNode = document.body;
+			console.log(htmlNode);
+			console.log(bodyNode);
+			
+			
+			console.log(htmlNode.childNodes);
+			//html节点拿到的不包含第一个和最后一个文本节点；
+			//我们自己在body当中写的子元素会带上第一个和最后一个文本节点；
+			
+		</script>
+	</body>
+</html>

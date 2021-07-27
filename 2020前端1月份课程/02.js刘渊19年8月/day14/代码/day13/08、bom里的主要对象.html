@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<a href="##"></a>-->
+		<button>点击获取网址</button>
+		
+		<script type="text/javascript">
+			var btn = document.querySelector('button');
+			btn.addEventListener('click',function(){
+				console.log(window.location.href);	
+//				window.location.href = 'https://www.baidu.com';
+//				console.log(navigator.appName,navigator.appVersion);
+				console.log(screen.width);
+				console.log(screen.height);
+				console.log(screen.availWidth);
+				console.log(screen.availHeight);
+				
+				
+				history.back(-1);  //历史记录往前走一页
+//				history.go(-1);    //和上面一样，只是在刷新数据上有区别
+				history.forward(1); //往后走一页；
+			})
+			
+		</script>
+		
+		
+		
+	</body>
+</html>

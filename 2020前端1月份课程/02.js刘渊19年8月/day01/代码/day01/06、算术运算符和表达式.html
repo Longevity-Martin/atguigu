@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<script>
+    var num = 5;
+    var num2 = 6;
+
+    // num+1  表达式
+    console.log(num+1);//打印输出表达式或者变量或者常量的值
+
+    // num2 + num
+    console.log(num2+num);
+
+    // num * 2
+    console.log(num * 2);
+    // num /2
+    console.log(num / 2);
+    // num2 - num
+    console.log(num2-num); //1
+    // num%2    %取余   取模   拿的都是余数，要的是余数不是商
+
+    console.log(num%2);
+
+    console.log(5621341%78+1);
+
+//    自增自减运算符
+
+    // var a = 7;
+
+    // a++;//a的值，自增1
+    // ++a;//a的值，自增1
+
+
+//++在后，先赋值（先把a的值赋值给表达式）  后++ （后让a的值+1）
+// ++在前，先++(先让a的值+1)  后赋值（后把a的值赋值给表达式）
+
+
+    // console.log(a++);
+    // console.log(a);
+
+    // console.log(++a);
+    // console.log(a);
+
+    var a = 5;
+    var b = 6;
+    var c = 0;
+
+    c = ++a + b++;  //  6 + 6   c 12   a = 6   b = 7
+    c = b + a++;   //7 + 6    c 13    a  7   b 7
+    c = a + b++;  //7 + 7   c 14    a 7   b 8
+    c = ++b + a;  // 9 + 7   16    a 7    b 9
+
+    console.log(c);
+    console.log(a);
+    console.log(b);
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			var a = 10;
+			
+			console.log(a > 8 && a < 9);//false
+			console.log(a > 8 && a < 100);
+			console.log(a < 0 || a > 8);
+			console.log(a >100 || a < 0);
+			console.log(a > 10/2 && a < 10 % 8);
+			
+			
+			console.log(!(a>0));
+			
+			console.log(!(a > 10/2+3) || a < 10 % 8 * 6);
+			
+			
+			//&&      一假则假
+			//||      一真则真
+			//！                 非真即假 非假即真
+			
+			
+//			a = 0 && 8;
+//			var b = a > 8 && a < 9;
+			
+			//&&    如果用在两个值值之间，本质上其实是这个过程
+			
+			// 先判断&&之前是否为真，如果为真，那么就取后边的值，赋值给逻辑表达式
+			// 如果前面的值为假，那么就取前面的值赋值给逻辑表达式
+			
+			 
+			a = 0 || 100;
+			var b = a > 8 || a < 9;
+			
+			//||    如果用在两个值之间，本质上其实是这个过程
+			
+			// 先判断||之前是否为真，如果为真，那么就取前面的值，赋值给逻辑表达式
+			// 如果前面的值为假，那么就取后面的值赋值给逻辑表达式
+			
+			console.log(b);
+			 
+			 
+			
+			
+		</script>
+	</body>
+</html>

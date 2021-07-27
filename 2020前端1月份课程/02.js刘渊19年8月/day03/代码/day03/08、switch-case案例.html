@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var score = parseInt(prompt('请输入您的分数，分数是0~100之间的数字！'));
+				
+//			if(score >= 90 && score <= 100){
+//				alert('A');
+//			}else if(score >= 80 && score < 90){
+//				alert('B');
+//			}else if(score >= 70 && score < 80){
+//				alert('C');
+//			}else if(score >= 60 && score < 70){
+//				alert('D');
+//			}else if(score < 0 || score > 100){
+//				alert('请重新输入合法的分数！');
+//			}else{
+//				alert('不及格，重修去吧~！');
+//			}
+
+
+			switch(true){
+				case score >= 90 && score <= 100:
+					alert('A');
+					break;
+				case score >= 80 && score < 90:
+					alert('B');
+					break;
+				case score >= 70 && score < 80:
+					alert('C');
+					break;
+				case score >= 60 && score < 70:
+					alert('D');
+					break;
+				case score < 0 || score > 100:
+					alert('请重新输入合法的分数！');
+					break;
+				default:
+					alert('不及格，重修去吧~！');
+					break;
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+//		alert(a);    
+//		var a = '我是变量';
+//		function a(){ alert('我是函数') }
+//		alert(a); 
+//		function a(){ alert('我是函数2')}
+//		var a = '哈哈';
+//		alert(a);
+		
+		function a(){ alert('我是函数') }
+		function a(){ alert('我是函数2')}
+		var a;//因为变量重名，所以被忽略；
+		var a;//因为变量重名，所以被忽略；
+		alert(a);    
+		a = '我是变量';
+		
+		alert(a); 
+		
+		a = '哈哈';
+		alert(a);
+		
+		
+		
+		//预解析优先级： 
+//				先去解析函数，函数如果有同名会发生覆盖
+//				再去解析var的变量,如果变量有同名,真正的情况是忽略;
+				
+			
+		</script>
+	</body>
+</html>

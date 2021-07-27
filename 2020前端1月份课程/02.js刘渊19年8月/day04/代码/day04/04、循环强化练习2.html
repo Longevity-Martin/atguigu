@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//100-200之间的质数
+			
+//			var flag = true;
+//			for(var i = 100; i <= 200; i++){
+//				for(var j = 2; j < i; j++){
+//					if(i % j == 0){
+//						flag = false;
+//						break;
+//					}
+//				}
+//				
+//				if(flag){
+//					console.log(i);
+//				}
+//				
+//				flag = true;//重置标志位，因为每个数都要重新的去循环执行；
+//			}
+			
+			//求质数第二种方式
+//			var num = 0;
+//			for(var i = 100; i <= 200; i++){
+//				for(var j = 1; j <= i; j++){
+//					if(i % j == 0){
+//						num++;
+//					}
+//				}
+//				
+//				if(num == 2){
+//					console.log(i);
+//				}
+//				num = 0;
+//			}
+
+
+
+		//求1!+2!+3!+...+20!的值
+		//外层在拿数
+		
+		
+//		var ride = 1;
+//		var sum = 0;
+//		for(var i = 1; i <= 20; i++){
+//			//内层循环在真正的累乘
+//			for(var j = 1; j <= i; j++){
+//				ride *= j;
+//			}
+//			
+//			sum += ride;
+//			
+//			ride = 1;
+//			
+//		}
+//		
+//		console.log(sum);
+
+
+//完成一个等腰三角形的打印
+
+//		for(var i = 0; i < 7; i++){
+//			//为了打印空格
+//			for(var j = 0; j < 6 - i; j++){
+//				document.write('&nbsp;');
+//			}
+//			
+//			//为了打印*
+//			for(var k = 0; k < 2*i + 1 ;k++){
+//				document.write('*');
+//			}
+//			
+//			document.write('<br>');
+//			
+//		}
+		
+		//圣诞树
+		for(var i = 0; i < 7; i++){
+			//为了打印空格
+			for(var j = 0; j < 6 - i; j++){
+				document.write('&nbsp;');
+			}
+			
+			//为了打印*
+			for(var k = 0; k < 2*i + 1 ;k++){
+				document.write('*');
+			}
+			
+			document.write('<br>');
+			
+		}
+		
+		for(var i = 0; i < 7; i++){
+			//为了打印空格
+			for(var j = 0; j < 6 - i; j++){
+				document.write('&nbsp;');
+			}
+			
+			//为了打印*
+			for(var k = 0; k < 2*i + 1 ;k++){
+				document.write('*');
+			}
+			
+			document.write('<br>');
+			
+		}
+		
+		
+		for(var i = 0; i < 8; i++){
+			for(var j = 0; j < 4; j++){
+				document.write('&nbsp;');
+			}
+			for(var j = 0; j < 5; j++){
+				document.write('*');
+			}
+			document.write('<br>');
+		}
+		
+		
+			 
+		</script>
+	</body>
+</html>

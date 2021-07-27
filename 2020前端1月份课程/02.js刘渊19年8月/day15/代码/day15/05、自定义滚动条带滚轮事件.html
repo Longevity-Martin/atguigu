@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			ul,li{
+				list-style: none;
+			}
+			
+			a{
+				text-decoration: none;
+			}
+			
+			img{
+				display: block;
+			}
+			
+			input{
+				outline: none;
+			}
+			
+			.clearfix::after{
+				content: '';
+				display: block;
+				clear: both;
+			}
+
+			html,body{
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			#wrap{
+				position: relative;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			#wrap .content{
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			
+			#wrap .scrollBar{
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 40px;
+				height: 100%;
+				border-left: 1px solid grey;
+				border-right: 1px solid grey;
+			}
+			
+			#wrap .scrollBar .scrollIn{
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				top: 0;
+				width: 35px;
+				/*height: 100px;*/
+				background-color: deepskyblue;
+				
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		
+		<div id="wrap">
+			
+			<div class="content">
+				
+			</div>
+			
+			<div class="scrollBar">
+				<div class="scrollIn"></div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			//模拟内容区域
+			var content = document.querySelector('#wrap .content');
+			var scrollIn = document.querySelector('#wrap .scrollBar .scrollIn');
+			
+			for(var i = 0; i < 200; i++){
+				content.innerHTML += i + '<br>';
+			}
+			
+//			滚动条的高度 / 屏幕的高度 = 屏幕的高度 / 内容的高度 = 滚动条的移动距离 / 内容的滚动距离 
+
+			var scale = document.documentElement.clientHeight / content.offsetHeight;
+			scrollIn.style.height = scale * document.documentElement.clientHeight + 'px';
+			
+			//拖拽滚动条
+			
+			
+			scrollIn.onmousedown = function(event){
+				event = event || window.event;
+				//拿元素的初始位置
+				var eleY = scrollIn.offsetTop;
+				//拿鼠标的初始位置
+				var startY = event.clientY;
+				//元素发生事件之后，鼠标的所有事件行为全部都被捕获到该元素身上
+				scrollIn.setCapture && scrollIn.setCapture();
+				document.onmousemove = function(event){
+					event = event || window.event;
+					//拿到鼠标的结束位置
+					var endY = event.clientY;
+					//拿到鼠标的距离差
+					var disY = endY - startY;
+					//最终获取到元素的位置
+					var lastY = eleY + disY;
+					
+					if(lastY < 0){
+						lastY = 0;
+					}else if(lastY > document.documentElement.clientHeight - scrollIn.offsetHeight){
+						lastY = document.documentElement.clientHeight - scrollIn.offsetHeight
+					}
+					
+					scrollIn.style.top = lastY + 'px';
+					
+					var contentTop = -lastY / scale;
+					content.style.top = contentTop + 'px';
+					
+					
+					
+				}
+				
+				document.onmouseup = function(){
+					document.onmousemove = document.onmouseup = null;
+					scrollIn.releaseCapture && scrollIn.releaseCapture();
+				}
+				
+				//dom0事件取消默认行为
+				return false;
+				//dom2事件取消默认行为
+//				event.preventDefault();
+				
+			}
+			
+			
+			
+			
+			//滚轮事件
+			
+			
+			var flag = true;
+			var step = 0;
+			document.addEventListener('mousewheel',scrollMove);
+			document.addEventListener('DOMMouseScroll',scrollMove);
+			
+			
+			function scrollMove(event){
+				event = event || window.event;
+				if(event.wheelDelta){
+					if(event.wheelDelta > 0){
+						//代表往上滚
+						flag = true;
+						step = -20;
+					}else{
+						//代表往下滚
+						flag = false
+						step = 20;
+					}
+				}else if(event.detail){
+					if(event.detail < 0){
+						//代表往上滚
+						flag = true;
+						step = -20;
+					}else{
+						//代表往下滚
+						flag = false;
+						step = 20;
+					}
+				}
+				
+				
+				var scrollLastTop = scrollIn.offsetTop + step;
+				
+				if(scrollLastTop < 0){
+					scrollLastTop = 0;
+				}else if(scrollLastTop > document.documentElement.clientHeight - scrollIn.offsetHeight){
+					scrollLastTop = document.documentElement.clientHeight - scrollIn.offsetHeight
+				}
+				
+				scrollIn.style.top = scrollLastTop + 'px';
+				
+				var contentTop = -scrollLastTop / scale;
+				content.style.top = contentTop + 'px';
+				
+				
+				
+				
+//				if(flag){
+//					//判断上边界
+//					//往上
+//					scrollIn.style.top = scrollIn.offsetTop - 10 + 'px';
+//					
+//					
+//				}else{
+//					//判断下边界
+//					//往下
+//					scrollIn.style.top = scrollIn.offsetTop + 10 + 'px';
+//				}
+//				
+				
+				
+			}
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

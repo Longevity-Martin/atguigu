@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//数组元素的和
+//			var arr = [1,2,3,4,5];
+			
+//			var sum = 0;
+//			for(var i = 0; i < arr.length; i++){
+//				sum += arr[i];
+//			}
+//			console.log(sum);
+			
+			//数组最大 最小 平均值；
+//			var max = arr[0];
+//			var min = arr[0];
+//			var sum = 0;
+//			for(var i = 0; i < arr.length; i++){
+//				if(arr[i] > max){
+//					max = arr[i];
+//				}
+//				if(arr[i] < min){
+//					min = arr[i];
+//				}
+//				
+//				sum += arr[i]
+//			}
+//			
+//			console.log(max,min,sum/arr.length);
+			
+			//根据班级人数输入每个人的分数，求平均值
+			
+//			var arr = [];//代表声明一个空数组
+//			var sum = 0;
+//			for(var i = 0; i < 5; i++){
+//				arr[i] = parseInt(prompt("请输入第"+(i+1)+"位的份数"));
+//				sum += arr[i];
+//			}
+//			
+//			console.log(arr,sum/arr.length);
+			
+			
+			
+			//翻转数组使用新数组
+			var arr = [1,2,3,4,5];
+//			var newArr = [];
+//			
+//			for(var i = arr.length - 1; i >= 0; i--){
+//				newArr[newArr.length] = arr[i];
+//			}
+//			console.log(newArr);
+			
+			//翻转数组不用新数组,在原数组基础上进行翻转；
+			
+			for(var i = 0; i < arr.length/2; i++){
+				var temp = arr[i];
+				arr[i] = arr[arr.length - 1 - i];
+				arr[arr.length - 1 - i] = temp;
+			}
+			
+			console.log(arr);
+			
+			
+		</script>
+	</body>
+</html>

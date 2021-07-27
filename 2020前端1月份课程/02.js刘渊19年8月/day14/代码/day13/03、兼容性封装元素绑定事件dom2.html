@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		
+			
+			function addEvent(obj,eventType,fn,isBubble){
+				if(obj.addEventListener){
+					//高级
+					obj.addEventListener(eventType,fn,isBubble);
+				}else{
+					//低级
+					obj.attachEvent('on'+eventType,fn);
+				}
+			}
+			
+			
+			
+			function removeEvent(obj,eventType,fn,isBubble){
+				if(obj.removeEventListener){
+					//高级
+					obj.removeEventListener(eventType,fn,isBubble);
+				}else{
+					//低级
+					obj.detachEvent('on'+eventType,fn);
+				}
+			}
+			
+		</script>
+	</body>
+</html>

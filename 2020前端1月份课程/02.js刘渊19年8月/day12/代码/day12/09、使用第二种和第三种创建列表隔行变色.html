@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<!--<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>-->
+		
+		
+		
+		<script type="text/javascript">
+			//第二种； innerHtml创建列表;
+			var arr = ['周杰伦','赵丽颖','杨幂','胡歌','蔡徐坤'];
+//			
+//			var str = '<ul id="list">';
+//			for(var i = 0; i < arr.length; i++){
+//				str += '<li>'+ arr[i] +'</li>';
+//			}
+//			
+//			str += '</ul>';
+//			
+//			document.body.innerHTML += str;
+//			
+//			
+//			//创建好列表之后，获取列表元素进行隔行变色
+//			var liNodes = document.querySelectorAll('#list>li');
+//			
+//			for(var i = 0; i < liNodes.length; i++){
+//				if(i%2==0){
+//					liNodes[i].style.backgroundColor = 'hotpink';
+//				}else{
+//					liNodes[i].style.backgroundColor = 'skyblue';
+//				}
+//			}
+			
+			
+			//第三种方式：
+			//先去创建ul
+			var ulNode = document.createElement('ul');
+			
+			//追加li及li的内容
+			
+			for(var i = 0; i < arr.length; i++){
+				var liNode = document.createElement('li');
+				liNode.innerText = arr[i];
+				ulNode.appendChild(liNode);
+				
+				if(i%2==0){
+					liNode.style.backgroundColor = 'hotpink';
+				}else{
+					liNode.style.backgroundColor = 'skyblue';
+				}
+				
+			}
+			
+			//把ul追加给body，不追加不显示
+			
+			document.body.appendChild(ulNode);
+			
+			
+			
+		</script>
+	</body>
+	
+	
+</html>

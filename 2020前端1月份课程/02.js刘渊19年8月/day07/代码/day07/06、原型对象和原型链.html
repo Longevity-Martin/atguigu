@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			//实例化两个实力派歌手
+			function Singer(name,gender,age){
+				this.name = name;
+				this.gender = gender;
+				this.age = age;
+				
+			}
+			
+			Singer.prototype.sing = function(){
+				console.log('我什么都能唱！');
+			}
+			
+			
+			
+			
+			var singer1 = new Singer('邓紫棋','famale',28);
+			var singer2 = new Singer('腾格尔','male',50);
+			
+			console.log(singer1);
+			console.log(singer2);
+			
+			singer1.sing();
+			singer2.sing();
+			//任何的函数对象在定义的时候都会伴随着一个原型对象出现，原型对象默认是Object的实例对象
+			console.dir(Singer);
+			
+			
+			function BlueCat(name,age,gender){
+				this.name = name;
+				this.age = age;
+				this.gender = gender;
+			}
+			
+			Object.prototype.run = function(){
+				console.log('跑的很快~');
+			}
+			
+			
+			var cat1 = new BlueCat('tom',2,'male');
+			console.log(cat1);
+			var cat2 = new BlueCat('jerry',3,'male');
+			console.log(cat2);
+			console.log(BlueCat);
+			
+			cat1.run();
+			cat2.run();
+			
+			
+			//对象在调用方法(或者属性)的时候，首先会从自己对象的空间当中去找，如果找到就直接用了
+			//如果没有找到，然后去自己的原型对象空间去找（自己的构造函数的原型对象），如果找到就用
+			//如果没有找到，然后去自己的原型对象的原型对象空间当中去找（自己的构造函数的原型对象的构造函数
+			//的原型对象当中去找），如果找到就用，如果找不到继续向上，直到找到Object的原型对象为止，找到
+			//就用，找不到报错；我们把这个对象找属性的过程形象的描述为原型链；
+			
+			
+			var arr = [1,2,3];
+			console.log(arr);
+			
+			arr.push(4);
+			console.log(arr);
+		</script>
+	</body>
+</html>

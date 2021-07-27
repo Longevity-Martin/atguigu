@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width: 300px;
+				height: 300px;
+				background-color: hotpink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<button>显示/隐藏</button>
+		<script type="text/javascript">
+			var btn = document.querySelector('button');
+			var box = document.getElementById('box');
+			
+			var flag = true;
+			btn.onclick = function(){
+				if(flag){
+					box.style.display = 'none';
+				}else{
+					box.style.display = 'block';
+				}
+				flag = !flag;
+			}
+		</script>
+	</body>
+</html>

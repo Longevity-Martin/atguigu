@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			function bubbleSort(arr) {
+				for(var i = 0; i < arr.length - 1; i++) {
+					//外层循环控制轮数
+					for(var j = 0; j < arr.length - 1 - i; j++) {
+						//内层循环控制的是比的次数
+						if(arr[j] < arr[j + 1]) {
+							var temp = arr[j];
+							arr[j] = arr[j + 1];
+							arr[j + 1] = temp;
+						}
+
+					}
+
+				}
+				
+			}
+			
+			var arr = [20,13,2,88,66,23];
+			bubbleSort(arr);
+			console.log(arr);
+			
+			//函数传参：分为传基本数据类型和对象数据类型
+			
+//			传基本类型和对象类型不一样:基本数据类型传进去后,函数外和函数内操作的不是一个值;
+//			所以当传递基本数据类型的时候,函数内部运算后的结果我们需要返回;
+//			
+//			但是如果传的是对象类型(数组),那么函数内部和外部操作的是同一个数据(数组),因此,
+//			函数内部对数组所有的操作就相当于操作外部的一样.所以运算完之后不需要返回,外部一样
+//			看到发生了变化;
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+
+</html>

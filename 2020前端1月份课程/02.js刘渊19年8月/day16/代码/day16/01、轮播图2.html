@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul,li{
+				list-style: none;
+			}
+			img{
+				display: block;
+			}
+			a{
+				text-decoration: none;
+			}
+			
+			html,body{
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			input{
+				outline: none;
+			}
+			
+			.banner{
+				position: relative;
+				width: 600px;
+				height: 300px;
+				margin: 50px auto;
+				overflow: hidden;
+			}
+			
+			.banner .bannerList{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 4200px;
+				height: 300px;
+				
+				
+			}
+			.banner .bannerList li{
+				float: left;
+				width: 600px;
+				height: 300px;
+			}
+			
+			.banner .bannerList li img{
+				width: 100%;
+				height: 100%;
+			}
+			
+			.banner .left,.banner .right{
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 50px;
+				height: 80px;
+				font-size: 40px;
+				text-align: center;
+				line-height: 80px;
+				background-color: red;
+				opacity: 0;
+				transition: 1s opacity;
+				
+			}
+			.banner .left{
+				left: 0;
+			}
+			
+			.banner .right{
+				right: 0;
+			}
+			
+			.banner .iconList{
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				bottom: 10px;
+			}
+			
+			.banner .iconList li{
+				
+				float: left;
+				width: 20px;
+				height: 20px;
+				margin-right: 5px;
+				border-radius: 50%;
+				background-color: gray;
+			}
+			
+			.banner .iconList li.current{
+				background-color: red;
+			}
+			
+			
+			
+			
+			
+		</style>
+	</head>
+	
+	<body>
+		<div class="banner">
+			<ul class="bannerList">
+				<!--无缝操作的结构需要在最后加入第一张，在第一张前加入最后一张-->
+				<li>
+					<img src="img/6.jpg"/>
+				</li>
+				<li>
+					<img src="img/2.jpg"/>
+				</li>
+				<li>
+					<img src="img/3.jpg"/>
+				</li>
+				<li>
+					<img src="img/4.jpg"/>
+				</li>
+				<li>
+					<img src="img/5.jpg"/>
+				</li>
+				<li>
+					<img src="img/6.jpg"/>
+				</li>
+				<li>
+					<img src="img/2.jpg"/>
+				</li>
+			</ul>
+			
+			<ul class="iconList">
+				<li class="current"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			
+			<span class="left"> < </span>
+			<span class="right"> > </span>
+		</div>
+		
+		<script type="text/javascript">
+			var box = document.querySelector('.banner');
+			var left = document.querySelector('.banner .left');
+			var right = document.querySelector('.banner .right');
+			var bannerList = document.querySelector('.banner .bannerList');
+			var iconItems = document.querySelectorAll('.banner .iconList li');
+			var bannerItem = document.querySelectorAll('.banner .bannerList li')
+			var timeAll = 600; //走完一张图片所用时间
+			var timeStep = 20; //每走一步的时间，其实就是定时器当中的时间
+			var timer = null;
+			var isMove = false;//专门针对多次点击
+			var autoTimer = null;
+			
+			
+			bannerList.style.left = -600 + 'px';//无缝之后，轮播图默认显示的不再是之前第一张而是之前的最后一张
+			
+			
+			box.onmouseenter = function(){
+				left.style.opacity = 1;
+				right.style.opacity = 1;
+				clearInterval(autoTimer);
+				
+			};
+			box.onmouseleave = function(){
+				left.style.opacity = 0;
+				right.style.opacity = 0;
+				autoRun();
+			}
+			
+			
+			right.onclick = function(){
+				move(true);
+			}
+			
+			
+			left.onclick = function(){
+				move(false);
+			}
+			
+			
+			
+			function move(flag){
+				//点击一次走的距离差是 -600
+				//元素最终的位置，我们页知道
+				
+				
+				//判断元素是否在移动
+				//处理连续点击，元素叠加移动的bug
+				if(isMove){
+					return;//如果元素正在移动，就不再移动 直接返回，后面代码不执行；
+				}
+				
+				
+				isMove = true;
+				
+				
+				setTimeout(function(){
+					isMove = false;
+				},600);
+				
+				
+				
+				if(typeof flag == 'boolean'){
+					if(flag){
+						var dis = -600;//每点一次走的距离
+					}else{
+						var dis = 600;
+					}
+				}else{
+					var dis = flag - bannerList.offsetLeft;//点击小圆点传的是元素最终的位置，通过这个最终位置拿到移动的距离
+				}
+				
+				
+				
+				//每点击一次元素一共要走的距离
+				var lastDis = bannerList.offsetLeft + dis;//求元素最终的位置
+				var step = dis/(timeAll/timeStep);//求每一步走的距离
+				
+				
+				timer = setInterval(function(){
+					var left = bannerList.offsetLeft + step;
+					if(left == lastDis){
+						clearInterval(timer);
+						
+						//加无缝逻辑：
+						if(left == -3600){
+							left = -600;
+						}else if(left == 0){
+							left = -3000;
+						}
+						
+					}
+					
+					bannerList.style.left = left + 'px';
+					
+				},timeStep);
+				
+				
+				//小圆点变色问题
+				var index = Math.abs(lastDis / 600)  - 1;///  +4
+				if(index < 0 ){
+					index = 4;
+				}
+				
+				
+				for(var i = 0; i < iconItems.length; i++){
+					iconItems[i].className = '';
+				}
+				
+				iconItems[index%5].className = 'current';
+				
+				autoIndex = index%5 + 1;
+				
+			}
+			
+			
+			
+			//点击小圆点  移动到对应的图片
+			
+			for(var i = 0; i < iconItems.length; i++){
+				iconItems[i].index = i;
+				iconItems[i].onclick = function(){
+					move((this.index + 1)*-600);
+					
+					autoIndex = this.index + 1; //更新自动轮播的图片下标  
+				}
+			}
+			
+			
+			
+			
+			//自动轮播
+			//定时器
+			
+			var autoIndex = 1;
+			autoRun();
+			function autoRun(){
+				autoTimer = setInterval(function(){
+					autoIndex++;
+					move(autoIndex * -600);
+					if(autoIndex == 6){
+						autoIndex = 1;
+					}
+				},2000);
+			}
+			
+			
+			
+//   第一步： 结构	 结构牢记 
+//   第二步：css   外面小盒子根据图片的宽度进行设置         内部大盒子   宽度是根据图片的个数进行的设置的
+//   第三步： js行为		
+			
+				//1、点击按钮让图片先动起来（只点击右侧）   每次点击要准备走的距离都是-600，这个距离需要用定时器慢慢走，
+				//	需要求每一步的距离     元素起始位置我们是可以获取到的， 结束位置我们也求出来；
+				
+				//2、 看什么时候元素停止，当刚好元素走的位置和开启求出来的结束位置一样的实惠，停止定时器；
+				
+				//3、左边按钮和右边按钮    几乎一致，  只是点左边按钮的时候，元素要准备走的距离是600，其它的都不变，因此封装函数move(flag)
+					//函数传参为true就是点右  false就是点左
+					
+				//4、无缝的操作     结构需要变化   最前面加最后一张    最后面加第一张； 在清除定时器的时候
+					//，去判断是否元素走到了最后一张的位置和第一张的位置，如果走到，让元素顺便到相应的位置
+					
+				//5、小圆点变色  排他   关键点在求出哪一个小圆点变色，就是要拿到小圆点变色的下标，通过元素最终位置去求
+				
+				//6、点击小圆点，图片移动对应位置  要传递元素准备移动的最终位置  跟点击的小圆点下标相关，move里面参数要根据类型进行判断
+				//到底是点的按钮还是点的小圆点，因为传过来的参数不同
+				
+				//7、自动轮播 ，  根据图片的下标进行move  传的也是元素准备移动的最终位置， 下标需要进行判断   为6  变回1
+				
+				//8、自动轮播鼠标行为的同步   鼠标移入清除自动轮播   鼠标移出重启自动轮播   
+				
+				
+				//9、移入之后，鼠标点击按钮或者小圆点，都要去把自动轮播的下标值 进行更新， 否则没法同步；
+				
+				
+				
+				
+				
+				
+				
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

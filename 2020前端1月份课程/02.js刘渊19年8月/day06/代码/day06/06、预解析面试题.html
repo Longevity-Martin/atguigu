@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//1
+//			alert(a);   //报错； 
+//			a = 0;
+			//2
+			
+//			var a;
+//			alert(a);    
+//			a = 0;
+//			alert(a);
+			//3
+//			var a;
+//			function a(){ alert('我是函数') }
+////			var a = function(){
+////				alert('我是函数')
+////			}
+//			alert(a);    
+//			a = '我是变量';
+//			alert(a);
+			//4
+//			var a;
+//			function a(){ alert('我是函数') }
+//			alert(a); 
+//			a++;
+//			alert(a);  //NaN  
+//			a = '我是变量';
+//			alert(a) 
+			//5
+			
+//			var a;
+//			function fn(){
+//				var a;
+//		 		alert(a);    
+//		 		a = 1;
+//		 		alert(a);    
+//			}
+//			
+//			alert(a);   
+//			a = 0;
+//			alert(a);   
+//			fn();
+//			alert(a);
+//			
+//			undefined   0  undefined 1  0
+			//6
+			var a;
+			function fn(){
+		   		alert(a);  // 0       undefined
+		   		a = 1;		
+		   		alert(a);   // 1
+			}
+			
+			alert(a);  //undefined  
+			a = 0;
+			alert(a);  //0  
+			fn()
+			alert(a);  //0         1
+		
+
+//		undefined   0  0  1 1
+
+		</script>
+	</body>
+</html>

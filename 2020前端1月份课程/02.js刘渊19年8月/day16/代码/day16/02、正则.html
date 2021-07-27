@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//正则的创建方式
+			//字面量
+			var str = 'saufdhaslfkjxcjjczhvckalncausg';
+			var patt = /\d/;
+			var result = patt.test(str) //  test  使用正则对象规则去字符串当中检测是否包含符合规则的字符串；
+			console.log(result);
+			
+			
+			//构造函数
+			
+			var patt1 = new RegExp("\\d");
+			var result = patt1.test(str) //  test  使用正则对象规则去字符串当中检测是否包含符合规则的字符串；
+			console.log(result);
+			
+			
+			
+			
+			//转义
+			console.log('\\');// \在所有的语言当中不是一个字符，它是转义的意思，通常需要和另外的特殊字符在一起构成一个字符
+			
+			
+			
+			var str = 'asfsfasda';
+			var pat = /\d*/;
+//			pat = /./;
+			console.log(pat.test(str));
+			
+			
+			
+		</script>
+	</body>
+</html>

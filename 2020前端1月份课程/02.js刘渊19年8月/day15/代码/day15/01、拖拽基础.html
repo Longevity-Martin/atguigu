@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 200px;
+				height: 100px;
+				background-color: red;
+			}
+			
+			html,body{
+				height:100%;
+				overflow:hidden;
+			}
+			
+			img{
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				margin: auto;
+				display: block;
+				width: 200px;
+				height: 100px;
+			}
+			
+			
+			
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">尚硅谷</div>
+		<img src="img/4.jpg" alt="" />
+		<script type="text/javascript">
+			
+			var box = document.getElementById('box');
+			var imgNode = document.querySelector('img');
+			
+			box.onmousedown = function(event){
+				
+				event = event || window.event;
+				//拿元素的初始位置
+				var eleX = box.offsetLeft;
+				var eleY = box.offsetTop;
+				//拿鼠标的初始位置
+				var startX = event.clientX;
+				var startY = event.clientY;
+				
+				//元素发生事件之后，鼠标的所有事件行为全部都被捕获到该元素身上
+				
+				box.setCapture && box.setCapture();
+				
+				document.onmousemove = function(event){
+					event = event || window.event;
+					//拿到鼠标的结束位置
+					var endX = event.clientX;
+					var endY = event.clientY;
+					//拿到鼠标的距离差
+					var disX = endX - startX;
+					var disY = endY - startY;
+					
+					//最终获取到元素的位置
+					var lastX = eleX + disX;
+					var lastY = eleY + disY;
+					
+					
+					//元素超出视口临界值的判定
+					
+					if(lastX < 50){
+						lastX = 0;
+					}else if(lastX > document.documentElement.clientWidth - box.offsetWidth -50){
+						lastX = document.documentElement.clientWidth - box.offsetWidth
+					}
+					
+					if(lastY < 50){
+						lastY = 0;
+					}else if(lastY > document.documentElement.clientHeight - box.offsetHeight -50){
+						lastY = document.documentElement.clientHeight - box.offsetHeight
+					}
+					
+					
+					
+					
+					box.style.left = lastX + 'px';
+					box.style.top = lastY + 'px';
+					
+					//碰撞问题是在设置之后去判断
+					var boxL = lastX + box.offsetWidth;
+					var boxT = lastY + box.offsetHeight;
+					var boxR = lastX;
+					var boxB = lastY;
+					var imgL = imgNode.getBoundingClientRect().left;
+					var imgT = imgNode.getBoundingClientRect().top;
+					var imgR = imgNode.getBoundingClientRect().left + imgNode.offsetWidth;
+					var imgB = imgNode.getBoundingClientRect().top + imgNode.offsetHeight;
+					
+					if(boxL < imgL || boxT < imgT || boxR > imgR || boxB > imgB){
+						imgNode.src = 'img/4.jpg';
+					}else{
+						imgNode.src = 'img/5.jpg';
+					}
+					
+					
+					
+				}
+				
+				
+				document.onmouseup = function(){
+					document.onmousemove = document.onmouseup = null;
+					box.releaseCapture && box.releaseCapture();
+				}
+				
+				//dom0事件取消默认行为
+				return false;
+				//dom2事件取消默认行为
+//				event.preventDefault();
+				
+			}
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

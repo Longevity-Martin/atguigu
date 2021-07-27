@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+//			for(var i = 1; i < 101; i++){
+//				console.log(i);
+//			}
+			
+			var i = 1;
+			for(;i < 101;){
+				console.log(i);
+				i++;
+			}
+			
+			
+			//while循环由for循环转变而来，只要是for循环能干的while都能干
+			
+//			var i = 101;
+//			while(i < 101){
+//				console.log(i);
+//				i++;
+//			}
+
+
+			//for循环一般有明显的循环次数，这时候用for循环比较容易；
+			//while循环一般没有明显的次数，用它最合适；
+			
+//			var i = 0;
+//			while(i < 500){
+//				console.log(i);
+//				i+=4;
+//			}
+//			
+//			
+//			for(var i = 0; i < 500; i+=4){
+//				
+//			}
+			
+			
+			//do--while 又是由while演变而来的，
+			//do--while和while区别在于：while循环先判断条件是否为真，再决定是否执行循环体
+			//如果条件为真就执行，为假就不会执行循环体，一次都不执行；
+			//do--while是先执行一次循环体，再去判断条件，条件为真 继续执行循环体，条件为假不会执行循环体
+			//但是do--while无论条件是否为真，都会至少执行一次循环体；
+			var i = 101;
+			do{
+				console.log(i);
+				i++;
+			}while(i < 101);
+			
+			
+			//while循环的死循环写法：
+//				for(;true;){
+//					
+//				}
+				
+//				while(true){};
+			
+			
+		</script>
+	</body>
+</html>

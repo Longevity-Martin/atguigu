@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul,li{
+				list-style: none;
+			}
+			img{
+				display: block;
+			}
+			a{
+				text-decoration: none;
+			}
+			
+			/*html,body{
+				height: 100%;
+				overflow: hidden;
+			}*/
+			
+			input{
+				outline: none;
+			}
+			
+			.navList{
+				position: relative;
+				width: 200px;
+				height: 150px;
+				background-color: hotpink;
+				
+			}
+			.navList>li{
+				width: 200px;
+				height: 50px;
+				text-align: center;
+				line-height: 50px;
+			}
+			
+			.navList>li{
+				box-sizing: border-box;
+				border-bottom: 1px solid purple;
+			}
+			.navList>li:first-child{
+				border-top: 1px solid purple;
+			}
+		
+			
+			.navList>li .navIn{
+				position: absolute;
+				left: 200px;
+				top: 0;
+				width: 400px;
+				height: 300px;
+				background-color: skyblue;
+				display: none;
+			}
+			
+			.navList>li .navIn li{
+				width: 400px;
+				height: 100px;
+				text-align: center;
+				line-height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="navList">
+			<li>
+				<a href="javascript:;">服装</a>
+				<ul class="navIn">
+					<li>上衣</li>
+					<li>裤子</li>
+					<li>内衣</li>
+				</ul>
+			</li>
+			<li>
+				<a href="javascript:;">服装</a>
+				<ul class="navIn">
+					<li>夹克</li>
+					<li>裤子</li>
+					<li>内衣</li>
+				</ul>
+			</li>
+			<li>
+				<a href="javascript:;">服装</a>
+				<ul class="navIn">
+					<li>皮衣</li>
+					<li>裤子</li>
+					<li>内衣</li>
+				</ul>
+			</li>
+		</ul>
+		
+		<script type="text/javascript">
+			var liList = document.querySelectorAll('.navList>li');
+			var liInList = document.querySelectorAll('.navList>li .navIn');
+			for(var i = 0; i < liList.length; i++){
+				liList[i].index = i;
+				liList[i].onmouseenter = function(){
+					for(var j = 0; j < liInList.length; j++){
+						liInList[j].style.display = 'none';
+					}
+					console.log(liInList[this.index]);
+					liInList[this.index].style.display = 'block';
+				}
+				
+				liList[i].onmouseleave = function(){
+					liInList[this.index].style.display = 'none';
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

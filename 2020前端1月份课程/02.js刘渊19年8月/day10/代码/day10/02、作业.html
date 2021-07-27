@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			console.log([1,2,3]);
+			
+			
+//			function HuaWeiMobile(name,color,size,money){
+//				this.name = name;
+//				this.color = color;
+//				this.size = size;
+//				this.money = money;
+//			}
+//			
+//			HuaWeiMobile.prototype.brand = '华为';
+//			HuaWeiMobile.prototype.callPhone = function(){
+//				console.log('打电话!');
+//			};
+//			HuaWeiMobile.prototype.photo = function(){
+//				console.log('可以自拍！');
+//			}
+//			HuaWeiMobile.prototype.playMusic = function(){
+//				console.log('可以听音乐！');
+//			}
+//			
+//			
+//			var phone1 = new HuaWeiMobile('p30','skyblue',6.3,4000);
+//			phone1.playMusic();
+			
+			
+			//字符串翻转
+//			var str = 'aisudhasiduhas;dll123';
+//			var arr = str.split('');
+//			arr.reverse();
+//			str = arr.join('');
+//			
+//			console.log(str);
+			
+			//数组及字符串替换
+//			var arr = [1,2,3,4,5];
+//			arr.splice(2,3,'赵丽颖');
+//			console.log(arr);
+//			
+//			var str = '1872361823qweiuyeqwzhaoliyingyangmi';
+//			
+//			console.log(str.replace('yangmi','dilireba'));
+
+
+//求字符串当中出现次数最多的字符以及位置
+			var str = '1213411231142';
+			
+			var obj = {};
+			
+			
+			
+			
+//			{
+//				obj.1 = 1  ===  obj['1'] = 1
+//			}
+			
+			
+//			console.log(obj.name = 'zhaoliying');
+			
+			for(var i = 0; i < str.length; i++){
+				
+				var charS = str[i];
+//				if(obj[charS]){
+//					obj[charS]++;
+//				}else{
+//					obj[charS] = 1;
+//				}
+				
+				obj[charS]?obj[charS]++:obj[charS]=1;
+				
+//				if(obj[charS+'arr']){
+//					obj[charS+'arr'].push(i);
+//				}else{
+//					obj[charS+'arr'] = [i];
+//				}
+				
+				obj[charS+'arr']?obj[charS+'arr'].push(i):obj[charS+'arr'] = [i];
+			}
+			
+			var max = 0;
+			var resultKey = '';
+			for(var key in obj){
+				if(typeof obj[key] == 'number'){
+					if(obj[key] >= max){
+						max = obj[key];
+						resultKey = key;
+					}
+				}
+			}
+			
+			
+			console.log(obj[resultKey],obj[resultKey+'arr']);
+			
+			
+			
+		</script>
+	</body>
+</html>

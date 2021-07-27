@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 200px;
+				height: 100px;
+				background-color: red;
+			}
+			
+			
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">尚硅谷</div>
+		<script type="text/javascript">
+			
+			var box = document.getElementById('box');
+			
+			box.onmousedown = function(event){
+				
+				event = event || window.event;
+				//拿元素的初始位置
+				var eleX = box.offsetLeft;
+				var eleY = box.offsetTop;
+				//拿鼠标的初始位置
+				var startX = event.clientX;
+				var startY = event.clientY;
+				
+				//元素发生事件之后，鼠标的所有事件行为全部都被捕获到该元素身上
+				
+				box.setCapture && box.setCapture();
+				
+				document.onmousemove = function(event){
+					event = event || window.event;
+					//拿到鼠标的结束位置
+					var endX = event.clientX;
+					var endY = event.clientY;
+					//拿到鼠标的距离差
+					var disX = endX - startX;
+					var disY = endY - startY;
+					
+					//最终获取到元素的位置
+					var lastX = eleX + disX;
+					var lastY = eleY + disY;
+					
+					box.style.left = lastX + 'px';
+					box.style.top = lastY + 'px';
+				}
+				
+				
+				document.onmouseup = function(){
+					document.onmousemove = document.onmouseup = null;
+					box.releaseCapture && box.releaseCapture();
+				}
+				
+				//dom0事件取消默认行为
+				return false;
+				//dom2事件取消默认行为
+//				event.preventDefault();
+				
+			}
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

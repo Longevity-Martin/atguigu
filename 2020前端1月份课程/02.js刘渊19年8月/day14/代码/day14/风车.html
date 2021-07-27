@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			ul,li{
+				list-style: none;
+			}
+			
+			#box{
+				width: 300px;
+				height: 300px;
+				/*background-color: red;*/
+				margin: 50px auto;
+				animation: move 2s linear infinite;
+			}
+			
+			@keyframes move{
+				from{transform: rotate(0);}
+				to{transform: rotate(360deg);}
+			}
+			
+			
+			#box .list{
+				overflow: hidden;
+			}
+			
+			#box .list li{
+				float: left;
+				width: 150px;
+				height: 150px;
+				background-color: greenyellow;
+			}
+			
+			#box .list li:nth-child(1),#box .list li:nth-child(4){
+				border-radius: 0 150px 0 150px;
+			}
+			#box .list li:nth-child(2),#box .list li:nth-child(3){
+				border-radius: 150px 0 150px 0;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul class="list">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		
+		<button>停/转</button>
+		
+		
+		<script type="text/javascript">
+			var btn = document.querySelector('button');
+			var flag = true;
+			var box = document.getElementById('box');
+			btn.onclick = function(){
+				if(flag){
+					box.style.animationPlayState = 'paused';
+				}else{
+					box.style.animationPlayState = 'running';
+				}
+				flag = !flag
+			}
+		</script>
+	</body>
+</html>

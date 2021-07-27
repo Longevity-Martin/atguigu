@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		
+			//打印矩形   可以打印多个
+//			for(var i = 0; i < 5; i++){
+//				document.write('*****');
+//				document.write('<br >');
+//			}
+//			
+			//打印矩形   每次打印1个      //外层循环控制行，内层循环控制列；
+//			for(var i = 0; i < 5; i++){
+//				for(var j = 0; j < 5; j++){
+//					document.write('*');
+//				}
+//				document.write('<br >');
+//				
+//			}
+
+			//打印直角三角形  每次打印1个 
+//			for(var i = 0; i < 5; i++){
+//				for(var j = 0; j <= i; j++){
+//					document.write('*');
+//				}
+//				document.write('<br >');
+//			}
+			
+			//打印乘法口诀表
+			
+			for(var i = 1; i <= 9; i++){
+				for(var j = 1; j <= i; j++){
+					document.write(j + '*' + i + '=' + i*j);
+					document.write('&nbsp;&nbsp;&nbsp;');
+				}
+				
+				document.write('<br >');
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

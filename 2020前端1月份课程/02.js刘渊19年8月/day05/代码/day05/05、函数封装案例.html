@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//求和函数
+			function add(a,b){
+				return a + b;
+			}
+			
+			var result =  add(10,20);
+			
+			//
+			
+			function maxAndMin(arr){
+				var max = arr[0];
+				var min = arr[0];
+				
+				for(var i = 0; i < arr.length; i++){
+					if(max < arr[i]){
+						max = arr[i];
+					}
+					if(min > arr[i]){
+						min = arr[i];
+					}
+				}
+				
+				return [max,min];//return只能return一个值
+				
+//				return max,min;// 这样的写法是错误的，不能return多个值；
+			}
+			
+			
+			var arr = [1,3,8,2,4,6];
+			
+			result = maxAndMin(arr);
+//			console.log(result[0],result[1]);
+			
+			
+			
+			//函数输出个人简介
+			
+			function printMe(name,gender,address,salery){
+				console.log('我的名字叫'+name+'我的性别是：'+gender+'我来自：'+address+'我的期望薪资是：'+salery);
+				
+			}
+			
+//			var name = 'liuyuan';
+//			var gender = 'male';
+//			var address = '山西运城';
+//			var salery = '21k';
+			
+//			printMe('liuyuan','male','山西运城','21k');
+			
+			
+			
+			function makeArray(arr){
+				for(var i = 0; i < arr.length; i++){
+//					arr[i] += 10; //代表把数组里面的值全部都+10，数组当中值都改变了
+
+					console.log(arr[i]+10);//代表没有改变数组当中的值，只是输出数组的值+10
+				}
+			}
+			
+//			makeArray([1,2,3,4,5]);
+			
+			
+			
+			
+			function add(a){
+				var sum = 0;
+				for(var i = 1; i <= a; i++){
+					sum += i;
+				}
+				
+				return sum;
+			}
+			
+			
+//			var a =parseInt(prompt('请输入一个整数；'));
+//			
+//			var result = add(a);
+//			console.log(result);
+			
+			var username = 'zhaoliying';
+			var pass = '123456';
+			
+			function verifyUser(){
+				var user = prompt('请输入您的用户名');
+				var pass1 = prompt('请输入您的密码');
+				if(user == username && pass == pass1){
+					alert('登录成功');
+				}else{
+					verifyUser();
+				}
+			}
+			
+			verifyUser();
+			
+			
+			
+		</script>
+	</body>
+</html>

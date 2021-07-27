@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box{
+				width: 500px;
+				height: 500px;
+				background-color: red;
+			}
+			#box1{
+				width: 300px;
+				height: 300px;
+				background-color: green;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="box1">
+				
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			var box = document.getElementById('box');
+			box.onmouseover = function(){
+				console.log('移入box');
+			}
+			box.onmouseout = function(){
+				console.log('移出box');
+			}
+		</script>
+	</body>
+</html>

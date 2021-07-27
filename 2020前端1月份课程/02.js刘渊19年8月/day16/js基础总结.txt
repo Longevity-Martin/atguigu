@@ -1,0 +1,324 @@
+﻿1、js      ECMAscript     DOM     BOM
+
+
+ ECMAscript:
+	1、js的写法    三种
+	<input onclick="alert()">
+	内嵌
+	外链   <script src="文件路径"></script>
+
+	2、变量  变量的本质（内存）   
+	   变量的命名规范 
+	   变量的初始化    var a  = 10;    ===   var a;   a = 10; 
+
+	   交换两个变量的值；
+
+	3、数据类型	
+		按大的类： 基本 和 对象（引用）
+		基本： 数字  字符串 布尔值   undefined  null;   主要关注undefined  null  理解清楚什么意思、
+
+		对象：  数组（既是数组又是对象，数组操作元素，对象操作属性）
+		        函数 (既是函数又是对象，当函数去用，是为了执行某个功能，当对象去用是为了操作属性）
+			对象（Object的实例对象 还有 构造函数的实例对象）
+			内置工具对象   Math Date JSON  
+			包装对象   String   Number   Boolean
+			正则对象  
+
+		
+
+	4、运算符和表达式
+		运算符：  算术 ++  --   赋值  比较  逻辑  三目运算符   ？：
+		转化     显示   隐式   手动
+
+		0   false   '0' true    e = a || b || c || d
+
+
+	5、语句结构：  顺序   分支   循环
+		水仙花
+		质数
+		打印图形
+		打印乘法口诀表
+		break和continue的区别
+		while和do..while的区别
+
+
+	6、数组：
+		概念：
+		数组的定义：   字面量    构造函数 new Array(1,2,3)     Arrary(1,2,3)       Arrary(3);
+		数组的增删改查  遍历
+		二维数组（了解）
+			（原生js通过下标操作）
+			冒泡排序
+			数组去重
+			数组合并
+			数组翻转
+
+	7、函数
+		概念
+		定义：   字面量   构造函数定义     函数表达式定义 
+		函数的三要素及如何封装函数（分成四类）   return;   函数当中才会有return,在函数内部函数执行碰见了return就立马结束，函数内部之后的代码不再执行
+		全局和局部（作用域）  作用域链
+		预解析 ：   所有带var的遍历还有所有的函数  都会进行预解析   做变量提升    优先提升函数  函数重名覆盖   再解析变量，变量重名忽略
+		****  函数的执行过程  及  整个程序执行的时候内存变化
+		回调函数     自己定义  自己没调   执行了
+		arguments
+		IIFE 匿名函数自调用
+		this
+		
+	8、对象
+		object实例对象
+		概念：
+		定义：  字面量   构造函数   工厂函数  
+		操作：  **********   .语法   []语法    注意：变量
+
+
+		定义特定的构造函数实例化对象
+
+		构造函数的概念：
+		构造函数的作用：   new关键字都做了什么     画图
+		函数当普通和构造函数区别（this）
+
+		
+		原型对象： 隐式原型   显式原型
+			  原型对象的作用：共享空间  节省资源 
+		
+		原型链    实例对象找属性的过程
+
+
+		apply和call  改变方法或者函数  的执行者
+
+		typeof 和 instanceof的区别和用法     ==判断null 
+
+
+	
+		值类型和对象数据类型   ****************************
+			var a = 10;
+			var b = 15;
+			a = b;
+			a = 20;
+			
+			
+			console.log(a,b);
+
+
+			var arr = [12,13]
+			var arr1 = arr;
+
+			arr1[0] = 55;
+
+			console.log(arr);
+
+
+	9、内置的对象		
+		  	Math
+				abs   floor  ceil  round  PI  random  max  min  pow  sin
+ 			JSON
+
+				JSON.parse    JSON.stringify
+
+			Date
+				年  月   日  时  分  秒  星期      1970年到现在的毫秒数
+
+			包装对象
+
+			正则
+
+				
+	10、 数组和字符串方法：
+							  	
+	   		数组：    push  pop  shift  unshift  splice   join     reverse  concat   sort   
+      
+			字符串：  charAt   indexOf  split   length       [索引]进行操作 只能读不能写  
+
+
+	11、DOM
+		节点：
+			增删改查：
+				怎么去找节点
+					childNodes
+					children
+					parentNode
+					parentElement
+					
+					元素.firstChild
+					元素.firstElemetChild  
+						last
+						previousSiblings
+						nextSiblings
+									
+
+				增加节点   三种
+				    
+
+				父级元素操作子元素：
+					insertBefore
+					appendChild
+					removeChild
+					replaceChild	
+				createElement
+					
+
+		JS操作元素
+			获取dom对象
+			事件添加    dom0   dom2
+				    事件对象
+					event 
+					event鼠标位置
+					event.target 
+					event.stopPropagation
+					event.preventDefault	
+						
+				    事件流
+				    事件冒泡
+				    阻止事件冒泡
+				    事件委派
+				    事件当中的this
+				    事件当中阻止浏览器默认行为
+
+			JS操作元素属性
+				    	dom元素.属性
+				    	setAttribute
+				    	getAttribute
+			
+
+			JS操作元素内容
+
+					innerText
+					textContent
+					innerHtml
+
+
+			JS操作元素的样式
+
+				        元素.style.样式       JS操作的样式全是行内
+					元素的宽高和样式读取：
+						client系列
+						offset系列
+						scroll系列
+						
+
+
+			DOM当中所有的案例;
+				    排他
+				    开关
+				    
+					
+	12、BOM	
+		window对象
+		     window.onload    window.onresize    window.onscroll 
+		location     href
+		screen       width  height
+		history      go  back   forward
+		navigator    navigator.appName
+
+
+	13、拖拽带自定义滚动条   
+
+
+	14、轮播图
+
+
+
+CSS:
+	
+	居中：
+		文本在div居中心
+			text-align:center
+			line-height:DIV高度
+		行内在div
+			text-align:center
+			line-height:DIV高度
+		行内块在div
+			position:absolute;
+			left:0
+			top:0
+			right:0
+			bottom:0
+			margin:auto
+			行内块必须设置宽高
+
+		块级在块级
+
+			position:absolute;
+			left:0
+			top:0
+			right:0
+			bottom:0
+			margin:auto
+			行内块必须设置宽高
+
+
+			position:absolute;
+			left:50%
+			top:50%
+			transform:translate(-50%,-50%);
+			
+
+
+			position:absolute;
+			left:50%
+			top:50%
+			margin-left: -盒子的一半;
+			margin-top: -盒子的一半;
+			行内块必须设置宽高
+
+
+	transform 覆盖
+	transition  只会检测起始和结束
+
+	
+
+
+	设置文本溢出变为...
+
+		只能给块和行内块设置
+		行内不能设置，因为行内本来就是文本
+		overflow:hidden
+		text-oveflow:ellipsis;
+		white-space:nowrap;
+
+				
+	元素隐藏：
+		display
+		visibility
+		opacity
+		width
+		height
+		transform:  translateX  translateY  rotateY  rotateX   scale
+		 
+
+								
+				    
+		rotate(效果和rotateZ)是一样的
+				
+		
+	3d变换如果不开启父元素3D空间：那么子元素设置了3D变换的元素，层级高出来
+   	
+			
+			
+
+		 
+		
+
+		
+		
+		  
+	 
+		
+
+		
+
+				
+		
+		
+
+	
+
+
+
+		
+				
+
+			
+
+		

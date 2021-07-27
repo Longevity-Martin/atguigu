@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			var obj = {};//相当于new Object  Object实例对象
+			var cry = 'call';
+			//增：
+			obj.name = '小黄';
+			obj.age = 1;
+			console.log(obj);
+			
+			
+			obj["color"] = 'yellow';//和obj.color完全等价，但是【】当中的必须带引号
+			obj["category"] = '阿拉斯加';
+			//如果用的是[]的方式，那么[]当中加引号是在往对象当中添加名或者键，如果不加，[]当中被当作
+			//变量处理，没有定义这个变量就会报错；
+			
+			obj[cry] = function(){
+				console.log('汪');
+			} //   obj["call"] = function(){};  
+			
+			console.log(obj);
+			
+			
+			//改；
+			var a = 'category';
+			obj.color = 'black';//改颜色位黑色    无则增加  有则更改
+			
+			obj["name"] = '小黑';   //完全等价于 obj.name = '小黑'
+			
+			obj[a] = '金毛';   //先把a解析位变量，看看a的值是什么，用a的值把a替换掉；
+			
+			
+			console.log(obj);
+			
+			
+			//查；
+			var a = 'category';
+			console.log(obj.name);//读取obj对象当中name键的值；
+			
+			console.log(obj["color"]);//完全等价于obj.color;
+			
+			console.log(obj[a]);//先把a解析位变量，看看a的值是什么，用a的值把a替换掉；
+			
+			console.log(obj.haha);//undefined 对象当中如果没有这个属性，访问值是undefined;
+			
+			//删除属性
+			var a = 'age';
+			delete obj.category;
+			console.log(obj);
+			delete obj["color"];
+			console.log(obj);
+			delete obj[a];
+			console.log(obj);
+			
+			console.log(console)
+			
+			
+			
+			//对象的遍历；也算是查，查对象当中所有的属性
+			
+			var obj = {
+				name:'car',
+				category:'劳斯莱斯',
+				color:'hotpink',
+				money:10000000,
+				run:function(){
+					console.log('跑的很快！');
+				},
+				
+			}
+			
+			//遍历数组用for遍历对象用for in
+			for(var key in obj){
+				console.log(key,obj[key]);
+				//如果在遍历对象的时候，取值只能使用[]的方式，因为key是一个变量，
+				//如果写乘obj.key拿到的是undefined，key被认为是对象里面的属性
+				//obj[key]  key被解析位变量，使用变量的值进行替换；
+			}
+			
+			
+			console.log(obj)
+			
+			
+		</script>
+	</body>
+</html>

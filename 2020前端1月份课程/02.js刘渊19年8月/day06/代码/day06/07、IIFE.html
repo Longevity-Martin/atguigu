@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//匿名函数自调用
+
+			
+//			function(){};//这个是匿名函数，本质上是一个没有名字的函数表达式，
+			//如果我们这么定义一个函数，那么这个匿名函数是没办法调用的，也就是说语法虽然
+			//正确，但是没什么用；
+			
+//			(function(){
+//				
+//			})(); //这样的写法就是我们的匿名函数自调用
+			
+			//匿名函数自调用特点：
+//				定义的时候就一起调用 了，不会发生预解析
+//				匿名函数自调用只能执行一次;
+//				匿名函数自调用通常可以做这些事,
+//					第一 :封装代码实现,不把代码暴露出去
+//					第二:可以防止外部的命名空间被污染;
+//					第三:通常用来做一些项目的初始化
+				
+			var a = 6;
+			var b = 5;
+			
+			function add(a,b){
+				return a + b;
+			}
+			
+			var a = 'haha';
+			add(a,b);
+			
+			
+			
+			var a = 'haha';
+			
+			(function(){
+				var a = 6;
+				var b = 5;
+				return a + b;
+			})();
+			
+			
+			
+			
+				
+				
+				
+				
+				
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

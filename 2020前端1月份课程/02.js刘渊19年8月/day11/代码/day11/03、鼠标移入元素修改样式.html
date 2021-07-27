@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: hotpink;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<script type="text/javascript">
+			var a = 200;
+			var box = document.querySelector('div');
+			box.onmouseenter = function(){
+				box.style.width = a + 'px';
+				this.style.height = '200px';
+				this.style.backgroundColor = 'skyblue';
+			};
+			
+			box.onmouseleave = function(){
+				box.style.width = '100px';
+				this.style.height = '100px';
+				this.style.backgroundColor = 'hotpink';
+			}
+		</script>
+	</body>
+</html>

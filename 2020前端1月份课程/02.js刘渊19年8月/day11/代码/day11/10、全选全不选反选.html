@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button>全选</button>
+		<button>全不选</button>
+		<button>反选</button>
+		
+		<input type="checkbox" /> 唱歌
+		<input type="checkbox" /> 跳舞
+		<input type="checkbox" /> rap
+		<input type="checkbox" /> 抽烟
+		<input type="checkbox" /> 喝酒
+		<input type="checkbox" /> 烫头
+		
+		<script type="text/javascript">
+			var btns = document.querySelectorAll('button');
+			var inputs = document.querySelectorAll('input');
+			
+			btns[0].onclick = function(){
+				for(var i = 0; i < inputs.length; i++){
+					inputs[i].checked = true;
+				}
+			};
+			
+			btns[1].onclick = function(){
+				for(var i = 0; i < inputs.length; i++){
+					inputs[i].checked = false;
+				}
+			}
+			
+			btns[2].onclick = function(){
+				for(var i = 0; i < inputs.length; i++){
+					inputs[i].checked = !inputs[i].checked;
+					
+//					if(inputs[i].checked){
+//						inputs[i].checked = false;
+//					}else{
+//						inputs[i].checked = true;
+//					}
+				}
+			}
+			
+			
+		</script>
+		
+	</body>
+</html>

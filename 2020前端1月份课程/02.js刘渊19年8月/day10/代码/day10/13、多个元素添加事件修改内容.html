@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			p{
+				background-color: hotpink;
+			}
+		</style>
+	</head>
+	<body>
+		<p class="pp">1</p>
+		<p class="pp">2</p>
+		<p class="pp">3</p>
+		<p class="pp">4</p>
+		
+		<div id="love">
+			i love you!me too!
+		</div>
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				
+				var pList = document.getElementsByTagName('p');
+				for(var i = 0; i < pList.length; i++){
+					pList[i].onclick = function(){
+						for(var j = 0; j < pList.length; j++){
+//							pList[j].innerHTML = '<h2>哈哈</h2>';
+							pList[j].innerText = '<h2>嘿嘿</h2>';
+//							pList[j].textContent = '呵呵';
+						}
+					}
+				}
+				
+				
+				
+				var love = document.getElementById('love');
+				
+				console.log(love.innerHTML);
+				console.log(love.innerText);
+				
+			}
+		</script>
+	</body>
+	
+</html>
