@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>取消请求</title>
+</head>
+<body>
+  <button onclick="getProducts1()">获取商品列表1</button><br>
+  <button onclick="getProducts2()">获取商品列表2</button><br>
+  <button onclick="cancelReq()">取消请求</button><br>
+
+  <script src="https://cdn.bootcss.com/axios/0.19.0/axios.js"></script>
+  <script>
+    /* 需求: 自动取消未完成的请求 */
+    axios.defaults.baseURL = 'http://localhost:4000'
+    let cancel // 用于保存取消请求的函数
+
+    // 添加请求拦截器
+    axios.interceptors.request.use(config => {
+      // 如果有未完成的请求, 取消这个请求
+      if (cancel) {
+        cancel('强制取消')
+      }
+      // 添加cancelToken的配置
+      config.cancelToken = new axios.CancelToken((c) => { // 在CancelToken中立即同步执行, 并传入用于取消请求的函数
+        // 保存用于取消请求的函数
+        cancel = c
+      })
+
+      return config // 必须返回它
+    })
+
+    // 添加响应拦截器
+    axios.interceptors.response.use(
+      response => {
+        cancel = null
+        return response
+      },
+
+      error => {
+        if (axios.isCancel(error)) { // 取消请求导致的错误
+          alert('取消请求错误: ' + error.message)
+        } else {
+          cancel = null
+          alert('请求错误: ' + error.message)
+        }
+
+        return new Promise(() => {}) // 返回pending状态的promise 中断promise链 
+        
+      }
+    )
+
+    function getProducts1() {
+
+      axios('/getProducts12')
+      .then(
+        response => {
+          console.log('1111 onResolved', response.data)
+        },
+       /*  error => {
+          onsole.log('1111 请求出错', error.message)
+        } */
+      )
+    }
+
+    function getProducts2() {
+
+      axios('/getProducts2').then(
+        response => {
+          console.log('2222 onResolved', response.data)
+        },
+        /* error => {
+         onsole.log('2222 请求出错', error.message)
+        } */
+      )
+    }
+
+    function cancelReq() {
+      // 取消请求
+      if (cancel) {
+        cancel('强制取消')
+      }
+    }
+  </script>
+</body>
+</html>

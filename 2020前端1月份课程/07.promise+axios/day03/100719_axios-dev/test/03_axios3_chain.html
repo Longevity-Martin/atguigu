@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>axios的处理链流程</title>
+</head>
+<body>
+  
+  <script src="https://cdn.bootcss.com/axios/0.19.0/axios.js"></script>
+  <script>
+
+    /* 
+    
+    [RI成, undefined]
+    
+    */
+   
+    axios.defaults.baseURL = 'http://localhost:3000'
+
+    /* 
+    添加请求拦截器
+    1. 是什么? 
+      在真正在发请求执行的回调函数
+    2. 作用
+        对请求的配置做一些处理: data, header, 界面loading提示
+        对请求进行检查, 如果不满足条件不发请求
+    */
+    axios.interceptors.request.use(function (config) {
+      console.log('req interceptor1 onResolved()', config)
+      return config;
+    });
+    axios.interceptors.request.use(function (config) {
+      console.log('req interceptor2 onResolved()', config)
+      // return config; // 必须返回config
+      return config
+    });
+
+    /* 
+     添加响应拦截器
+     1. 是什么? 
+        在得到响应后执行的回调函数(在外层的回调之前)
+    2. 作用
+        对请求成功的数据
+        对请求失败进行处理
+    */
+    axios.interceptors.response.use(
+      function (response) {
+        console.log('res interceptor1 onResolved()', response)
+        // return response;
+        return response.data;
+      },
+      function (error) {
+        console.log('res interceptor1 onRejected()')
+        return Promise.reject(error);
+      }
+    )
+    axios.interceptors.response.use(
+      function (data) {
+        console.log('res interceptor2 onResolved()', data)
+        return data;
+      },
+      function (error) {
+        console.log('res interceptor2 onRejected()')
+        return Promise.reject(error);
+      }
+    )
+
+
+    axios({
+      url: '/posts'
+    }).then(
+      data => {
+        console.log('onResolved()', data)
+      },
+      error => {
+        console.log('onRejected()')
+      }
+    )
+  </script>
+</body>
+</html>

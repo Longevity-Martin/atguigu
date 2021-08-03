@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/nprogress/0.2.0/nprogress.css">
+  <title>Document</title>
+</head>
+<body>
+
+  <div>
+    <button onclick="getPosts()">获取文章列表</button>
+    <button onclick="addPost()">添加文章</button>
+  </div>
+  
+  <script src="https://cdn.bootcss.com/nprogress/0.2.0/nprogress.js"></script>
+  <script src="https://cdn.bootcss.com/qs/6.9.0/qs.js"></script>
+  <script src="https://cdn.bootcss.com/axios/0.19.0/axios.js"></script>
+
+  <!-- 
+    1). 统一进行请求配置
+    2). 请求过程中loading提示
+    3). 请求体参数以urlencoded形式传递
+    4). 请求成功的value不再是response, 而是response.data
+    5). 请求失败统一进行提示处理, 每个请求不需要单独处理
+  -->
+
+  <script>
+    // console.log(Qs)
+    // 1). 统一进行请求配置
+    const instance = axios.create({
+      baseURL: 'http://localhost:4000',  // 指定基础url
+      timeout: 15000, // 指定请求超时时间
+    })
+
+    // 添加请求拦截器
+    instance.interceptors.request.use((config) => {
+      // 2). 请求过程中loading提示
+      // 显示loading
+      NProgress.start()
+
+      // 3). 请求体参数以urlencoded形式传递
+      // 对data参数数据进行处理: 转换为urlencoded格式(原本是对象)
+      if (config.data instanceof Object) {
+        config.data = Qs.stringify(config.data)
+      }
+
+      return config
+    })
+
+    // 添加响应拦截器
+    instance.interceptors.response.use(
+      response => {
+        // 隐藏loading
+        NProgress.done()
+
+        // 4). 请求成功的value不再是response, 而是response.data
+        return response.data
+      },
+
+      error => {
+        // 隐藏loading
+        NProgress.done()
+
+        // 5). 请求失败统一进行提示处理, 每个请求不需要单独处理
+        alert('统一处理请求出错: ' + error.message)
+        return new Promise(() => {}) // 返回pending状态的promise 中断promise链
+      }
+    )
+
+  </script>
+
+  <script>
+    
+    function getPosts() {
+      instance.get('/post').then(
+        result => {
+          console.table(result.data)
+        },
+        error => {
+          alert(error.message)
+        }
+      )
+    }
+
+    async function addPost() {
+      const result = await instance.post('/post', {title: 'newTitle', author: 'newAuthor'})
+      console.table(result.data)
+    }
+
+  </script>
+
+</body>
+</html>
