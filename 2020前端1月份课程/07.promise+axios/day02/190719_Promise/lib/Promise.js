@@ -68,6 +68,8 @@
     
   }
 
+
+
   /* 
   用来指定成功/失败回调函数的方法
       1). 如果当前promise是resolved, 异步执行成功的回调函数onResolved
@@ -146,6 +148,12 @@
       // 如果value是一个promise, 最终返回的promise的结果由value决定
       if (value instanceof Promise) {
         value.then(resolve, reject)
+
+        // value.then(
+        //   val => resolve(val),
+        //   reason => reject(reason)
+        // )
+
       } else { // value不是promise, 返回的是成功的promise, 成功的值就是value
         resolve(value)
       }

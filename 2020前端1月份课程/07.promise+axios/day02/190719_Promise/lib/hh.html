@@ -7,16 +7,21 @@
   <title>Document</title>
 </head>
 <body>
-  <script src="./hh.js"></script>
+  <!-- <script src="./hh.js"></script> -->
 <script>
   new Promise(function (resolve,reject) {
-    resolve(2)
+    // setTimeout(() => {
+    //   throw new Error("抛出异常")
+    // }, 1000);
+
+    throw new Error("抛出异常")
   }).then(
     function (value) {
       console.log(value)
     },
     function (reason) {
-      console.log(reason)
+      console.log(reason.message)
+      console.log(reason.stack);
     }
   )
 </script>
